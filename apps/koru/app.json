@@ -34,7 +34,6 @@
             "compileSdkVersion": 34,
             "targetSdkVersion": 34,
             "minSdkVersion": 23,
-            "buildToolsVersion": "34.0.0",
             "kotlinVersion": "1.9.24"
           }
         }
