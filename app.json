@@ -25,7 +25,6 @@
       }
     },
     "plugins": [
-      "react-native-reanimated",
       "react-native-webview"
     ]
   }
