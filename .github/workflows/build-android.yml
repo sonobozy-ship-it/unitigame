@@ -7,7 +7,10 @@ on:
       - master
       - dev
       - claude/casual-game-levels-TuCmm
-  workflow_dispatch:        # позволяет запускать вручную из GitHub UI
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:
@@ -27,17 +30,25 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Decode keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > koru-release.keystore
+          echo "✅ Keystore decoded"
+
       - name: Setup EAS CLI
         uses: expo/expo-github-action@v8
         with:
           eas-version: latest
           token: ${{ secrets.KORU_PUZZLE }}
 
-      - name: Build APK
-        run: eas build --platform android --profile preview --non-interactive
-
-      - name: Get APK download URL
+      - name: Build APK with signing
         run: |
-          echo "✅ Build complete!"
-          echo "📲 Download APK from: https://expo.dev"
-          echo "Or run: eas build:list to see the latest build URL"
+          eas build \
+            --platform android \
+            --profile preview \
+            --non-interactive
+        env:
+          KEYSTORE_PATH: ./koru-release.keystore
+          KEYSTORE_ALIAS: koru-key
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
