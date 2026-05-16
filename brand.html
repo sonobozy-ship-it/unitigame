@@ -1,0 +1,2124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KORU — Brand Identity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --deep-void:    #0A0A14;
+    --midnight:     #13131F;
+    --midnight-2:   #1A1A2E;
+    --jade:         #3ECFB2;
+    --jade-dim:     #2A9B84;
+    --jade-glow:    rgba(62,207,178,0.15);
+    --amber:        #FFB347;
+    --amber-glow:   rgba(255,179,71,0.15);
+    --pearl:        #E8E6F0;
+    --slate:        #6B6B8A;
+    --slate-light:  #9090AA;
+    --border:       rgba(232,230,240,0.07);
+    --border-jade:  rgba(62,207,178,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--deep-void);
+    color: var(--pearl);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── Noise texture overlay ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── Grid lines background ── */
+  .grid-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  /* ── Sections ── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Inter', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--jade);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--border-jade);
+  }
+
+  h2.section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    color: var(--pearl);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .section-desc {
+    font-size: 16px;
+    color: var(--slate);
+    max-width: 560px;
+    margin-bottom: 56px;
+    line-height: 1.7;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-jade), transparent);
+    position: relative;
+    z-index: 1;
+    margin: 0 40px;
+    width: calc(100% - 80px);
+  }
+
+  /* ── Fade-in animation ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-in-delay-1 { transition-delay: 0.1s; }
+  .fade-in-delay-2 { transition-delay: 0.2s; }
+  .fade-in-delay-3 { transition-delay: 0.3s; }
+  .fade-in-delay-4 { transition-delay: 0.4s; }
+  .fade-in-delay-5 { transition-delay: 0.5s; }
+
+  /* ══════════════════════════════════════
+     HERO
+  ══════════════════════════════════════ */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Radial glow behind hero */
+  #hero::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(62,207,178,0.07) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(62,207,178,0.08);
+    border: 1px solid var(--border-jade);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--jade);
+    margin-bottom: 40px;
+  }
+  .hero-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--jade);
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+
+  /* ── HERO KORU SVG Logo ── */
+  .hero-logo-wrap {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 32px;
+    position: relative;
+  }
+  .hero-logo-wrap svg {
+    width: 100%;
+    height: 100%;
+    animation: koru-breathe 6s ease-in-out infinite;
+    filter: drop-shadow(0 0 32px rgba(62,207,178,0.4));
+  }
+  @keyframes koru-breathe {
+    0%, 100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 32px rgba(62,207,178,0.4)); }
+    33% { transform: scale(1.04) rotate(3deg); filter: drop-shadow(0 0 48px rgba(62,207,178,0.6)); }
+    66% { transform: scale(0.97) rotate(-2deg); filter: drop-shadow(0 0 24px rgba(62,207,178,0.3)); }
+  }
+
+  /* Orbiting ring */
+  .hero-logo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    border: 1px solid rgba(62,207,178,0.15);
+    animation: orbit-ring 8s linear infinite;
+  }
+  .hero-logo-wrap::after {
+    content: '';
+    position: absolute;
+    inset: -40px;
+    border-radius: 50%;
+    border: 1px dashed rgba(62,207,178,0.07);
+    animation: orbit-ring 14s linear infinite reverse;
+  }
+  @keyframes orbit-ring {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .hero-wordmark {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(72px, 12vw, 120px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(135deg, #E8E6F0 0%, #3ECFB2 50%, #2A9B84 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .hero-tagline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--slate-light);
+    letter-spacing: 0.02em;
+    margin-bottom: 32px;
+  }
+  .hero-tagline em {
+    color: var(--jade);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .hero-philosophy {
+    max-width: 560px;
+    margin: 0 auto 56px;
+    font-size: 16px;
+    color: var(--slate);
+    line-height: 1.8;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .hero-meta-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--pearl);
+  }
+  .hero-meta-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+  .hero-meta-sep {
+    width: 1px;
+    height: 36px;
+    background: var(--border);
+  }
+
+  /* scroll hint */
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--slate);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: float-up 2s ease-in-out infinite;
+    z-index: 1;
+  }
+  @keyframes float-up {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+    50% { transform: translateX(-50%) translateY(-6px); opacity: 1; }
+  }
+  .scroll-hint svg { opacity: 0.4; }
+
+  /* ══════════════════════════════════════
+     COLOR PALETTE
+  ══════════════════════════════════════ */
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+
+  .swatch-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--midnight);
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    cursor: default;
+  }
+  .swatch-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-jade);
+  }
+  .swatch-color {
+    height: 120px;
+    position: relative;
+  }
+  .swatch-color-inner {
+    position: absolute;
+    inset: 0;
+  }
+  .swatch-info {
+    padding: 16px;
+  }
+  .swatch-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pearl);
+    margin-bottom: 4px;
+  }
+  .swatch-hex {
+    font-family: 'Inter', monospace;
+    font-size: 12px;
+    color: var(--slate);
+    letter-spacing: 0.05em;
+  }
+  .swatch-role {
+    font-size: 10px;
+    color: var(--slate);
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ══════════════════════════════════════
+     TYPOGRAPHY
+  ══════════════════════════════════════ */
+  .type-showcase {
+    background: var(--midnight);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 48px;
+    margin-bottom: 24px;
+  }
+
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .type-row:last-child { border-bottom: none; }
+
+  .type-meta {
+    min-width: 120px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate);
+    flex-shrink: 0;
+    padding-top: 4px;
+  }
+  .type-meta span {
+    display: block;
+    color: var(--jade);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .type-display-1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(135deg, #E8E6F0 0%, #3ECFB2 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .type-h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--pearl);
+  }
+  .type-h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--pearl);
+  }
+  .type-h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--pearl);
+  }
+  .type-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--slate-light);
+    line-height: 1.7;
+  }
+  .type-caption {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--slate);
+    letter-spacing: 0.01em;
+  }
+  .type-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--jade);
+  }
+
+  /* font stack display */
+  .font-stack-card {
+    background: var(--midnight);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .font-stack-item { flex: 1; min-width: 200px; }
+  .font-stack-name {
+    font-family: 'Inter', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--jade);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .font-stack-sample {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--pearl);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .font-stack-abc {
+    font-size: 14px;
+    color: var(--slate);
+    letter-spacing: 0.05em;
+  }
+
+  /* ══════════════════════════════════════
+     APP ICON
+  ══════════════════════════════════════ */
+  .icon-showcase {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .app-icon-group {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+  .app-icon-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .app-icon-size {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+  .app-icon svg {
+    display: block;
+    border-radius: inherit;
+    filter: drop-shadow(0 8px 32px rgba(62,207,178,0.3));
+  }
+  .app-icon-xl { border-radius: 28px; }
+  .app-icon-lg { border-radius: 22px; }
+  .app-icon-md { border-radius: 17px; }
+  .app-icon-sm { border-radius: 14px; }
+
+  .icon-desc {
+    max-width: 300px;
+  }
+  .icon-desc h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--pearl);
+    margin-bottom: 12px;
+  }
+  .icon-desc p {
+    font-size: 14px;
+    color: var(--slate);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .icon-spec-list { list-style: none; }
+  .icon-spec-list li {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--slate);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .icon-spec-list li:last-child { border-bottom: none; }
+  .icon-spec-list li strong {
+    color: var(--pearl);
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  /* ══════════════════════════════════════
+     PHONE MOCKUP
+  ══════════════════════════════════════ */
+  .mockup-section {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .phone-frame-wrap {
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .phone-frame {
+    width: 280px;
+    height: 560px;
+    background: #0D0D1A;
+    border-radius: 40px;
+    border: 2px solid rgba(255,255,255,0.12);
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.8),
+      0 32px 80px rgba(0,0,0,0.6),
+      0 0 80px rgba(62,207,178,0.08),
+      inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+
+  /* Phone notch */
+  .phone-notch {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 24px;
+    background: #0D0D1A;
+    border-radius: 12px;
+    z-index: 10;
+    border: 1.5px solid rgba(255,255,255,0.1);
+  }
+  .phone-notch::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(62,207,178,0.3);
+    border: 1px solid rgba(62,207,178,0.5);
+  }
+
+  .phone-screen {
+    position: absolute;
+    inset: 0;
+    background: var(--deep-void);
+    overflow: hidden;
+    border-radius: 38px;
+  }
+
+  /* Phone status bar */
+  .phone-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 52px 24px 0;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(232,230,240,0.5);
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.03em;
+  }
+
+  /* Phone screen content */
+  .phone-content {
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100% - 56px);
+  }
+
+  /* Mini game grid */
+  .mini-grid {
+    width: 180px;
+    height: 180px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 3px;
+    background: var(--midnight);
+    border-radius: 16px;
+    padding: 10px;
+    border: 1px solid var(--border);
+  }
+  .mini-cell {
+    border-radius: 4px;
+    background: rgba(255,255,255,0.03);
+    position: relative;
+  }
+  .mini-cell.dot {
+    background: var(--deep-void);
+  }
+  .mini-cell.dot::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+  }
+  .mini-cell.pipe-h {
+    background: linear-gradient(90deg, transparent 0%, currentColor 20%, currentColor 80%, transparent 100%);
+    height: 6px;
+    align-self: center;
+    border-radius: 3px;
+  }
+  .mini-cell.pipe-v {
+    background: linear-gradient(180deg, transparent 0%, currentColor 20%, currentColor 80%, transparent 100%);
+    width: 6px;
+    justify-self: center;
+    border-radius: 3px;
+  }
+
+  .phone-mini-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .phone-mini-wordmark {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #E8E6F0 0%, #3ECFB2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .phone-level-badge {
+    background: var(--midnight);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 10px;
+    color: var(--slate);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+  .phone-level-badge span { color: var(--jade); }
+
+  .phone-grid-label {
+    font-size: 10px;
+    color: var(--slate);
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .phone-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    width: 100%;
+  }
+  .phone-btn-primary {
+    flex: 1;
+    background: linear-gradient(135deg, var(--jade), var(--jade-dim));
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #0A0A14;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .phone-btn-secondary {
+    background: var(--midnight);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .phone-stats-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    width: 100%;
+  }
+  .phone-stat {
+    flex: 1;
+    background: var(--midnight);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px;
+    text-align: center;
+  }
+  .phone-stat-val {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--pearl);
+    display: block;
+  }
+  .phone-stat-lbl {
+    font-size: 8px;
+    color: var(--slate);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* floating glow behind phone */
+  .phone-frame-wrap::before {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 40px;
+    background: radial-gradient(ellipse, rgba(62,207,178,0.25), transparent 70%);
+    filter: blur(20px);
+  }
+
+  .mockup-info { flex: 1; min-width: 280px; }
+  .mockup-info h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--pearl);
+    margin-bottom: 16px;
+  }
+  .mockup-info p {
+    font-size: 15px;
+    color: var(--slate);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .screen-spec {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .screen-spec-item {
+    background: var(--midnight);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .screen-spec-item .label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--jade);
+    margin-bottom: 6px;
+  }
+  .screen-spec-item .value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--pearl);
+  }
+
+  /* ══════════════════════════════════════
+     LOGO VARIATIONS
+  ══════════════════════════════════════ */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .logo-card {
+    background: var(--midnight);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    transition: border-color 0.3s;
+  }
+  .logo-card:hover { border-color: var(--border-jade); }
+  .logo-card-dark { background: var(--deep-void); }
+  .logo-card-light { background: #F0EEF8; }
+  .logo-card-jade { background: linear-gradient(135deg, #0D2E28, #0A1F1B); }
+
+  .logo-card-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--slate);
+    font-family: 'Inter', sans-serif;
+  }
+  .logo-card-light .logo-card-label { color: #9090AA; }
+
+  /* Horizontal logo */
+  .logo-horizontal {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo-horizontal-wordmark {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(135deg, #E8E6F0 0%, #3ECFB2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Dark-bg light variant wordmark */
+  .wordmark-jade {
+    background: linear-gradient(135deg, #3ECFB2 0%, #2A9B84 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Light bg wordmark */
+  .wordmark-dark {
+    background: linear-gradient(135deg, #13131F 0%, #2A9B84 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Vertical logo */
+  .logo-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-vertical-tagline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    letter-spacing: 0.08em;
+    color: var(--slate-light);
+  }
+  .logo-card-jade .logo-vertical-tagline { color: rgba(62,207,178,0.6); }
+  .logo-card-light .logo-vertical-tagline { color: #9090AA; }
+
+  /* ══════════════════════════════════════
+     BRAND VOICE
+  ══════════════════════════════════════ */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .adjective-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .adjective-card {
+    background: var(--midnight);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .adjective-card:hover {
+    border-color: var(--border-jade);
+    transform: translateX(6px);
+  }
+  .adj-num {
+    font-family: 'Inter', monospace;
+    font-size: 11px;
+    color: var(--jade);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    min-width: 24px;
+  }
+  .adj-word {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--pearl);
+    flex: 1;
+  }
+  .adj-desc {
+    font-size: 13px;
+    color: var(--slate);
+  }
+
+  .microcopy-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .microcopy-card {
+    background: var(--midnight);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    transition: border-color 0.3s;
+  }
+  .microcopy-card:hover { border-color: var(--border-jade); }
+  .microcopy-context {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--jade);
+    margin-bottom: 10px;
+    font-family: 'Inter', sans-serif;
+  }
+  .microcopy-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--pearl);
+    margin-bottom: 8px;
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.3;
+  }
+  .microcopy-note {
+    font-size: 12px;
+    color: var(--slate);
+    line-height: 1.5;
+  }
+
+  /* ══════════════════════════════════════
+     ICONOGRAPHY
+  ══════════════════════════════════════ */
+  .icon-system-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .icon-item {
+    background: var(--midnight);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    transition: border-color 0.3s, transform 0.3s, background 0.3s;
+    cursor: default;
+  }
+  .icon-item:hover {
+    border-color: var(--border-jade);
+    transform: translateY(-4px);
+    background: rgba(62,207,178,0.04);
+  }
+  .icon-item svg {
+    filter: drop-shadow(0 4px 12px rgba(62,207,178,0.3));
+    transition: filter 0.3s;
+  }
+  .icon-item:hover svg {
+    filter: drop-shadow(0 6px 20px rgba(62,207,178,0.5));
+  }
+  .icon-name {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--slate);
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+  }
+
+  /* Icon usage examples */
+  .icon-usage {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .icon-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--midnight);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: var(--pearl);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    transition: border-color 0.3s;
+  }
+  .icon-chip:hover { border-color: var(--border-jade); }
+  .icon-chip svg { flex-shrink: 0; }
+
+  /* ══════════════════════════════════════
+     FOOTER
+  ══════════════════════════════════════ */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 48px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .footer-logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #E8E6F0, #3ECFB2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .footer-meta {
+    font-size: 12px;
+    color: var(--slate);
+    text-align: right;
+    line-height: 1.7;
+  }
+  .footer-meta strong { color: var(--slate-light); }
+
+  /* ══════════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════════ */
+  @media (max-width: 768px) {
+    section { padding: 60px 20px; }
+    .voice-grid { grid-template-columns: 1fr; }
+    .mockup-section { justify-content: center; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-meta { text-align: center; }
+    .type-showcase { padding: 28px 20px; }
+    .type-row { flex-direction: column; gap: 8px; }
+    .type-meta { min-width: unset; }
+  }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-badge fade-in">
+      <span class="hero-badge-dot"></span>
+      Brand Identity System
+    </div>
+
+    <div class="hero-logo-wrap fade-in fade-in-delay-1">
+      <!-- Handcrafted Koru Spiral SVG -->
+      <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="koru-grad-hero" x1="20" y1="140" x2="140" y2="20" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#2A9B84"/>
+            <stop offset="50%" stop-color="#3ECFB2"/>
+            <stop offset="100%" stop-color="#7EEACC"/>
+          </linearGradient>
+          <linearGradient id="koru-stem-hero" x1="80" y1="130" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#2A9B84" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#3ECFB2"/>
+          </linearGradient>
+          <filter id="glow-hero">
+            <feGaussianBlur stdDeviation="2" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- Stem coming from bottom -->
+        <path d="M80 135 C80 135 80 115 80 100" stroke="url(#koru-stem-hero)" stroke-width="8" stroke-linecap="round"/>
+        <!-- The koru spiral: starts at 6 o'clock and curls counter-clockwise inward -->
+        <!-- Outer loop -->
+        <path
+          d="M80 100
+             C80 72 58 50 36 56
+             C18 61 10 80 16 98
+             C22 116 42 126 60 124
+             C76 122 88 112 92 98
+             C96 84 90 70 80 66
+             C70 62 60 66 56 74
+             C52 82 58 92 66 94
+             C72 96 78 92 80 86"
+          stroke="url(#koru-grad-hero)"
+          stroke-width="9"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"
+          filter="url(#glow-hero)"
+        />
+        <!-- Dot at the very center of spiral -->
+        <circle cx="80" cy="83" r="6" fill="#3ECFB2" filter="url(#glow-hero)"/>
+        <!-- Dot at the base (connection dot) -->
+        <circle cx="80" cy="135" r="5" fill="#2A9B84"/>
+      </svg>
+    </div>
+
+    <h1 class="hero-wordmark fade-in fade-in-delay-2">KORU</h1>
+    <p class="hero-tagline fade-in fade-in-delay-3">"<em>Find your flow.</em>"</p>
+
+    <p class="hero-philosophy fade-in fade-in-delay-4">
+      In the Māori tradition, the koru is the spiral of an unfurling fern — a symbol of new life,
+      growth, and peaceful strength. Every puzzle in KORU invites you to slow down, connect the dots,
+      and discover the single perfect path that makes everything whole.
+    </p>
+
+    <div class="hero-meta fade-in fade-in-delay-5">
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">Flow</span>
+        <span class="hero-meta-label">Genre</span>
+      </div>
+      <div class="hero-meta-sep"></div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">Zen</span>
+        <span class="hero-meta-label">Aesthetic</span>
+      </div>
+      <div class="hero-meta-sep"></div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">Māori</span>
+        <span class="hero-meta-label">Origin</span>
+      </div>
+      <div class="hero-meta-sep"></div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">∞</span>
+        <span class="hero-meta-label">Puzzles</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+      <rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="8" cy="8" r="2" fill="currentColor">
+        <animateTransform attributeName="transform" type="translate" values="0,0;0,6;0,0" dur="1.8s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     COLOR PALETTE
+══════════════════════════════════════ -->
+<section id="colors">
+  <div class="fade-in">
+    <div class="section-label">01 — Visual Language</div>
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-desc">Six carefully chosen hues that balance depth and luminosity. The dark void creates focus while the jade accent carries energy — like a glowing pipe cutting through darkness.</p>
+  </div>
+
+  <div class="palette-grid">
+    <div class="swatch-card fade-in fade-in-delay-1">
+      <div class="swatch-color">
+        <div class="swatch-color-inner" style="background:#0A0A14;"></div>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Deep Void</div>
+        <div class="swatch-hex">#0A0A14</div>
+        <div class="swatch-role">App background</div>
+      </div>
+    </div>
+    <div class="swatch-card fade-in fade-in-delay-2">
+      <div class="swatch-color">
+        <div class="swatch-color-inner" style="background:#13131F;"></div>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Midnight</div>
+        <div class="swatch-hex">#13131F</div>
+        <div class="swatch-role">Card / surface</div>
+      </div>
+    </div>
+    <div class="swatch-card fade-in fade-in-delay-3">
+      <div class="swatch-color">
+        <div class="swatch-color-inner" style="background:linear-gradient(135deg,#3ECFB2,#2A9B84);"></div>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Jade Flow</div>
+        <div class="swatch-hex">#3ECFB2</div>
+        <div class="swatch-role">Primary accent · pipes</div>
+      </div>
+    </div>
+    <div class="swatch-card fade-in fade-in-delay-4">
+      <div class="swatch-color">
+        <div class="swatch-color-inner" style="background:linear-gradient(135deg,#FFB347,#E8933A);"></div>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Amber Pulse</div>
+        <div class="swatch-hex">#FFB347</div>
+        <div class="swatch-role">Stars · coins · reward</div>
+      </div>
+    </div>
+    <div class="swatch-card fade-in fade-in-delay-5">
+      <div class="swatch-color">
+        <div class="swatch-color-inner" style="background:#E8E6F0;"></div>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Soft Pearl</div>
+        <div class="swatch-hex">#E8E6F0</div>
+        <div class="swatch-role">Primary text</div>
+      </div>
+    </div>
+    <div class="swatch-card fade-in fade-in-delay-5">
+      <div class="swatch-color">
+        <div class="swatch-color-inner" style="background:#6B6B8A;"></div>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-name">Muted Slate</div>
+        <div class="swatch-hex">#6B6B8A</div>
+        <div class="swatch-role">Secondary text · labels</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     TYPOGRAPHY
+══════════════════════════════════════ -->
+<section id="typography">
+  <div class="fade-in">
+    <div class="section-label">02 — Type System</div>
+    <h2 class="section-title">Typography</h2>
+    <p class="section-desc">DM Sans for editorial warmth. Inter for UI precision. Together they pair zen softness with technical clarity.</p>
+  </div>
+
+  <div class="font-stack-card fade-in fade-in-delay-1" style="margin-bottom:24px;">
+    <div class="font-stack-item">
+      <div class="font-stack-name">Display / Headings</div>
+      <div class="font-stack-sample" style="font-family:'Inter',sans-serif;font-weight:800;">Inter</div>
+      <div class="font-stack-abc" style="font-family:'Inter',sans-serif;">A B C D E F G H I J K L M N O P</div>
+    </div>
+    <div class="font-stack-item">
+      <div class="font-stack-name">Body / UI Copy</div>
+      <div class="font-stack-sample" style="font-family:'DM Sans',sans-serif;font-weight:400;">DM Sans</div>
+      <div class="font-stack-abc" style="font-family:'DM Sans',sans-serif;">A B C D E F G H I J K L M N O P</div>
+    </div>
+    <div class="font-stack-item">
+      <div class="font-stack-name">Fallback Stack</div>
+      <div class="font-stack-sample" style="font-family:system-ui,sans-serif;font-size:20px;font-weight:600;">system-ui</div>
+      <div class="font-stack-abc" style="font-family:system-ui,sans-serif;font-size:12px;">'Inter', 'DM Sans', system-ui,<br>-apple-system, sans-serif</div>
+    </div>
+  </div>
+
+  <div class="type-showcase fade-in fade-in-delay-2">
+    <div class="type-row">
+      <div class="type-meta"><span>Display</span>96px · 900 · −4%</div>
+      <div class="type-display-1">KORU</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><span>H1</span>40px · 800 · −2.5%</div>
+      <div class="type-h1">Find Your Flow</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><span>H2</span>28px · 700 · −1.5%</div>
+      <div class="type-h2">Level Complete</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><span>H3</span>20px · 600 · 0%</div>
+      <div class="type-h3">Daily Challenge Unlocked</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><span>Body</span>16px · 400 · +1%</div>
+      <div class="type-body">Draw paths to connect every pair of dots. Fill the entire grid to complete the puzzle. Take your time — there is no rush, only flow.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><span>Caption</span>13px · 300</div>
+      <div class="type-caption">Puzzle 42 of 120 · Classic Pack · Easy</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><span>Label</span>11px · 600 · +15%</div>
+      <div class="type-label">New puzzle available</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     APP ICON
+══════════════════════════════════════ -->
+<section id="app-icon">
+  <div class="fade-in">
+    <div class="section-label">03 — App Identity</div>
+    <h2 class="section-title">App Icon</h2>
+    <p class="section-desc">The koru spiral rendered as a pipe path on a deep void background. Immediately communicates the game mechanic and aesthetic in a single glance.</p>
+  </div>
+
+  <div class="icon-showcase">
+    <div class="app-icon-group fade-in fade-in-delay-1">
+      <!-- 1024px equiv -->
+      <div class="app-icon-wrap">
+        <div class="app-icon app-icon-xl">
+          <svg width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="icon-bg" x1="0" y1="0" x2="140" y2="140" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#0F0F1E"/>
+                <stop offset="100%" stop-color="#0A0A14"/>
+              </linearGradient>
+              <linearGradient id="icon-spiral" x1="25" y1="120" x2="115" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#2A9B84"/>
+                <stop offset="60%" stop-color="#3ECFB2"/>
+                <stop offset="100%" stop-color="#7EEACC"/>
+              </linearGradient>
+              <linearGradient id="icon-stem" x1="70" y1="115" x2="70" y2="88" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#2A9B84" stop-opacity="0"/>
+                <stop offset="100%" stop-color="#3ECFB2"/>
+              </linearGradient>
+              <filter id="icon-glow">
+                <feGaussianBlur stdDeviation="1.5" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <radialGradient id="icon-ambience" cx="50%" cy="50%">
+                <stop offset="0%" stop-color="#3ECFB2" stop-opacity="0.08"/>
+                <stop offset="100%" stop-color="#3ECFB2" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="140" height="140" fill="url(#icon-bg)" rx="28"/>
+            <!-- subtle grid dots -->
+            <g fill="rgba(232,230,240,0.06)">
+              <circle cx="30" cy="30" r="1.5"/><circle cx="55" cy="30" r="1.5"/><circle cx="80" cy="30" r="1.5"/><circle cx="105" cy="30" r="1.5"/>
+              <circle cx="30" cy="55" r="1.5"/><circle cx="55" cy="55" r="1.5"/><circle cx="80" cy="55" r="1.5"/><circle cx="105" cy="55" r="1.5"/>
+              <circle cx="30" cy="80" r="1.5"/><circle cx="55" cy="80" r="1.5"/><circle cx="80" cy="80" r="1.5"/><circle cx="105" cy="80" r="1.5"/>
+              <circle cx="30" cy="105" r="1.5"/><circle cx="55" cy="105" r="1.5"/><circle cx="80" cy="105" r="1.5"/><circle cx="105" cy="105" r="1.5"/>
+            </g>
+            <!-- Ambient glow -->
+            <ellipse cx="70" cy="70" rx="48" ry="48" fill="url(#icon-ambience)"/>
+            <!-- Stem -->
+            <path d="M70 115 C70 115 70 100 70 88" stroke="url(#icon-stem)" stroke-width="7" stroke-linecap="round"/>
+            <!-- Koru spiral -->
+            <path
+              d="M70 88
+                 C70 64 52 44 32 50
+                 C16 55 10 72 15 88
+                 C20 104 38 112 54 110
+                 C68 108 78 99 82 87
+                 C86 75 80 63 71 59
+                 C62 55 53 59 50 66
+                 C47 73 52 82 59 84
+                 C65 86 71 82 72 76"
+              stroke="url(#icon-spiral)"
+              stroke-width="8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+              filter="url(#icon-glow)"
+            />
+            <!-- Center dot -->
+            <circle cx="71" cy="73" r="5.5" fill="#3ECFB2" filter="url(#icon-glow)"/>
+            <!-- Base dot -->
+            <circle cx="70" cy="115" r="4.5" fill="#2A9B84"/>
+          </svg>
+        </div>
+        <span class="app-icon-size">1024 × 1024</span>
+      </div>
+
+      <!-- 512 -->
+      <div class="app-icon-wrap">
+        <div class="app-icon app-icon-lg">
+          <svg width="96" height="96" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="icon-bg2" x1="0" y1="0" x2="140" y2="140" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#0F0F1E"/><stop offset="100%" stop-color="#0A0A14"/>
+              </linearGradient>
+              <linearGradient id="icon-spiral2" x1="25" y1="120" x2="115" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#2A9B84"/><stop offset="60%" stop-color="#3ECFB2"/><stop offset="100%" stop-color="#7EEACC"/>
+              </linearGradient>
+              <linearGradient id="icon-stem2" x1="70" y1="115" x2="70" y2="88" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#2A9B84" stop-opacity="0"/><stop offset="100%" stop-color="#3ECFB2"/>
+              </linearGradient>
+              <filter id="icon-glow2"><feGaussianBlur stdDeviation="1.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <rect width="140" height="140" fill="url(#icon-bg2)" rx="28"/>
+            <g fill="rgba(232,230,240,0.05)">
+              <circle cx="30" cy="30" r="1.5"/><circle cx="55" cy="30" r="1.5"/><circle cx="80" cy="30" r="1.5"/><circle cx="105" cy="30" r="1.5"/>
+              <circle cx="30" cy="55" r="1.5"/><circle cx="80" cy="55" r="1.5"/><circle cx="105" cy="55" r="1.5"/>
+              <circle cx="30" cy="80" r="1.5"/><circle cx="55" cy="80" r="1.5"/><circle cx="105" cy="80" r="1.5"/>
+              <circle cx="30" cy="105" r="1.5"/><circle cx="55" cy="105" r="1.5"/><circle cx="80" cy="105" r="1.5"/><circle cx="105" cy="105" r="1.5"/>
+            </g>
+            <path d="M70 115 C70 115 70 100 70 88" stroke="url(#icon-stem2)" stroke-width="7" stroke-linecap="round"/>
+            <path d="M70 88 C70 64 52 44 32 50 C16 55 10 72 15 88 C20 104 38 112 54 110 C68 108 78 99 82 87 C86 75 80 63 71 59 C62 55 53 59 50 66 C47 73 52 82 59 84 C65 86 71 82 72 76" stroke="url(#icon-spiral2)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#icon-glow2)"/>
+            <circle cx="71" cy="73" r="5.5" fill="#3ECFB2" filter="url(#icon-glow2)"/>
+            <circle cx="70" cy="115" r="4.5" fill="#2A9B84"/>
+          </svg>
+        </div>
+        <span class="app-icon-size">512 × 512</span>
+      </div>
+
+      <!-- 192 -->
+      <div class="app-icon-wrap">
+        <div class="app-icon app-icon-md">
+          <svg width="64" height="64" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="icon-bg3" x1="0" y1="0" x2="140" y2="140" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#0F0F1E"/><stop offset="100%" stop-color="#0A0A14"/>
+              </linearGradient>
+              <linearGradient id="icon-spiral3" x1="25" y1="120" x2="115" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#2A9B84"/><stop offset="60%" stop-color="#3ECFB2"/><stop offset="100%" stop-color="#7EEACC"/>
+              </linearGradient>
+              <linearGradient id="icon-stem3" x1="70" y1="115" x2="70" y2="88" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#2A9B84" stop-opacity="0"/><stop offset="100%" stop-color="#3ECFB2"/>
+              </linearGradient>
+            </defs>
+            <rect width="140" height="140" fill="url(#icon-bg3)" rx="28"/>
+            <path d="M70 115 C70 115 70 100 70 88" stroke="url(#icon-stem3)" stroke-width="7" stroke-linecap="round"/>
+            <path d="M70 88 C70 64 52 44 32 50 C16 55 10 72 15 88 C20 104 38 112 54 110 C68 108 78 99 82 87 C86 75 80 63 71 59 C62 55 53 59 50 66 C47 73 52 82 59 84 C65 86 71 82 72 76" stroke="url(#icon-spiral3)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="71" cy="73" r="5.5" fill="#3ECFB2"/>
+            <circle cx="70" cy="115" r="4.5" fill="#2A9B84"/>
+          </svg>
+        </div>
+        <span class="app-icon-size">192 × 192</span>
+      </div>
+
+      <!-- 48 -->
+      <div class="app-icon-wrap">
+        <div class="app-icon app-icon-sm">
+          <svg width="44" height="44" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="icon-bg4" x1="0" y1="0" x2="140" y2="140" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#0F0F1E"/><stop offset="100%" stop-color="#0A0A14"/>
+              </linearGradient>
+            </defs>
+            <rect width="140" height="140" fill="url(#icon-bg4)" rx="28"/>
+            <path d="M70 88 C70 64 52 44 32 50 C16 55 10 72 15 88 C20 104 38 112 54 110 C68 108 78 99 82 87 C86 75 80 63 71 59 C62 55 53 59 50 66 C47 73 52 82 59 84 C65 86 71 82 72 76" stroke="#3ECFB2" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="71" cy="73" r="6" fill="#3ECFB2"/>
+            <circle cx="70" cy="115" r="5" fill="#2A9B84"/>
+          </svg>
+        </div>
+        <span class="app-icon-size">48 × 48</span>
+      </div>
+    </div>
+
+    <div class="icon-desc fade-in fade-in-delay-2">
+      <h3>Icon Design Principles</h3>
+      <p>The icon distills the entire game into one symbol: a glowing koru spiral drawn like a pipe on a grid. At every size, the shape reads as both a natural form and a puzzle path.</p>
+      <ul class="icon-spec-list">
+        <li><strong>Background</strong> Deep Void #0A0A14 with subtle gradient</li>
+        <li><strong>Spiral</strong> Jade Flow gradient #2A9B84 → #7EEACC</li>
+        <li><strong>Grid dots</strong> Soft Pearl at 6% opacity</li>
+        <li><strong>Stroke</strong> 8px rounded linecap</li>
+        <li><strong>Corner</strong> 28px radius (iOS/Android safe)</li>
+        <li><strong>Effect</strong> Glow filter on spiral path</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     PHONE MOCKUP
+══════════════════════════════════════ -->
+<section id="mockup">
+  <div class="fade-in">
+    <div class="section-label">04 — In-Context</div>
+    <h2 class="section-title">Home Screen Mockup</h2>
+    <p class="section-desc">KORU branding applied to an in-game context — showing how the identity system feels when you pick up the phone.</p>
+  </div>
+
+  <div class="mockup-section">
+    <div class="phone-frame-wrap fade-in fade-in-delay-1">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-status">
+            <span>9:41</span>
+            <span style="display:flex;gap:4px;align-items:center;">
+              <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><rect x="0" y="3" width="3" height="7" rx="1" fill="currentColor" opacity="0.4"/><rect x="4" y="2" width="3" height="8" rx="1" fill="currentColor" opacity="0.6"/><rect x="8" y="1" width="3" height="9" rx="1" fill="currentColor" opacity="0.8"/><rect x="12" y="0" width="2" height="10" rx="1" fill="currentColor"/></svg>
+              <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><rect x="0" y="1" width="13" height="8" rx="2" stroke="currentColor" stroke-width="1.2"/><rect x="14" y="3" width="2" height="4" rx="1" fill="currentColor" opacity="0.5"/><rect x="1" y="2" width="9" height="6" rx="1" fill="currentColor"/></svg>
+            </span>
+          </div>
+
+          <div class="phone-content">
+            <!-- Logo -->
+            <div class="phone-mini-logo">
+              <svg width="28" height="28" viewBox="0 0 140 140" fill="none">
+                <defs>
+                  <linearGradient id="ph-spiral" x1="25" y1="120" x2="115" y2="25" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#2A9B84"/><stop offset="100%" stop-color="#3ECFB2"/>
+                  </linearGradient>
+                </defs>
+                <path d="M70 115 C70 115 70 100 70 88" stroke="#2A9B84" stroke-width="8" stroke-linecap="round"/>
+                <path d="M70 88 C70 64 52 44 32 50 C16 55 10 72 15 88 C20 104 38 112 54 110 C68 108 78 99 82 87 C86 75 80 63 71 59 C62 55 53 59 50 66 C47 73 52 82 59 84 C65 86 71 82 72 76" stroke="url(#ph-spiral)" stroke-width="8" stroke-linecap="round" fill="none"/>
+                <circle cx="71" cy="73" r="6" fill="#3ECFB2"/>
+                <circle cx="70" cy="115" r="5" fill="#2A9B84"/>
+              </svg>
+              <span class="phone-mini-wordmark">KORU</span>
+            </div>
+
+            <div class="phone-level-badge">Pack 1 · Classic · <span>Level 7</span></div>
+
+            <!-- Mini game grid — stylized solved state -->
+            <div class="mini-grid">
+              <!-- Row 1 -->
+              <div class="mini-cell" style="background:rgba(62,207,178,0.6);border-radius:6px;"></div>
+              <div class="mini-cell" style="background:rgba(62,207,178,0.4);"></div>
+              <div class="mini-cell" style="background:rgba(62,207,178,0.4);"></div>
+              <div class="mini-cell" style="background:rgba(62,207,178,0.4);"></div>
+              <div class="mini-cell" style="background:rgba(255,179,71,0.6);border-radius:6px;"></div>
+              <!-- Row 2 -->
+              <div class="mini-cell" style="background:rgba(62,207,178,0.4);"></div>
+              <div class="mini-cell" style="background:rgba(138,100,230,0.4);border-radius:6px;"></div>
+              <div class="mini-cell" style="background:rgba(138,100,230,0.25);"></div>
+              <div class="mini-cell" style="background:rgba(138,100,230,0.25);"></div>
+              <div class="mini-cell" style="background:rgba(255,179,71,0.25);"></div>
+              <!-- Row 3 -->
+              <div class="mini-cell" style="background:rgba(62,207,178,0.4);"></div>
+              <div class="mini-cell" style="background:rgba(138,100,230,0.25);"></div>
+              <div class="mini-cell" style="background:rgba(255,100,100,0.6);border-radius:6px;"></div>
+              <div class="mini-cell" style="background:rgba(138,100,230,0.25);"></div>
+              <div class="mini-cell" style="background:rgba(255,179,71,0.25);"></div>
+              <!-- Row 4 -->
+              <div class="mini-cell" style="background:rgba(62,207,178,0.4);"></div>
+              <div class="mini-cell" style="background:rgba(255,100,100,0.25);"></div>
+              <div class="mini-cell" style="background:rgba(255,100,100,0.25);"></div>
+              <div class="mini-cell" style="background:rgba(138,100,230,0.25);"></div>
+              <div class="mini-cell" style="background:rgba(255,179,71,0.25);"></div>
+              <!-- Row 5 -->
+              <div class="mini-cell" style="background:rgba(62,207,178,0.6);border-radius:6px;"></div>
+              <div class="mini-cell" style="background:rgba(255,100,100,0.25);"></div>
+              <div class="mini-cell" style="background:rgba(255,100,100,0.6);border-radius:6px;"></div>
+              <div class="mini-cell" style="background:rgba(138,100,230,0.6);border-radius:6px;"></div>
+              <div class="mini-cell" style="background:rgba(255,179,71,0.6);border-radius:6px;"></div>
+            </div>
+            <div class="phone-grid-label">5 × 5 · 4 pipes</div>
+
+            <div class="phone-actions">
+              <div class="phone-btn-primary">Play</div>
+              <div class="phone-btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#FFB347" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="phone-btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="3" stroke="#6B6B8A" stroke-width="2"/>
+                  <path d="M12 1v4M12 19v4M1 12h4M19 12h4" stroke="#6B6B8A" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="phone-stats-row">
+              <div class="phone-stat">
+                <span class="phone-stat-val" style="color:#FFB347;">★ 248</span>
+                <span class="phone-stat-lbl">Stars</span>
+              </div>
+              <div class="phone-stat">
+                <span class="phone-stat-val" style="color:#3ECFB2;">7</span>
+                <span class="phone-stat-lbl">Streak</span>
+              </div>
+              <div class="phone-stat">
+                <span class="phone-stat-val">42</span>
+                <span class="phone-stat-lbl">Solved</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mockup-info fade-in fade-in-delay-2">
+      <h3>Home Screen Anatomy</h3>
+      <p>Every pixel on screen serves double duty: functional game UI that doubles as brand expression. The color-coded pipe cells become miniature brand swatches.</p>
+      <div class="screen-spec">
+        <div class="screen-spec-item">
+          <div class="label">Background</div>
+          <div class="value">Deep Void</div>
+        </div>
+        <div class="screen-spec-item">
+          <div class="label">Grid surface</div>
+          <div class="value">Midnight</div>
+        </div>
+        <div class="screen-spec-item">
+          <div class="label">CTA button</div>
+          <div class="value">Jade gradient</div>
+        </div>
+        <div class="screen-spec-item">
+          <div class="label">Rewards</div>
+          <div class="value">Amber Pulse</div>
+        </div>
+        <div class="screen-spec-item">
+          <div class="label">Logo mark</div>
+          <div class="value">Koru SVG</div>
+        </div>
+        <div class="screen-spec-item">
+          <div class="label">Typography</div>
+          <div class="value">Inter 900</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     LOGO VARIATIONS
+══════════════════════════════════════ -->
+<section id="logo-variations">
+  <div class="fade-in">
+    <div class="section-label">05 — Logo System</div>
+    <h2 class="section-title">Logo Variations</h2>
+    <p class="section-desc">Three configurations for every context. The icon-only mark works at any size; the wordmark carries the full identity.</p>
+  </div>
+
+  <div class="logo-grid">
+    <!-- Horizontal on dark -->
+    <div class="logo-card logo-card-dark fade-in fade-in-delay-1">
+      <div class="logo-horizontal">
+        <svg width="44" height="44" viewBox="0 0 140 140" fill="none">
+          <defs>
+            <linearGradient id="lv-spiral-1" x1="25" y1="120" x2="115" y2="25" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#2A9B84"/><stop offset="100%" stop-color="#3ECFB2"/>
+            </linearGradient>
+          </defs>
+          <path d="M70 115 C70 115 70 100 70 88" stroke="#2A9B84" stroke-width="8" stroke-linecap="round"/>
+          <path d="M70 88 C70 64 52 44 32 50 C16 55 10 72 15 88 C20 104 38 112 54 110 C68 108 78 99 82 87 C86 75 80 63 71 59 C62 55 53 59 50 66 C47 73 52 82 59 84 C65 86 71 82 72 76" stroke="url(#lv-spiral-1)" stroke-width="8" stroke-linecap="round" fill="none"/>
+          <circle cx="71" cy="73" r="6" fill="#3ECFB2"/>
+          <circle cx="70" cy="115" r="5" fill="#2A9B84"/>
+        </svg>
+        <span class="logo-horizontal-wordmark" style="font-size:36px;">KORU</span>
+      </div>
+      <span class="logo-card-label">Horizontal · Dark Background</span>
+    </div>
+
+    <!-- Vertical on jade bg -->
+    <div class="logo-card logo-card-jade fade-in fade-in-delay-2">
+      <div class="logo-vertical">
+        <svg width="56" height="56" viewBox="0 0 140 140" fill="none">
+          <defs>
+            <linearGradient id="lv-spiral-jade" x1="25" y1="120" x2="115" y2="25" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#5DDFCA"/><stop offset="100%" stop-color="#A0F0E0"/>
+            </linearGradient>
+          </defs>
+          <path d="M70 115 C70 115 70 100 70 88" stroke="#5DDFCA" stroke-width="8" stroke-linecap="round" stroke-opacity="0.7"/>
+          <path d="M70 88 C70 64 52 44 32 50 C16 55 10 72 15 88 C20 104 38 112 54 110 C68 108 78 99 82 87 C86 75 80 63 71 59 C62 55 53 59 50 66 C47 73 52 82 59 84 C65 86 71 82 72 76" stroke="url(#lv-spiral-jade)" stroke-width="8" stroke-linecap="round" fill="none"/>
+          <circle cx="71" cy="73" r="6" fill="#A0F0E0"/>
+          <circle cx="70" cy="115" r="5" fill="#5DDFCA"/>
+        </svg>
+        <span class="logo-horizontal-wordmark wordmark-jade" style="font-size:36px;background:linear-gradient(135deg,#7EEACC,#5DDFCA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">KORU</span>
+        <span class="logo-vertical-tagline">Find your flow.</span>
+      </div>
+      <span class="logo-card-label" style="color:rgba(62,207,178,0.5);">Vertical with Tagline · Jade Tinted</span>
+    </div>
+
+    <!-- Light background -->
+    <div class="logo-card logo-card-light fade-in fade-in-delay-3">
+      <div class="logo-horizontal">
+        <svg width="44" height="44" viewBox="0 0 140 140" fill="none">
+          <defs>
+            <linearGradient id="lv-spiral-lt" x1="25" y1="120" x2="115" y2="25" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#1A7A65"/><stop offset="100%" stop-color="#2A9B84"/>
+            </linearGradient>
+          </defs>
+          <path d="M70 115 C70 115 70 100 70 88" stroke="#1A7A65" stroke-width="8" stroke-linecap="round"/>
+          <path d="M70 88 C70 64 52 44 32 50 C16 55 10 72 15 88 C20 104 38 112 54 110 C68 108 78 99 82 87 C86 75 80 63 71 59 C62 55 53 59 50 66 C47 73 52 82 59 84 C65 86 71 82 72 76" stroke="url(#lv-spiral-lt)" stroke-width="8" stroke-linecap="round" fill="none"/>
+          <circle cx="71" cy="73" r="6" fill="#2A9B84"/>
+          <circle cx="70" cy="115" r="5" fill="#1A7A65"/>
+        </svg>
+        <span class="logo-horizontal-wordmark wordmark-dark" style="font-size:36px;background:linear-gradient(135deg,#13131F,#1A7A65);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">KORU</span>
+      </div>
+      <span class="logo-card-label">Horizontal · Light Background</span>
+    </div>
+
+    <!-- Icon only -->
+    <div class="logo-card logo-card-dark fade-in fade-in-delay-4" style="justify-content:center;">
+      <div style="display:flex;gap:28px;align-items:flex-end;justify-content:center;flex-wrap:wrap;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <svg width="72" height="72" viewBox="0 0 140 140" fill="none">
+            <defs>
+              <linearGradient id="lv-spiral-ico1" x1="25" y1="120" x2="115" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#2A9B84"/><stop offset="100%" stop-color="#7EEACC"/>
+              </linearGradient>
+              <filter id="ico-glow1"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <path d="M70 115 C70 115 70 100 70 88" stroke="#2A9B84" stroke-width="8" stroke-linecap="round"/>
+            <path d="M70 88 C70 64 52 44 32 50 C16 55 10 72 15 88 C20 104 38 112 54 110 C68 108 78 99 82 87 C86 75 80 63 71 59 C62 55 53 59 50 66 C47 73 52 82 59 84 C65 86 71 82 72 76" stroke="url(#lv-spiral-ico1)" stroke-width="8" stroke-linecap="round" fill="none" filter="url(#ico-glow1)"/>
+            <circle cx="71" cy="73" r="6" fill="#3ECFB2" filter="url(#ico-glow1)"/>
+            <circle cx="70" cy="115" r="5" fill="#2A9B84"/>
+          </svg>
+          <span style="font-size:10px;letter-spacing:0.1em;color:var(--slate);text-transform:uppercase;font-family:'Inter',sans-serif;">72px</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <svg width="48" height="48" viewBox="0 0 140 140" fill="none">
+            <defs><linearGradient id="lv-spiral-ico2" x1="25" y1="120" x2="115" y2="25" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2A9B84"/><stop offset="100%" stop-color="#7EEACC"/></linearGradient></defs>
+            <path d="M70 115 C70 115 70 100 70 88" stroke="#2A9B84" stroke-width="8" stroke-linecap="round"/>
+            <path d="M70 88 C70 64 52 44 32 50 C16 55 10 72 15 88 C20 104 38 112 54 110 C68 108 78 99 82 87 C86 75 80 63 71 59 C62 55 53 59 50 66 C47 73 52 82 59 84 C65 86 71 82 72 76" stroke="url(#lv-spiral-ico2)" stroke-width="8" stroke-linecap="round" fill="none"/>
+            <circle cx="71" cy="73" r="6" fill="#3ECFB2"/>
+            <circle cx="70" cy="115" r="5" fill="#2A9B84"/>
+          </svg>
+          <span style="font-size:10px;letter-spacing:0.1em;color:var(--slate);text-transform:uppercase;font-family:'Inter',sans-serif;">48px</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <svg width="28" height="28" viewBox="0 0 140 140" fill="none">
+            <defs><linearGradient id="lv-spiral-ico3" x1="25" y1="120" x2="115" y2="25" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#2A9B84"/><stop offset="100%" stop-color="#3ECFB2"/></linearGradient></defs>
+            <path d="M70 88 C70 64 52 44 32 50 C16 55 10 72 15 88 C20 104 38 112 54 110 C68 108 78 99 82 87 C86 75 80 63 71 59 C62 55 53 59 50 66 C47 73 52 82 59 84 C65 86 71 82 72 76" stroke="url(#lv-spiral-ico3)" stroke-width="9" stroke-linecap="round" fill="none"/>
+            <circle cx="71" cy="73" r="7" fill="#3ECFB2"/>
+          </svg>
+          <span style="font-size:10px;letter-spacing:0.1em;color:var(--slate);text-transform:uppercase;font-family:'Inter',sans-serif;">28px</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <svg width="18" height="18" viewBox="0 0 140 140" fill="none">
+            <path d="M70 88 C70 64 52 44 32 50 C16 55 10 72 15 88 C20 104 38 112 54 110 C68 108 78 99 82 87 C86 75 80 63 71 59 C62 55 53 59 50 66 C47 73 52 82 59 84 C65 86 71 82 72 76" stroke="#3ECFB2" stroke-width="10" stroke-linecap="round" fill="none"/>
+            <circle cx="71" cy="73" r="8" fill="#3ECFB2"/>
+          </svg>
+          <span style="font-size:10px;letter-spacing:0.1em;color:var(--slate);text-transform:uppercase;font-family:'Inter',sans-serif;">18px</span>
+        </div>
+      </div>
+      <span class="logo-card-label">Icon Only · Size Scale</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     BRAND VOICE
+══════════════════════════════════════ -->
+<section id="brand-voice">
+  <div class="fade-in">
+    <div class="section-label">06 — Personality</div>
+    <h2 class="section-title">Brand Voice</h2>
+    <p class="section-desc">KORU speaks softly and with intention. Every word is chosen to guide without pressure and to celebrate without noise.</p>
+  </div>
+
+  <div class="voice-grid">
+    <div class="adjective-cards fade-in fade-in-delay-1">
+      <div style="font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--jade);margin-bottom:8px;font-family:'Inter',sans-serif;">Three Pillars</div>
+      <div class="adjective-card">
+        <span class="adj-num">01</span>
+        <span class="adj-word">Serene</span>
+        <span class="adj-desc">Calm, unhurried, never anxious</span>
+      </div>
+      <div class="adjective-card">
+        <span class="adj-num">02</span>
+        <span class="adj-word">Inviting</span>
+        <span class="adj-desc">Warm guidance, never demanding</span>
+      </div>
+      <div class="adjective-card">
+        <span class="adj-num">03</span>
+        <span class="adj-word">Precise</span>
+        <span class="adj-desc">Exact words, elegant economy</span>
+      </div>
+    </div>
+
+    <div class="microcopy-cards fade-in fade-in-delay-2">
+      <div style="font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--jade);margin-bottom:8px;font-family:'Inter',sans-serif;">Microcopy Examples</div>
+      <div class="microcopy-card">
+        <div class="microcopy-context">Win Screen · Headline</div>
+        <div class="microcopy-text">Beautifully done.</div>
+        <div class="microcopy-note">Short, genuine praise. No exclamation marks — composure is celebrated, not mania.</div>
+      </div>
+      <div class="microcopy-card">
+        <div class="microcopy-context">Hint Button · Label</div>
+        <div class="microcopy-text">Reveal a path</div>
+        <div class="microcopy-note">Action-oriented but gentle. "Reveal" evokes discovery, not defeat. No coins icon in the text — let the icon speak.</div>
+      </div>
+      <div class="microcopy-card">
+        <div class="microcopy-context">Daily Challenge · Notification</div>
+        <div class="microcopy-text">Your new flow awaits.</div>
+        <div class="microcopy-note">Possessive pronoun makes it personal. Present tense creates gentle urgency without pressure.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Voice contrast table -->
+  <div style="margin-top:40px;background:var(--midnight);border:1px solid var(--border);border-radius:20px;overflow:hidden;" class="fade-in fade-in-delay-3">
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);">
+      <div style="padding:16px 24px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--jade);font-family:'Inter',sans-serif;border-right:1px solid var(--border);">KORU sounds like</div>
+      <div style="padding:16px 24px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--slate);font-family:'Inter',sans-serif;">KORU never sounds like</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;">
+      <div style="padding:20px 24px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
+        <div style="font-size:15px;color:var(--pearl);font-family:'DM Sans',sans-serif;">"Take your time."</div>
+      </div>
+      <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
+        <div style="font-size:15px;color:var(--slate);font-family:'DM Sans',sans-serif;text-decoration:line-through;opacity:0.5;">"HURRY! Limited time!!"</div>
+      </div>
+      <div style="padding:20px 24px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
+        <div style="font-size:15px;color:var(--pearl);font-family:'DM Sans',sans-serif;">"One more step."</div>
+      </div>
+      <div style="padding:20px 24px;border-bottom:1px solid var(--border);">
+        <div style="font-size:15px;color:var(--slate);font-family:'DM Sans',sans-serif;text-decoration:line-through;opacity:0.5;">"Only 3 lives left!!!"</div>
+      </div>
+      <div style="padding:20px 24px;border-right:1px solid var(--border);">
+        <div style="font-size:15px;color:var(--pearl);font-family:'DM Sans',sans-serif;">"Flow restored."</div>
+      </div>
+      <div style="padding:20px 24px;">
+        <div style="font-size:15px;color:var(--slate);font-family:'DM Sans',sans-serif;text-decoration:line-through;opacity:0.5;">"Oops! You failed."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════
+     ICONOGRAPHY
+══════════════════════════════════════ -->
+<section id="iconography">
+  <div class="fade-in">
+    <div class="section-label">07 — Iconography</div>
+    <h2 class="section-title">Icon System</h2>
+    <p class="section-desc">Minimal 24px icons drawn on a 24×24 grid. 1.5px strokes, rounded caps and joins, jade accent color. Each icon reads clearly at 16px.</p>
+  </div>
+
+  <div class="icon-system-grid">
+    <!-- Hint / Lightbulb -->
+    <div class="icon-item fade-in fade-in-delay-1">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <defs>
+          <linearGradient id="icon-hint" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#7EEACC"/><stop offset="100%" stop-color="#3ECFB2"/>
+          </linearGradient>
+        </defs>
+        <path d="M9 21h6M10 17.5h4M12 2C8.686 2 6 4.686 6 8c0 2.21 1.12 4.156 2.828 5.328A2 2 0 0 1 10 15h4a2 2 0 0 1 1.172-.672C16.88 13.156 18 11.21 18 9c0-3.314-2.686-6-6-6z" stroke="url(#icon-hint)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="12" cy="8" r="1.5" fill="#3ECFB2"/>
+      </svg>
+      <span class="icon-name">Hint</span>
+    </div>
+
+    <!-- Coins -->
+    <div class="icon-item fade-in fade-in-delay-2">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <defs>
+          <linearGradient id="icon-coin" x1="8" y1="6" x2="16" y2="18" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FFD580"/><stop offset="100%" stop-color="#FFB347"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="12" cy="10" rx="6" ry="4" stroke="url(#icon-coin)" stroke-width="1.5"/>
+        <path d="M6 10v4c0 2.21 2.686 4 6 4s6-1.79 6-4v-4" stroke="url(#icon-coin)" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M6 14v2" stroke="url(#icon-coin)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        <path d="M18 14v2" stroke="url(#icon-coin)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+      <span class="icon-name">Coins</span>
+    </div>
+
+    <!-- Star -->
+    <div class="icon-item fade-in fade-in-delay-3">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <defs>
+          <linearGradient id="icon-star" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FFD580"/><stop offset="100%" stop-color="#FFB347"/>
+          </linearGradient>
+        </defs>
+        <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z" stroke="url(#icon-star)" stroke-width="1.5" stroke-linejoin="round" fill="rgba(255,179,71,0.12)"/>
+      </svg>
+      <span class="icon-name">Star</span>
+    </div>
+
+    <!-- Daily Gift -->
+    <div class="icon-item fade-in fade-in-delay-4">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <defs>
+          <linearGradient id="icon-gift" x1="4" y1="6" x2="20" y2="22" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#7EEACC"/><stop offset="100%" stop-color="#3ECFB2"/>
+          </linearGradient>
+        </defs>
+        <rect x="3" y="10" width="18" height="11" rx="2" stroke="url(#icon-gift)" stroke-width="1.5"/>
+        <path d="M3 10V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1" stroke="url(#icon-gift)" stroke-width="1.5"/>
+        <path d="M12 7v14" stroke="url(#icon-gift)" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+        <path d="M3 13h18" stroke="url(#icon-gift)" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+        <!-- Bow top -->
+        <path d="M12 7c0 0-2-3-3-3s-1 2 0 2c1 0 3-2 3-2z" stroke="url(#icon-gift)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M12 7c0 0 2-3 3-3s1 2 0 2c-1 0-3-2-3-2z" stroke="url(#icon-gift)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span class="icon-name">Daily Gift</span>
+    </div>
+
+    <!-- Share -->
+    <div class="icon-item fade-in fade-in-delay-5">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <defs>
+          <linearGradient id="icon-share" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#7EEACC"/><stop offset="100%" stop-color="#3ECFB2"/>
+          </linearGradient>
+        </defs>
+        <circle cx="18" cy="5" r="2.5" stroke="url(#icon-share)" stroke-width="1.5"/>
+        <circle cx="6" cy="12" r="2.5" stroke="url(#icon-share)" stroke-width="1.5"/>
+        <circle cx="18" cy="19" r="2.5" stroke="url(#icon-share)" stroke-width="1.5"/>
+        <path d="M8.3 10.7l7.4-4.4M8.3 13.3l7.4 4.4" stroke="url(#icon-share)" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="icon-name">Share</span>
+    </div>
+
+    <!-- Settings (bonus) -->
+    <div class="icon-item fade-in fade-in-delay-5">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <defs>
+          <linearGradient id="icon-settings" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#9090AA"/><stop offset="100%" stop-color="#6B6B8A"/>
+          </linearGradient>
+        </defs>
+        <circle cx="12" cy="12" r="3" stroke="url(#icon-settings)" stroke-width="1.5"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="url(#icon-settings)" stroke-width="1.5"/>
+      </svg>
+      <span class="icon-name">Settings</span>
+    </div>
+
+    <!-- Undo -->
+    <div class="icon-item fade-in fade-in-delay-5">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <defs>
+          <linearGradient id="icon-undo" x1="4" y1="6" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#7EEACC"/><stop offset="100%" stop-color="#3ECFB2"/>
+          </linearGradient>
+        </defs>
+        <path d="M3 8h11a7 7 0 1 1 0 14H3" stroke="url(#icon-undo)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7 4L3 8l4 4" stroke="url(#icon-undo)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="icon-name">Undo</span>
+    </div>
+
+    <!-- Pipe / Flow -->
+    <div class="icon-item fade-in fade-in-delay-5">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <defs>
+          <linearGradient id="icon-flow" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#7EEACC"/><stop offset="100%" stop-color="#3ECFB2"/>
+          </linearGradient>
+        </defs>
+        <circle cx="5" cy="19" r="2.5" stroke="url(#icon-flow)" stroke-width="1.5"/>
+        <circle cx="19" cy="5" r="2.5" stroke="url(#icon-flow)" stroke-width="1.5"/>
+        <path d="M7 17.5C7 17.5 8 14 11 12C14 10 17 7 17 7" stroke="url(#icon-flow)" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 2"/>
+      </svg>
+      <span class="icon-name">Flow</span>
+    </div>
+  </div>
+
+  <!-- Usage chips -->
+  <div class="icon-usage fade-in fade-in-delay-3">
+    <div class="icon-chip">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M9 21h6M10 17.5h4M12 2C8.686 2 6 4.686 6 8c0 2.21 1.12 4.156 2.828 5.328A2 2 0 0 1 10 15h4a2 2 0 0 1 1.172-.672C16.88 13.156 18 11.21 18 9c0-3.314-2.686-6-6-6z" stroke="#3ECFB2" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Reveal a path
+    </div>
+    <div class="icon-chip">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z" stroke="#FFB347" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+      248 Stars
+    </div>
+    <div class="icon-chip">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <ellipse cx="12" cy="10" rx="6" ry="4" stroke="#FFB347" stroke-width="1.5"/>
+        <path d="M6 10v4c0 2.21 2.686 4 6 4s6-1.79 6-4v-4" stroke="#FFB347" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      1,200 Coins
+    </div>
+    <div class="icon-chip">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <rect x="3" y="10" width="18" height="11" rx="2" stroke="#3ECFB2" stroke-width="1.5"/>
+        <path d="M3 10V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1" stroke="#3ECFB2" stroke-width="1.5"/>
+        <path d="M12 7v14M3 13h18" stroke="#3ECFB2" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+      Claim daily gift
+    </div>
+    <div class="icon-chip">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <circle cx="18" cy="5" r="2.5" stroke="#3ECFB2" stroke-width="1.5"/>
+        <circle cx="6" cy="12" r="2.5" stroke="#3ECFB2" stroke-width="1.5"/>
+        <circle cx="18" cy="19" r="2.5" stroke="#3ECFB2" stroke-width="1.5"/>
+        <path d="M8.3 10.7l7.4-4.4M8.3 13.3l7.4 4.4" stroke="#3ECFB2" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Share result
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">KORU</div>
+    <div style="font-size:12px;color:var(--slate);margin-top:6px;font-style:italic;">"Find your flow."</div>
+  </div>
+  <div class="footer-meta">
+    <strong>Brand Identity System v1.0</strong><br>
+    A zen flow/connect puzzle game<br>
+    Colors · Typography · Iconography · Motion
+  </div>
+</footer>
+
+<script>
+  // ── Intersection Observer for fade-in ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ── Palette swatch copy-to-clipboard ──
+  document.querySelectorAll('.swatch-hex').forEach(hex => {
+    hex.style.cursor = 'pointer';
+    hex.title = 'Click to copy';
+    hex.addEventListener('click', () => {
+      navigator.clipboard.writeText(hex.textContent).then(() => {
+        const original = hex.textContent;
+        hex.textContent = 'Copied!';
+        hex.style.color = 'var(--jade)';
+        setTimeout(() => {
+          hex.textContent = original;
+          hex.style.color = '';
+        }, 1200);
+      });
+    });
+  });
+
+  // ── Subtle parallax on hero logo ──
+  const heroLogo = document.querySelector('.hero-logo-wrap');
+  window.addEventListener('mousemove', (e) => {
+    if (!heroLogo) return;
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+    const dx = (e.clientX - cx) / cx;
+    const dy = (e.clientY - cy) / cy;
+    heroLogo.style.transform = `translate(${dx * 8}px, ${dy * 8}px)`;
+  });
+</script>
+</body>
+</html>
