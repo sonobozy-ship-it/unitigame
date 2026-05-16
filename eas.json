@@ -6,20 +6,14 @@
   "build": {
     "preview": {
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+        "credentialsSource": "remote"
       }
     },
     "production": {
       "android": {
-        "buildType": "app-bundle"
-      }
-    }
-  },
-  "submit": {
-    "production": {
-      "android": {
-        "serviceAccountKeyPath": "./google-services.json",
-        "track": "internal"
+        "buildType": "app-bundle",
+        "credentialsSource": "remote"
       }
     }
   }
