@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "UnitiFlow",
+    "slug": "unitiflow",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#0f0f1a"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0f0f1a"
+      },
+      "package": "com.unitiflow.app",
+      "versionCode": 1
+    },
+    "plugins": [
+      "react-native-reanimated"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+export const theme = {
+  bg:          '#0f0f1a',
+  bgCard:      '#1a1a2e',
+  bgCell:      '#16213e',
+  bgCellEmpty: '#0d1117',
+  border:      '#2a2a4a',
+  textPrimary: '#ffffff',
+  textSecond:  '#8888aa',
+  accent:      '#7c3aed',
+  accentLight: '#a855f7',
+  starFilled:  '#FFD600',
+  starEmpty:   '#333355',
+  success:     '#2ECC71',
+  danger:      '#FF3B3B',
+  radius:      12,
+  radiusLg:    20,
+};
