@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "MOVO",
+    "slug": "movo-puzzle",
+    "owner": "sonobozy",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1A1A2E"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#1A1A2E"
+      },
+      "package": "com.sonobozy.movo",
+      "versionCode": 1
+    },
+    "extra": {
+      "eas": {
+        "projectId": "PLACEHOLDER"
+      }
+    },
+    "plugins": [
+      ["expo-build-properties", {
+        "android": {
+          "compileSdkVersion": 34,
+          "targetSdkVersion": 34,
+          "minSdkVersion": 23,
+          "kotlinVersion": "1.9.24"
+        }
+      }]
+    ]
+  }
+}
