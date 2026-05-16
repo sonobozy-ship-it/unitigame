@@ -1,7 +1,4 @@
 node_modules/
-apps/*/node_modules/
-*.keystore
-*.keystore.b64
 .expo/
 dist/
 web-build/
@@ -15,3 +12,5 @@ web-build/
 *.log
 android/
 ios/
+*.keystore
+*.keystore.b64

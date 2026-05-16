@@ -8,11 +8,19 @@ on:
       - dev
       - claude/casual-game-levels-TuCmm
   workflow_dispatch:
+    inputs:
+      app:
+        description: 'App to build (koru)'
+        required: true
+        default: 'koru'
 
 jobs:
-  build:
-    name: Build APK (EAS)
+  build-koru:
+    name: Build KORU APK
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/koru
 
     steps:
       - name: Checkout code
@@ -23,6 +31,7 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+          cache-dependency-path: apps/koru/package-lock.json
 
       - name: Install dependencies
         run: npm ci
