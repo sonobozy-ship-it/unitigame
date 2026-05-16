@@ -95,10 +95,40 @@ public class ProjectSystem : MonoBehaviour
     private void AddDeadlinePressure(ProjectState p, GameState state)
     {
         var daysLeft = p.DeadlineDay - state.Day;
-        if (daysLeft < 0)
+        if (daysLeft >= 0) return;
+
+        p.OverdueDays = -daysLeft;
+        state.Stress = Mathf.Min(100, state.Stress + RemoteConfigService.StressOverduePerTick);
+
+        // Social humiliation: client hires another contractor after 5 days overdue
+        if (p.OverdueDays >= 5 && !p.ClientAbandoned && Random.value < 0.02f)
         {
-            state.Stress = Mathf.Min(100, state.Stress + 0.2f);
+            TriggerClientAbandonment(p, state);
         }
+    }
+
+    private void TriggerClientAbandonment(ProjectState p, GameState state)
+    {
+        p.ClientAbandoned = true;
+        p.Phase = ProjectPhase.Completed;
+
+        // Return only partial advance
+        var refund = (long)(p.AdvancePaid * 0.3f);
+        state.Money += refund;
+        state.Reputation = Mathf.Max(0, state.Reputation - 20);
+        state.Stress = Mathf.Min(100, state.Stress + 25);
+
+        GameManager.Instance.ClientRelations.RecordAbandonment(p, state);
+
+        GameManager.Instance.AddLog(
+            $"💔 {p.Client} устал ждать и нанял другого подрядчика. Возврат аванса: {refund:N0} ₽. Репутация упала.");
+        GameManager.Instance.AddLog(
+            "📱 В чате прорабов: «Слышали, [ваша компания] кинула заказчика? Не берите их на объекты.»");
+
+        AnalyticsManager.Track("client_abandoned_project",
+            ("project", p.Name), ("overdue_days", p.OverdueDays), ("reputation", state.Reputation));
+
+        FinalizeProject(state);
     }
 
     private long CalculateDailyPenalty(ProjectState p)
@@ -157,19 +187,26 @@ public class ProjectSystem : MonoBehaviour
 
         p.Ks2Signed = true;
 
-        // Calculate final payment amount
+        // Base amount
         var remaining = p.ContractValue - p.AdvancePaid + p.ExtraRevenue - p.AccruedPenalties;
         var moodMultiplier = Mathf.Lerp(0.6f, 1.0f, p.ClientMood / 100f);
-        var finalAmount = (long)(remaining * moodMultiplier);
+        var baseAmount = (long)(remaining * moodMultiplier);
 
-        // Payment delay based on client type
+        // Roll outcome secretly — revealed on arrival
+        var outcome = GameManager.Instance.Finance.RollPaymentOutcome(p, state);
+        p.PaymentOutcomeRolled = outcome;
+
+        // Payment delay (with client relations speed bonus)
         var delayTicks = GetPaymentDelayTicks(p.ClientType);
+        var speedBonus = GameManager.Instance.ClientRelations.GetPaymentSpeedBonus(p.ClientId, state);
+        delayTicks = Mathf.Max(10, delayTicks - speedBonus);
 
         var payment = new PendingPayment
         {
             ProjectName = p.Name,
             Client = p.Client,
-            Amount = finalAmount,
+            Amount = baseAmount,
+            Outcome = outcome,
             ArrivalTick = state.Tick + delayTicks,
             ArrivalTickOriginal = state.Tick + delayTicks,
         };
@@ -177,26 +214,33 @@ public class ProjectSystem : MonoBehaviour
         state.PendingPayments.Add(payment);
         p.Phase = ProjectPhase.WaitingPayment;
 
-        var delayMinutes = delayTicks / 60f;
-        var delayText = delayTicks < 120
-            ? $"{delayTicks} сек"
-            : delayMinutes < 60 ? $"{delayMinutes:F0} мин" : $"{delayMinutes / 60f:F1} ч";
-
-        GameManager.Instance.AddLog($"📝 КС-2 подписан! Оплата {finalAmount:N0} ₽ ожидается через {delayText}.");
+        var delayText = FormatTicks(delayTicks);
+        GameManager.Instance.AddLog($"📝 КС-2 подписан! Ожидаемая оплата через {delayText}.");
 
         if (p.ClientType == "goszakaz")
-            GameManager.Instance.AddLog("🏛️ КАЗНАЧЕЙСТВО: принято к рассмотрению. Сроки — как повезёт.");
+            GameManager.Instance.AddLog("🏛️ КАЗНАЧЕЙСТВО: принято к рассмотрению. «Ориентировочный срок — в течение квартала».");
 
-        AnalyticsManager.Track("ks2_signed", ("project", p.Name), ("amount", finalAmount));
+        AnalyticsManager.Track("ks2_signed",
+            ("project", p.Name), ("amount", baseAmount), ("outcome_rolled", outcome.ToString()));
     }
 
-    private int GetPaymentDelayTicks(string clientType) => clientType switch
+    private int GetPaymentDelayTicks(string clientType)
     {
-        "normal"     => UnityEngine.Random.Range(30, 90),     // 30s–90s (fast)
-        "toxic"      => UnityEngine.Random.Range(120, 300),   // 2–5 min
-        "genpodryad" => UnityEngine.Random.Range(180, 600),   // 3–10 min
-        "goszakaz"   => UnityEngine.Random.Range(600, 3600),  // 10 min – 1 hour (retention king)
-        _            => 60,
+        return clientType switch
+        {
+            "normal"     => Random.Range(RemoteConfigService.NormalPaymentMin,    RemoteConfigService.NormalPaymentMax),
+            "toxic"      => Random.Range(RemoteConfigService.ToxicPaymentMin,     RemoteConfigService.ToxicPaymentMax),
+            "genpodryad" => Random.Range(RemoteConfigService.GenpodradPaymentMin, RemoteConfigService.GenpodradPaymentMax),
+            "goszakaz"   => Random.Range(RemoteConfigService.GoszakazPaymentMin,  RemoteConfigService.GoszakazPaymentMax),
+            _            => 60,
+        };
+    }
+
+    private static string FormatTicks(int ticks) => ticks switch
+    {
+        < 60    => $"{ticks} сек",
+        < 3600  => $"{ticks / 60} мин",
+        _       => $"{ticks / 3600:F1} ч",
     };
 
     public void FinalizeProject(GameState state)
@@ -222,9 +266,18 @@ public class ProjectSystem : MonoBehaviour
         state.CompletedProjects.Insert(0, record);
         state.CurrentProject = null;
 
+        // Client relations
+        if (!p.ClientAbandoned)
+            GameManager.Instance.ClientRelations.RecordCompletion(p, state);
+
+        // Battle pass
+        GameManager.Instance.BattlePass.OnProjectCompleted(state, p.ClientMood);
+        GameManager.Instance.BattlePass.ProgressTask("complete_projects", state);
+        GameManager.Instance.BattlePass.ProgressTask("survive_days", state, state.Day - p.StartDay);
+
         // Check progression unlocks
         GameManager.Instance.Progression.CheckUnlocks(state);
-        AnalyticsManager.Track("project_completed", ("name", p.Name), ("mood", p.ClientMood));
+        AnalyticsManager.TrackContractCompleted(p.ContractId, record.Earned, p.ClientMood, p.DocumentRejections);
     }
 
     public ContractDefinition GetContract(string id)

@@ -15,8 +15,11 @@ public class GameManager : MonoBehaviour
     public FinanceSystem Finance;
     public EventSystem Events;
     public DocumentSystem Documents;
-    public ClientSystem Clients;
+    public ClientRelationsSystem ClientRelations;
     public ProgressionSystem Progression;
+    public BattlePassSystem BattlePass;
+    public ForemanTheftSystem ForemanTheft;
+    public LiveOpsService LiveOps;
 
     public GameState State { get; private set; }
 
@@ -38,8 +41,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        RemoteConfigService.Fetch();
         _tickCoroutine = StartCoroutine(TickLoop());
         InvokeRepeating(nameof(AutoSave), 30f, 30f);
+        AnalyticsManager.TrackSessionStart(State.Day, State.CompletedProjects.Count);
     }
 
     void OnApplicationPause(bool paused)
