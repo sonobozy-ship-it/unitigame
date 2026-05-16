@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UnitiFlow — Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #070710;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #fff;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  h1 { text-align: center; color: #a855f7; font-size: 32px; margin: 20px 0 6px; letter-spacing: -1px; }
+  .subtitle { text-align: center; color: #8888aa; margin-bottom: 32px; font-size: 15px; }
+
+  .screens { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+
+  .phone {
+    width: 320px;
+    background: #0f0f1a;
+    border-radius: 36px;
+    border: 2px solid #2a2a4a;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(168,85,247,0.15), 0 0 0 6px #1a1a2e;
+    position: relative;
+  }
+  .phone-label {
+    text-align: center;
+    color: #8888aa;
+    font-size: 13px;
+    margin-top: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .notch {
+    width: 100px; height: 22px;
+    background: #0f0f1a;
+    border-radius: 0 0 14px 14px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  .screen { padding: 0 16px 24px; }
+
+  /* -------- HOME SCREEN -------- */
+  .home-logo { text-align: center; padding: 36px 0 8px; }
+  .home-logo-text { font-size: 42px; font-weight: 900; color: #a855f7; letter-spacing: -2px; }
+  .home-logo-sub  { color: #8888aa; font-size: 13px; margin-top: 4px; }
+  .coins-row { display: flex; justify-content: flex-end; margin: 12px 0; }
+  .coins-badge {
+    background: #1a1a2e; border-radius: 20px;
+    padding: 6px 14px; font-weight: bold; color: #FFD600; font-size: 14px;
+    border: 1px solid #2a2a4a; display: flex; align-items: center; gap: 4px;
+  }
+  .gift-banner {
+    background: #2a1e00; border: 1px solid #FFD600; border-radius: 12px;
+    padding: 10px 14px; margin-bottom: 14px; text-align: center;
+    color: #FFD600; font-size: 13px; font-weight: 600;
+  }
+  .play-btn {
+    background: #7c3aed; border-radius: 20px;
+    padding: 18px; text-align: center;
+    font-size: 20px; font-weight: bold; margin-bottom: 12px;
+    cursor: pointer;
+  }
+  .daily-btn {
+    background: #1a1a2e; border-radius: 16px; border: 1px solid #2a2a4a;
+    padding: 14px 16px; display: flex; align-items: center; margin-bottom: 12px;
+  }
+  .daily-btn-text .t1 { font-size: 14px; font-weight: bold; }
+  .daily-btn-text .t2 { font-size: 11px; color: #8888aa; margin-top: 2px; }
+  .daily-btn-arrow { margin-left: auto; color: #8888aa; font-size: 22px; }
+  .shop-btn {
+    background: #1a1a2e; border-radius: 16px; border: 1px solid #7c3aed;
+    padding: 14px; text-align: center; color: #a855f7; font-size: 14px; font-weight: bold;
+  }
+  .streak-badge {
+    text-align: center; margin-top: 18px;
+    background: #2a1200; border-radius: 20px; padding: 8px 18px;
+    color: #FF8C00; font-weight: bold; font-size: 14px; display: inline-block;
+    margin-left: 50%;  transform: translateX(-50%);
+  }
+
+  /* -------- LEVEL SELECT -------- */
+  .ls-header {
+    display: flex; align-items: center; padding: 14px 0 10px;
+  }
+  .ls-back { color: #a855f7; font-size: 14px; }
+  .ls-title { flex: 1; text-align: center; font-size: 18px; font-weight: bold; }
+  .pack-tabs { display: flex; gap: 8px; overflow-x: auto; padding: 6px 0 12px; }
+  .pack-tab {
+    background: #1a1a2e; border-radius: 12px; border: 1px solid #2a2a4a;
+    padding: 8px 14px; font-size: 12px; font-weight: bold; color: #8888aa;
+    white-space: nowrap; text-align: center; min-width: 70px;
+  }
+  .pack-tab.active { background: #7c3aed; border-color: #7c3aed; color: #fff; }
+  .pack-tab .grid-size { font-size: 10px; color: #aaa; margin-top: 2px; }
+  .pack-tab.active .grid-size { color: rgba(255,255,255,0.7); }
+  .pack-desc { color: #8888aa; font-size: 12px; text-align: center; margin-bottom: 12px; }
+  .levels-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .level-cell {
+    width: calc(20% - 7px); aspect-ratio: 1; background: #1a1a2e;
+    border-radius: 10px; border: 1px solid #2a2a4a;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: bold;
+  }
+  .level-cell .stars { display: flex; gap: 1px; margin-top: 2px; }
+  .level-cell .star { font-size: 7px; }
+  .star.filled { color: #FFD600; }
+  .star.empty  { color: #333355; }
+  .level-cell.locked { opacity: 0.35; }
+  .level-cell.completed { border-color: #7c3aed; }
+
+  /* -------- GAME SCREEN -------- */
+  .game-header { display: flex; align-items: center; padding: 12px 0 8px; }
+  .game-back   { font-size: 20px; color: #a855f7; width: 32px; }
+  .game-center { flex: 1; text-align: center; }
+  .game-center .t1 { font-size: 16px; font-weight: bold; }
+  .game-center .t2 { font-size: 11px; color: #8888aa; }
+  .game-right  { width: 70px; text-align: right; color: #8888aa; font-size: 12px; }
+  .progress-bg { height: 4px; background: #2a2a4a; border-radius: 2px; margin-bottom: 14px; }
+  .progress-fill { height: 4px; background: #7c3aed; border-radius: 2px; width: 68%; }
+
+  /* Board */
+  .board-wrap { display: flex; justify-content: center; margin-bottom: 14px; }
+  canvas { border-radius: 12px; display: block; }
+  .controls {
+    display: flex; justify-content: space-around;
+    padding: 0 4px;
+  }
+  .ctrl {
+    display: flex; flex-direction: column; align-items: center;
+    background: #1a1a2e; border-radius: 10px;
+    padding: 8px 10px; min-width: 50px;
+    font-size: 10px; color: #8888aa; gap: 3px;
+  }
+  .ctrl .ico { font-size: 18px; }
+  .ctrl.hint { border: 1px solid #7c3aed; }
+
+  /* -------- WIN SCREEN -------- */
+  .win-bg { background: #0f0f1a; display: flex; align-items: center; justify-content: center; padding: 30px 0; }
+  .win-card {
+    background: #1a1a2e; border-radius: 20px; border: 1px solid #2a2a4a;
+    padding: 28px 20px; text-align: center; width: 100%;
+  }
+  .win-trophy { font-size: 56px; }
+  .win-title  { font-size: 22px; font-weight: bold; margin: 8px 0 14px; }
+  .win-stars  { display: flex; justify-content: center; gap: 6px; margin-bottom: 18px; }
+  .win-star   { font-size: 36px; color: #FFD600; }
+  .win-stats  { display: flex; justify-content: center; align-items: center; margin-bottom: 18px; }
+  .win-stat   { padding: 0 18px; text-align: center; }
+  .win-stat .v { font-size: 26px; font-weight: bold; }
+  .win-stat .l { font-size: 12px; color: #8888aa; margin-top: 2px; }
+  .win-divider { width: 1px; height: 36px; background: #2a2a4a; }
+  .win-next { background: #7c3aed; border-radius: 12px; padding: 14px; font-size: 16px; font-weight: bold; margin-bottom: 10px; }
+  .win-share { background: #0a2a18; border: 1px solid #2ECC71; border-radius: 12px; padding: 12px; color: #2ECC71; font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+  .win-small { display: flex; gap: 8px; }
+  .win-small-btn { flex: 1; background: #0d1117; border: 1px solid #2a2a4a; border-radius: 10px; padding: 10px; font-size: 13px; color: #8888aa; text-align: center; }
+
+  /* -------- SHOP SCREEN -------- */
+  .shop-header { display: flex; align-items: center; padding: 14px 0 10px; }
+  .shop-back { color: #a855f7; font-size: 14px; }
+  .shop-title { flex: 1; text-align: center; font-size: 18px; font-weight: bold; }
+  .shop-coins { background: #1a1a2e; border-radius: 20px; padding: 6px 12px; color: #FFD600; font-weight: bold; font-size: 13px; border: 1px solid #2a2a4a; }
+  .section-label { color: #8888aa; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin: 14px 0 8px; }
+  .gift-card {
+    background: #1a1a2e; border: 1px solid #FFD600; border-radius: 12px;
+    padding: 14px; display: flex; align-items: center; gap: 10px; margin-bottom: 4px;
+  }
+  .gift-emoji { font-size: 32px; }
+  .gift-info .gt { font-size: 14px; font-weight: bold; }
+  .gift-info .gd { font-size: 11px; color: #8888aa; margin-top: 2px; }
+  .streak-dots { display: flex; gap: 4px; margin-top: 6px; }
+  .sdot { width: 9px; height: 9px; border-radius: 5px; background: #2a2a4a; }
+  .sdot.on { background: #FFD600; }
+  .claim-badge { background: #2ECC71; border-radius: 8px; padding: 6px 10px; margin-left: auto; font-size: 11px; font-weight: bold; color: #fff; }
+
+  .hint-card {
+    background: #1a1a2e; border-radius: 12px; padding: 12px;
+    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+  }
+  .hint-emoji { font-size: 26px; }
+  .hint-info { flex: 1; }
+  .hint-info .ht { font-size: 14px; font-weight: bold; }
+  .hint-info .hd { font-size: 11px; color: #8888aa; margin-top: 2px; }
+  .hint-info .hc { font-size: 11px; color: #a855f7; margin-top: 3px; }
+  .hint-btns { display: flex; flex-direction: column; gap: 5px; }
+  .buy-btn { background: #7c3aed; border-radius: 8px; padding: 5px 10px; font-size: 12px; font-weight: bold; text-align: center; }
+  .ad-btn  { background: #0d1117; border: 1px solid #2a2a4a; border-radius: 8px; padding: 5px 10px; font-size: 12px; color: #8888aa; text-align: center; }
+  .coin-packs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .coin-pack {
+    background: #1a1a2e; border: 1px solid #2a2a4a; border-radius: 12px;
+    padding: 14px 10px; flex: 1; min-width: 42%; text-align: center;
+  }
+  .coin-pack .cpe { font-size: 28px; margin-bottom: 4px; }
+  .coin-pack .cpl { font-size: 13px; font-weight: bold; }
+  .coin-pack .cpp { font-size: 12px; color: #a855f7; margin-top: 3px; }
+</style>
+</head>
+<body>
+
+<h1>UnitiFlow</h1>
+<p class="subtitle">Connect the dots. Fill the grid. — Android Casual Puzzle</p>
+
+<div class="screens">
+
+  <!-- HOME -->
+  <div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="screen">
+        <div class="home-logo">
+          <div class="home-logo-text">UnitiFlow</div>
+          <div class="home-logo-sub">Connect the dots. Fill the grid.</div>
+        </div>
+        <div class="coins-row">
+          <div class="coins-badge">🪙 50 <span style="color:#a855f7;margin-left:4px">＋</span></div>
+        </div>
+        <div class="gift-banner">🎁 Your daily gift is ready!</div>
+        <div class="play-btn">▶  Play</div>
+        <div class="daily-btn">
+          <div class="daily-btn-text">
+            <div class="t1">📅  Daily Challenge</div>
+            <div class="t2">Level 42 • 6×6 grid</div>
+          </div>
+          <div class="daily-btn-arrow">›</div>
+        </div>
+        <div class="shop-btn">🛒  Shop &amp; Hints</div>
+        <div class="streak-badge">🔥 3 day streak</div>
+      </div>
+    </div>
+    <div class="phone-label">Home Screen</div>
+  </div>
+
+  <!-- LEVEL SELECT -->
+  <div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="screen">
+        <div class="ls-header">
+          <div class="ls-back">← Back</div>
+          <div class="ls-title">Levels</div>
+          <div style="width:50px"></div>
+        </div>
+        <div class="pack-tabs">
+          <div class="pack-tab active">Starter<div class="grid-size">5×5</div></div>
+          <div class="pack-tab">Explorer<div class="grid-size">6×6</div></div>
+          <div class="pack-tab">Master<div class="grid-size">7×7</div></div>
+          <div class="pack-tab">Expert<div class="grid-size">8×8</div></div>
+        </div>
+        <div class="pack-desc">5×5 grid — learn the basics</div>
+        <div class="levels-grid">
+          <!-- 25 cells -->
+          <div class="level-cell completed">1<div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></div></div>
+          <div class="level-cell completed">2<div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span></div></div>
+          <div class="level-cell completed">3<div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></div></div>
+          <div class="level-cell completed">4<div class="stars"><span class="star filled">★</span><span class="star empty">★</span><span class="star empty">★</span></div></div>
+          <div class="level-cell completed">5<div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></div></div>
+          <div class="level-cell completed">6<div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star empty">★</span></div></div>
+          <div class="level-cell completed">7<div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span></div></div>
+          <div class="level-cell" style="border-color:#7c3aed;">8<div class="stars"><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span></div></div>
+          <div class="level-cell locked">9<div class="stars"><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span></div></div>
+          <div class="level-cell locked">10<div class="stars"><span class="star empty">★</span><span class="star empty">★</span><span class="star empty">★</span></div></div>
+          <div class="level-cell locked">11</div>
+          <div class="level-cell locked">12</div>
+          <div class="level-cell locked">13</div>
+          <div class="level-cell locked">14</div>
+          <div class="level-cell locked">15</div>
+          <div class="level-cell locked">16</div>
+          <div class="level-cell locked">17</div>
+          <div class="level-cell locked">18</div>
+          <div class="level-cell locked">19</div>
+          <div class="level-cell locked">20</div>
+          <div class="level-cell locked">21</div>
+          <div class="level-cell locked">22</div>
+          <div class="level-cell locked">23</div>
+          <div class="level-cell locked">24</div>
+          <div class="level-cell locked">25</div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">Level Select</div>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="screen">
+        <div class="game-header">
+          <div class="game-back">←</div>
+          <div class="game-center">
+            <div class="t1">Level 8</div>
+            <div class="t2">5×5 · 68% filled</div>
+          </div>
+          <div class="game-right">17 moves</div>
+        </div>
+        <div class="progress-bg"><div class="progress-fill"></div></div>
+        <div class="board-wrap">
+          <canvas id="gameCanvas" width="272" height="272"></canvas>
+        </div>
+        <div class="controls">
+          <div class="ctrl"><span class="ico">↩️</span>Undo</div>
+          <div class="ctrl"><span class="ico">🔄</span>Reset</div>
+          <div class="ctrl hint"><span class="ico">🧹 3</span>Clear</div>
+          <div class="ctrl hint"><span class="ico">💡 3</span>Hint</div>
+          <div class="ctrl hint"><span class="ico">⏭️ 1</span>Skip</div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">Game Screen</div>
+  </div>
+
+  <!-- WIN SCREEN -->
+  <div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="screen">
+        <div class="win-bg">
+          <div class="win-card">
+            <div class="win-trophy">🏆</div>
+            <div class="win-title">Level 8 Complete!</div>
+            <div class="win-stars">
+              <span class="win-star">★</span>
+              <span class="win-star">★</span>
+              <span class="win-star" style="color:#333355">★</span>
+            </div>
+            <div class="win-stats">
+              <div class="win-stat"><div class="v">17</div><div class="l">Moves</div></div>
+              <div class="win-divider"></div>
+              <div class="win-stat"><div class="v">16</div><div class="l">Par</div></div>
+              <div class="win-divider"></div>
+              <div class="win-stat"><div class="v">2/3</div><div class="l">Stars</div></div>
+            </div>
+            <div style="color:#8888aa;font-size:13px;margin-bottom:16px">💪 So close! Try to beat par!</div>
+            <div class="win-next">Next Level ›</div>
+            <div class="win-share">📤 Share Result</div>
+            <div class="win-small">
+              <div class="win-small-btn">↺ Replay</div>
+              <div class="win-small-btn">⊟ Menu</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">Win Screen</div>
+  </div>
+
+  <!-- SHOP -->
+  <div>
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="screen">
+        <div class="shop-header">
+          <div class="shop-back">← Back</div>
+          <div class="shop-title">Shop</div>
+          <div class="shop-coins">🪙 50</div>
+        </div>
+
+        <div class="section-label">Daily Gift 🎁</div>
+        <div class="gift-card">
+          <div class="gift-emoji">🎁</div>
+          <div class="gift-info">
+            <div class="gt">Day 4 Gift</div>
+            <div class="gd">Tap to claim your daily reward!</div>
+            <div class="streak-dots">
+              <div class="sdot on"></div><div class="sdot on"></div><div class="sdot on"></div>
+              <div class="sdot"></div><div class="sdot"></div><div class="sdot"></div><div class="sdot"></div>
+            </div>
+          </div>
+          <div class="claim-badge">CLAIM</div>
+        </div>
+
+        <div class="section-label">Hints</div>
+
+        <div class="hint-card">
+          <div class="hint-emoji">💡</div>
+          <div class="hint-info">
+            <div class="ht">Reveal Hint</div>
+            <div class="hd">Shows one correct step</div>
+            <div class="hc">You have: 3</div>
+          </div>
+          <div class="hint-btns">
+            <div class="buy-btn">🪙 10</div>
+            <div class="ad-btn">📺 Ad</div>
+          </div>
+        </div>
+
+        <div class="hint-card">
+          <div class="hint-emoji">🤖</div>
+          <div class="hint-info">
+            <div class="ht">Auto-Solve</div>
+            <div class="hd">Solves one pipe fully</div>
+            <div class="hc">You have: 1</div>
+          </div>
+          <div class="hint-btns">
+            <div class="buy-btn">🪙 30</div>
+            <div class="ad-btn">📺 Ad</div>
+          </div>
+        </div>
+
+        <div class="hint-card">
+          <div class="hint-emoji">🧹</div>
+          <div class="hint-info">
+            <div class="ht">Clear Wrong</div>
+            <div class="hd">Clears wrong pipes</div>
+            <div class="hc">You have: 3</div>
+          </div>
+          <div class="hint-btns">
+            <div class="buy-btn">🪙 15</div>
+            <div class="ad-btn">📺 Ad</div>
+          </div>
+        </div>
+
+        <div class="section-label">Coin Packs</div>
+        <div class="coin-packs">
+          <div class="coin-pack"><div class="cpe">🥉</div><div class="cpl">50 Coins</div><div class="cpp">$0.99</div></div>
+          <div class="coin-pack"><div class="cpe">🥈</div><div class="cpl">200 Coins</div><div class="cpp">$2.99</div></div>
+          <div class="coin-pack"><div class="cpe">🥇</div><div class="cpl">500 Coins</div><div class="cpp">$5.99</div></div>
+          <div class="coin-pack"><div class="cpe">🚫</div><div class="cpl">Remove Ads</div><div class="cpp">$3.99</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">Shop Screen</div>
+  </div>
+
+</div>
+
+<script>
+// Draw the game board
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+const SIZE = 5;
+const CELL = 272 / SIZE;
+
+const COLORS = {
+  red:    '#FF3B3B',
+  blue:   '#3B8EFF',
+  green:  '#2ECC71',
+  yellow: '#FFD600',
+  orange: '#FF8C00',
+  purple: '#A855F7',
+};
+
+// Grid background
+ctx.fillStyle = '#16213e';
+ctx.roundRect(0, 0, 272, 272, 12);
+ctx.fill();
+
+// Grid lines
+ctx.strokeStyle = '#2a2a4a';
+ctx.lineWidth = 1;
+for (let i = 0; i <= SIZE; i++) {
+  ctx.beginPath(); ctx.moveTo(i*CELL, 0); ctx.lineTo(i*CELL, 272); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(0, i*CELL); ctx.lineTo(272, i*CELL); ctx.stroke();
+}
+
+function cellCenter(r, c) {
+  return [c*CELL + CELL/2, r*CELL + CELL/2];
+}
+
+function drawPipe(cells, color, width) {
+  if (cells.length < 2) return;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = width;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.beginPath();
+  const [x0,y0] = cellCenter(...cells[0]);
+  ctx.moveTo(x0, y0);
+  for (let i = 1; i < cells.length; i++) {
+    const [x,y] = cellCenter(...cells[i]);
+    ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+}
+
+function drawDot(r, c, color) {
+  const [x,y] = cellCenter(r,c);
+  ctx.beginPath();
+  ctx.arc(x, y, CELL*0.32, 0, Math.PI*2);
+  ctx.fillStyle = color;
+  ctx.fill();
+  ctx.strokeStyle = '#fff';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+}
+
+// Draw pipes (partially solved state)
+drawPipe([[0,0],[1,0],[2,0],[2,1],[2,2]], COLORS.red,    CELL*0.45);
+drawPipe([[0,4],[1,4],[1,3],[1,2],[1,1]], COLORS.blue,   CELL*0.45);
+drawPipe([[4,0],[4,1],[4,2],[3,2],[3,3]], COLORS.green,  CELL*0.45);
+drawPipe([[4,4],[4,3],[3,3]],             COLORS.yellow, CELL*0.45);
+
+// Dots
+drawDot(0,0, COLORS.red);    drawDot(2,2, COLORS.red);
+drawDot(0,4, COLORS.blue);   drawDot(4,0, COLORS.blue);
+drawDot(4,0, COLORS.green);  drawDot(1,3, COLORS.green);
+drawDot(4,4, COLORS.yellow); drawDot(1,1, COLORS.yellow);
+drawDot(2,0, COLORS.orange); drawDot(2,4, COLORS.orange);
+drawDot(0,2, COLORS.purple); drawDot(3,4, COLORS.purple);
+
+// Re-draw dots on top of pipes
+drawDot(0,0, COLORS.red);
+drawDot(2,2, COLORS.red);
+drawDot(0,4, COLORS.blue);
+drawDot(4,0, COLORS.blue);
+drawDot(4,0, COLORS.green);
+drawDot(1,3, COLORS.green);
+drawDot(4,4, COLORS.yellow);
+drawDot(1,1, COLORS.yellow);
+drawDot(2,0, COLORS.orange);
+drawDot(2,4, COLORS.orange);
+drawDot(0,2, COLORS.purple);
+drawDot(3,4, COLORS.purple);
+</script>
+</body>
+</html>
