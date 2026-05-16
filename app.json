@@ -19,7 +19,8 @@
       "versionCode": 1
     },
     "plugins": [
-      "react-native-reanimated"
+      "react-native-reanimated",
+      "react-native-webview"
     ]
   }
 }
