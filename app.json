@@ -1,22 +1,28 @@
 {
   "expo": {
-    "name": "UnitiFlow",
-    "slug": "unitiflow",
+    "name": "KORU",
+    "slug": "koru-puzzle",
+    "owner": "sonobozy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
     "splash": {
       "resizeMode": "contain",
-      "backgroundColor": "#0f0f1a"
+      "backgroundColor": "#0A0A14"
     },
     "assetBundlePatterns": ["**/*"],
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#0f0f1a"
+        "backgroundColor": "#0A0A14"
       },
-      "package": "com.unitiflow.app",
+      "package": "com.sonobozy.koru",
       "versionCode": 1
+    },
+    "extra": {
+      "eas": {
+        "projectId": ""
+      }
     },
     "plugins": [
       "react-native-reanimated",
