@@ -8,12 +8,14 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
     "splash": {
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#0A0A14"
     },
     "assetBundlePatterns": ["**/*"],
     "android": {
       "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0A0A14"
       },
       "package": "com.sonobozy.koru",
@@ -23,9 +25,6 @@
       "eas": {
         "projectId": "3fc3ec45-f87e-4ecc-b9d5-9879317cbfe4"
       }
-    },
-    "plugins": [
-      "react-native-webview"
-    ]
+    }
   }
 }
