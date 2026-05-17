@@ -48,6 +48,9 @@ jobs:
   build-waddle:
     name: Build WADDLE APK
     runs-on: ubuntu-latest
+    # WADDLE needs 'eas init' run once locally to get a real projectId
+    # Until then this job is skipped to not block KORU
+    if: false
     defaults:
       run:
         working-directory: apps/movo

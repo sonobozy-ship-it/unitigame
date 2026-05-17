@@ -22,7 +22,7 @@
       "versionCode": 1
     },
     "extra": {
-      "eas": { "projectId": "PLACEHOLDER" }
+      "eas": {}
     },
     "plugins": [
       ["expo-build-properties", {
