@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="390" height="780" viewBox="0 0 390 780" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bg" x1="0%" y1="0%" x2="60%" y2="100%">
+    <stop offset="0%" stop-color="#060C18"/><stop offset="100%" stop-color="#0A1525"/>
+  </linearGradient>
+  <!-- Snake colors -->
+  <filter id="gGoldF" x="-25%" y="-25%" width="150%" height="150%">
+    <feGaussianBlur stdDeviation="6" result="b"/>
+    <feFlood flood-color="#FFD700" flood-opacity="0.55" result="c"/>
+    <feComposite in="c" in2="b" operator="in" result="g"/>
+    <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="sf" x="-15%" y="-15%" width="130%" height="130%">
+    <feGaussianBlur stdDeviation="3.5" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+
+<!-- Background -->
+<rect width="390" height="780" fill="url(#bg)"/>
+<ellipse cx="60"  cy="120" rx="220" ry="90"  fill="#1A3A6A" opacity="0.10"/>
+<ellipse cx="340" cy="660" rx="190" ry="80"  fill="#3A1A7A" opacity="0.09"/>
+
+<!-- ── HEADER ── -->
+<rect width="390" height="60" fill="#080E1C" opacity="0.95"/>
+<rect x="10" y="10" width="40" height="40" rx="10" fill="#12203A"/>
+<text x="30" y="35" text-anchor="middle" font-family="Arial" font-size="20" fill="#7A9AC0">←</text>
+<text x="195" y="27" text-anchor="middle" font-family="Arial Black,Arial" font-size="13" font-weight="900" fill="#FFF" letter-spacing="3">LEVEL  4</text>
+<text x="183" y="50" font-family="Arial" font-size="15" fill="#FFD700">★</text>
+<text x="199" y="50" font-family="Arial" font-size="15" fill="#FFD700">★</text>
+<text x="215" y="50" font-family="Arial" font-size="15" fill="#223355">★</text>
+<rect x="340" y="10" width="40" height="40" rx="10" fill="#12203A"/>
+<text x="360" y="35" text-anchor="middle" font-family="Arial" font-size="17" fill="#7A9AC0">↺</text>
+
+<!-- ── MOVES ── -->
+<rect x="110" y="66" width="76" height="44" rx="8" fill="#0E1A2C"/>
+<text x="148" y="89" text-anchor="middle" font-family="Arial Black" font-size="20" font-weight="900" fill="#44AAFF">2</text>
+<text x="148" y="104" text-anchor="middle" font-family="Arial" font-size="10" fill="#3A5070" letter-spacing="2">MOVES</text>
+<rect x="204" y="66" width="76" height="44" rx="8" fill="#0E1A2C"/>
+<text x="242" y="89" text-anchor="middle" font-family="Arial Black" font-size="20" font-weight="900" fill="#253545">5</text>
+<text x="242" y="104" text-anchor="middle" font-family="Arial" font-size="10" fill="#253545" letter-spacing="2">PAR</text>
+
+<!-- ══════════════════════════════════
+     GRID: 5×5, cs=70, ox=20, oy=122
+     Cell(r,c) center: x=20+c*70+35, y=122+r*70+35
+     ══════════════════════════════════ -->
+
+<!-- Grid background -->
+<rect x="20" y="122" width="350" height="350" rx="10" fill="#090F1C"/>
+
+<!-- Cell tiles -->
+<rect x="20"  y="122" width="70" height="70" fill="#0C1626" rx="1"/>
+<rect x="160" y="122" width="70" height="70" fill="#0C1626" rx="1"/>
+<rect x="300" y="122" width="70" height="70" fill="#0C1626" rx="1"/>
+<rect x="90"  y="192" width="70" height="70" fill="#0C1626" rx="1"/>
+<rect x="230" y="192" width="70" height="70" fill="#0C1626" rx="1"/>
+<rect x="20"  y="262" width="70" height="70" fill="#0C1626" rx="1"/>
+<rect x="160" y="262" width="70" height="70" fill="#0C1626" rx="1"/>
+<rect x="300" y="262" width="70" height="70" fill="#0C1626" rx="1"/>
+<rect x="90"  y="332" width="70" height="70" fill="#0C1626" rx="1"/>
+<rect x="230" y="332" width="70" height="70" fill="#0C1626" rx="1"/>
+<rect x="20"  y="402" width="70" height="70" fill="#0C1626" rx="1"/>
+<rect x="160" y="402" width="70" height="70" fill="#0C1626" rx="1"/>
+<rect x="300" y="402" width="70" height="70" fill="#0C1626" rx="1"/>
+
+<!-- Exit cell highlight (row=2, col=4) -->
+<rect x="300" y="262" width="70" height="70" fill="#0A2018" rx="1"/>
+
+<!-- Grid lines -->
+<line x1="90"  y1="122" x2="90"  y2="472" stroke="#111E30" stroke-width="1.5"/>
+<line x1="160" y1="122" x2="160" y2="472" stroke="#111E30" stroke-width="1.5"/>
+<line x1="230" y1="122" x2="230" y2="472" stroke="#111E30" stroke-width="1.5"/>
+<line x1="300" y1="122" x2="300" y2="472" stroke="#111E30" stroke-width="1.5"/>
+<line x1="20"  y1="192" x2="370" y2="192" stroke="#111E30" stroke-width="1.5"/>
+<line x1="20"  y1="262" x2="370" y2="262" stroke="#111E30" stroke-width="1.5"/>
+<line x1="20"  y1="332" x2="370" y2="332" stroke="#111E30" stroke-width="1.5"/>
+<line x1="20"  y1="402" x2="370" y2="402" stroke="#111E30" stroke-width="1.5"/>
+<rect x="20" y="122" width="350" height="350" rx="10" fill="none" stroke="#1E3555" stroke-width="2"/>
+
+<!-- ── MAZE WALL ── -->
+<!-- Wall between col2↔col3 at row1: x=230, y=192→262 -->
+<line x1="230" y1="196" x2="230" y2="258" stroke="#3A7AC8" stroke-width="6" stroke-linecap="round"/>
+<!-- Wall between row3↔row4 at col1: y=402, x=90→160 -->
+<line x1="94" y1="402" x2="156" y2="402" stroke="#3A7AC8" stroke-width="6" stroke-linecap="round"/>
+
+<!-- ── EXIT gap ── -->
+<rect x="367" y="266" width="13" height="62" fill="#090F1C"/>
+<rect x="369" y="268" width="6" height="58" rx="3" fill="#00FF88" opacity="0.85"/>
+<text x="381" y="289" font-family="Arial" font-size="9" font-weight="bold" fill="#00FF88" letter-spacing="0.5">EXIT</text>
+<polygon points="376,297 388,297 382,287" fill="#00FF88" transform="rotate(90 382 297)"/>
+
+<!-- ════════════════ SNAKES ════════════════ -->
+<!-- Cell center(r,c): x=20+c*70+35, y=122+r*70+35 -->
+<!-- c=0:55  c=1:125  c=2:195  c=3:265  c=4:335 -->
+<!-- r=0:157 r=1:227  r=2:297  r=3:367  r=4:437 -->
+
+<!-- Stroke width = cs*0.70 = 49 for main body, 47 for inner -->
+
+<!-- 🟡 TARGET (gold) — L-shape: tail(2,0)→(2,1)→head(1,1) dir=UP -->
+<!-- Points: 55,297  125,297  125,227 -->
+<polyline points="55,297 125,297 125,227"
+  stroke="#FFD700" stroke-width="50" stroke-linecap="round" stroke-linejoin="round" fill="none"
+  filter="url(#gGoldF)"/>
+<!-- inner highlight -->
+<polyline points="55,297 125,297 125,227"
+  stroke="#FFE84D" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.35"/>
+<!-- Scale lines on horizontal segment -->
+<line x1="90" y1="280" x2="90" y2="314" stroke="#CC9900" stroke-width="1.2" opacity="0.5"/>
+<!-- Head at (1,1) = 125,227: eyes up -->
+<circle cx="113" cy="212" r="8"  fill="white"/>
+<circle cx="137" cy="212" r="8"  fill="white"/>
+<circle cx="114" cy="213" r="4.5" fill="#111"/>
+<circle cx="138" cy="213" r="4.5" fill="#111"/>
+<circle cx="112" cy="211" r="2"  fill="white"/>
+<circle cx="136" cy="211" r="2"  fill="white"/>
+<!-- tongue up -->
+<line x1="125" y1="203" x2="125" y2="195" stroke="#FF2255" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="125" y1="195" x2="119" y2="188" stroke="#FF2255" stroke-width="2" stroke-linecap="round"/>
+<line x1="125" y1="195" x2="131" y2="188" stroke="#FF2255" stroke-width="2" stroke-linecap="round"/>
+<!-- crown -->
+<polygon points="113,200 125,188 137,200" fill="#FFD700" opacity="0.95"/>
+
+<!-- 🔴 RED — S-shape: tail(0,2)→(1,2)→(1,3)→head(0,3) dir=UP -->
+<!-- Points: 195,157  195,227  265,227  265,157 -->
+<polyline points="195,157 195,227 265,227 265,157"
+  stroke="#FF4455" stroke-width="50" stroke-linecap="round" stroke-linejoin="round" fill="none"
+  filter="url(#sf)"/>
+<polyline points="195,157 195,227 265,227 265,157"
+  stroke="#FF7788" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.3"/>
+<!-- Scale lines -->
+<line x1="178" y1="192" x2="212" y2="192" stroke="#CC1122" stroke-width="1.2" opacity="0.5"/>
+<line x1="248" y1="192" x2="282" y2="192" stroke="#CC1122" stroke-width="1.2" opacity="0.5"/>
+<!-- Head at (0,3)=265,157: eyes up -->
+<circle cx="253" cy="142" r="7"  fill="white"/>
+<circle cx="277" cy="142" r="7"  fill="white"/>
+<circle cx="254" cy="143" r="4"  fill="#111"/>
+<circle cx="278" cy="143" r="4"  fill="#111"/>
+<circle cx="252" cy="141" r="1.8" fill="white"/>
+<circle cx="276" cy="141" r="1.8" fill="white"/>
+<!-- tongue -->
+<line x1="265" y1="134" x2="265" y2="126" stroke="#FF2255" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="265" y1="126" x2="259" y2="119" stroke="#FF2255" stroke-width="2" stroke-linecap="round"/>
+<line x1="265" y1="126" x2="271" y2="119" stroke="#FF2255" stroke-width="2" stroke-linecap="round"/>
+
+<!-- 🔵 BLUE — L-shape: tail(3,4)→(2,4)→(2,3)→head(3,3) dir=DOWN -->
+<!-- Points: 335,367  335,297  265,297  265,367 -->
+<polyline points="335,367 335,297 265,297 265,367"
+  stroke="#44AAFF" stroke-width="50" stroke-linecap="round" stroke-linejoin="round" fill="none"
+  filter="url(#sf)"/>
+<polyline points="335,367 335,297 265,297 265,367"
+  stroke="#88CCFF" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.3"/>
+<!-- Scale lines -->
+<line x1="248" y1="332" x2="282" y2="332" stroke="#1166CC" stroke-width="1.2" opacity="0.5"/>
+<line x1="318" y1="332" x2="352" y2="332" stroke="#1166CC" stroke-width="1.2" opacity="0.5"/>
+<!-- Head at (3,3)=265,367: eyes down -->
+<circle cx="253" cy="382" r="7"  fill="white"/>
+<circle cx="277" cy="382" r="7"  fill="white"/>
+<circle cx="253" cy="383" r="4"  fill="#111"/>
+<circle cx="277" cy="383" r="4"  fill="#111"/>
+<circle cx="252" cy="381" r="1.8" fill="white"/>
+<circle cx="276" cy="381" r="1.8" fill="white"/>
+<!-- tongue down -->
+<line x1="265" y1="390" x2="265" y2="398" stroke="#FF2255" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="265" y1="398" x2="259" y2="406" stroke="#FF2255" stroke-width="2" stroke-linecap="round"/>
+<line x1="265" y1="398" x2="271" y2="406" stroke="#FF2255" stroke-width="2" stroke-linecap="round"/>
+
+<!-- 🟣 PURPLE — straight: tail(4,1)→(3,1)→head(2,1) dir=UP -->
+<!-- Points: 125,437  125,367  125,297 -->
+<polyline points="125,437 125,367 125,297"
+  stroke="#BB66FF" stroke-width="50" stroke-linecap="round" stroke-linejoin="round" fill="none"
+  filter="url(#sf)"/>
+<polyline points="125,437 125,367 125,297"
+  stroke="#DD99FF" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.3"/>
+<line x1="108" y1="402" x2="142" y2="402" stroke="#7700CC" stroke-width="1.2" opacity="0.5"/>
+<line x1="108" y1="332" x2="142" y2="332" stroke="#7700CC" stroke-width="1.2" opacity="0.5"/>
+<!-- Head at (2,1)=125,297: eyes up -->
+<circle cx="113" cy="282" r="7"  fill="white"/>
+<circle cx="137" cy="282" r="7"  fill="white"/>
+<circle cx="114" cy="283" r="4"  fill="#111"/>
+<circle cx="138" cy="283" r="4"  fill="#111"/>
+<circle cx="112" cy="281" r="1.8" fill="white"/>
+<circle cx="136" cy="281" r="1.8" fill="white"/>
+<!-- tongue -->
+<line x1="125" y1="274" x2="125" y2="266" stroke="#FF2255" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="125" y1="266" x2="119" y2="259" stroke="#FF2255" stroke-width="2" stroke-linecap="round"/>
+<line x1="125" y1="266" x2="131" y2="259" stroke="#FF2255" stroke-width="2" stroke-linecap="round"/>
+
+<!-- 🟢 GREEN — Z-shape: tail(4,3)→(4,4)→(3,4)→head(3,3)... blocked by wall -->
+<!-- Actually let's make it: tail(4,2)→(4,3)→(3,3)→head(3,2) dir=LEFT -->
+<!-- Points: 195,437  265,437  265,367  195,367 -->
+<polyline points="195,437 265,437 265,367 195,367"
+  stroke="#44EE88" stroke-width="50" stroke-linecap="round" stroke-linejoin="round" fill="none"
+  filter="url(#sf)"/>
+<polyline points="195,437 265,437 265,367 195,367"
+  stroke="#88FFBB" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.3"/>
+<line x1="230" y1="420" x2="230" y2="454" stroke="#007733" stroke-width="1.2" opacity="0.5"/>
+<line x1="248" y1="385" x2="282" y2="385" stroke="#007733" stroke-width="1.2" opacity="0.5"/>
+<!-- Head at (3,2)=195,367: eyes left -->
+<circle cx="180" cy="355" r="7"  fill="white"/>
+<circle cx="180" cy="379" r="7"  fill="white"/>
+<circle cx="179" cy="356" r="4"  fill="#111"/>
+<circle cx="179" cy="380" r="4"  fill="#111"/>
+<circle cx="178" cy="355" r="1.8" fill="white"/>
+<circle cx="178" cy="379" r="1.8" fill="white"/>
+<!-- tongue left -->
+<line x1="172" y1="367" x2="164" y2="367" stroke="#FF2255" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="164" y1="367" x2="157" y2="361" stroke="#FF2255" stroke-width="2" stroke-linecap="round"/>
+<line x1="164" y1="367" x2="157" y2="373" stroke="#FF2255" stroke-width="2" stroke-linecap="round"/>
+
+<!-- ── TAP HINT circle on target ── -->
+<circle cx="125" cy="297" r="30" fill="white" opacity="0.05"/>
+<circle cx="125" cy="297" r="30" fill="none" stroke="white" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.25"/>
+<text x="125" y="302" text-anchor="middle" font-family="Arial" font-size="11" fill="white" opacity="0.45">tap</text>
+
+<!-- ── CONTROLS ── -->
+<rect x="0" y="484" width="390" height="1" fill="#1A3050"/>
+<rect x="14" y="494" width="116" height="42" rx="12" fill="#0E1A2C" stroke="#1E3A70" stroke-width="1.5"/>
+<text x="72" y="519" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#4477EE">⟵ Undo</text>
+<text x="262" y="510" text-anchor="middle" font-family="Arial" font-size="12" fill="#33506A">Нажми змейку —</text>
+<text x="262" y="526" text-anchor="middle" font-family="Arial" font-size="12" fill="#33506A">она переползёт</text>
+
+<!-- DIFFICULTY PILLS -->
+<rect x="14"  y="548" width="70"  height="26" rx="13" fill="#0F2710"/>
+<text x="49"  y="565" text-anchor="middle" font-family="Arial" font-size="10" fill="#33EE66">🟢 Лёгкий</text>
+<rect x="92"  y="548" width="78"  height="26" rx="13" fill="#251C08"/>
+<text x="131" y="565" text-anchor="middle" font-family="Arial" font-size="10" fill="#DDAA33">🟡 Средний</text>
+<rect x="178" y="548" width="78"  height="26" rx="13" fill="#25100A"/>
+<text x="217" y="565" text-anchor="middle" font-family="Arial" font-size="10" fill="#EE7733">🟠 Сложный</text>
+<rect x="264" y="548" width="76"  height="26" rx="13" fill="#1C0810"/>
+<text x="302" y="565" text-anchor="middle" font-family="Arial" font-size="10" fill="#EE3344">🔴 Эксперт</text>
+
+<!-- SHARE BANNER -->
+<rect x="14" y="588" width="362" height="72" rx="14" fill="#0C1525" stroke="#1E3A70" stroke-width="1"/>
+<text x="195" y="614" text-anchor="middle" font-family="Arial Black,Arial" font-size="13" font-weight="900" fill="#FFF">🐍 Решил Level 4 за 2 хода!</text>
+<text x="195" y="634" text-anchor="middle" font-family="Arial" font-size="12" fill="#4477CC">⭐⭐★  Слабо повторить? #SnakeSlide</text>
+<rect x="248" y="644" width="118" height="26" rx="9" fill="#1E3A88"/>
+<text x="307" y="661" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="white">📤 Поделиться</text>
+
+<!-- TITLE -->
+<text x="195" y="742" text-anchor="middle" font-family="Arial Black,Arial" font-size="26" font-weight="900" fill="#FFF" letter-spacing="5">SNAKE SLIDE</text>
+<text x="195" y="762" text-anchor="middle" font-family="Arial" font-size="11" fill="#335577" letter-spacing="2.5">TAP · SLITHER · ESCAPE</text>
+</svg>
