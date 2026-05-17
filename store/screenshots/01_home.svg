@@ -1,120 +1,278 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
   <defs>
-    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#060E17"/>
+    <!-- Sky gradient -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#020810"/>
+      <stop offset="40%" stop-color="#060E1C"/>
       <stop offset="100%" stop-color="#0D1B2A"/>
     </linearGradient>
-    <linearGradient id="glowGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#A8DADC" stop-opacity="0.15"/>
-      <stop offset="100%" stop-color="#457B9D" stop-opacity="0.05"/>
+    <!-- Aurora gradients -->
+    <linearGradient id="aur1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00C896" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#00C896" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#0096C8" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0096C8" stop-opacity="0"/>
     </linearGradient>
-    <radialGradient id="logoGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#A8DADC" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="#A8DADC" stop-opacity="0"/>
+    <linearGradient id="aur2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7B2FBE" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#7B2FBE" stop-opacity="0.2"/>
+      <stop offset="70%" stop-color="#00C896" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#00C896" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="aur3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0080FF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00E5CC" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0080FF" stop-opacity="0"/>
+    </linearGradient>
+    <!-- Ice floe gradient -->
+    <linearGradient id="iceFloe" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C8E8F0"/>
+      <stop offset="40%" stop-color="#A0CCE0"/>
+      <stop offset="100%" stop-color="#6AAAC8"/>
+    </linearGradient>
+    <!-- Penguin gradients -->
+    <radialGradient id="pBody" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#2E2E52"/>
+      <stop offset="100%" stop-color="#080820"/>
     </radialGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
+    <radialGradient id="pHead" cx="35%" cy="25%" r="65%">
+      <stop offset="0%" stop-color="#32325A"/>
+      <stop offset="100%" stop-color="#080820"/>
+    </radialGradient>
+    <radialGradient id="pBelly" cx="40%" cy="25%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#E0F4FC"/>
+      <stop offset="100%" stop-color="#B8DCEE"/>
+    </radialGradient>
+    <radialGradient id="pEye" cx="30%" cy="25%" r="70%">
+      <stop offset="0%" stop-color="#2A3070"/>
+      <stop offset="100%" stop-color="#080820"/>
+    </radialGradient>
+    <!-- WADDLE logo gradient -->
+    <linearGradient id="logoGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E8F8FF"/>
+      <stop offset="40%" stop-color="#A8DADC"/>
+      <stop offset="100%" stop-color="#5BA8BC"/>
+    </linearGradient>
+    <!-- Button gradient -->
+    <linearGradient id="btnGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5BA8C8"/>
+      <stop offset="100%" stop-color="#2A6888"/>
+    </linearGradient>
+    <!-- Card gradient -->
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A304A"/>
+      <stop offset="100%" stop-color="#0E1E2E"/>
+    </linearGradient>
+    <!-- Glow filters -->
+    <filter id="logoGlow" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="softGlow">
-      <feGaussianBlur stdDeviation="20" result="blur"/>
+    <filter id="dropShadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="penguinShadow">
+      <feDropShadow dx="0" dy="12" stdDeviation="20" flood-color="#00304A" flood-opacity="0.6"/>
+    </filter>
+    <filter id="btnGlow" x="-10%" y="-30%" width="120%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="1080" height="1920" fill="url(#bgGrad)"/>
+  <!-- ── BACKGROUND ── -->
+  <rect width="1080" height="1920" fill="url(#sky)"/>
 
-  <!-- Subtle stars -->
-  <circle cx="120" cy="200" r="2" fill="#A8DADC" opacity="0.4"/>
-  <circle cx="340" cy="80" r="1.5" fill="#F1FAEE" opacity="0.3"/>
-  <circle cx="800" cy="150" r="2" fill="#A8DADC" opacity="0.5"/>
-  <circle cx="950" cy="320" r="1.5" fill="#F1FAEE" opacity="0.3"/>
-  <circle cx="200" cy="450" r="1" fill="#A8DADC" opacity="0.4"/>
-  <circle cx="900" cy="500" r="2" fill="#F1FAEE" opacity="0.2"/>
-  <circle cx="60" cy="700" r="1.5" fill="#A8DADC" opacity="0.3"/>
-  <circle cx="1020" cy="750" r="1" fill="#F1FAEE" opacity="0.4"/>
+  <!-- Stars field -->
+  <circle cx="80"  cy="120" r="1.5" fill="white" opacity="0.8"/>
+  <circle cx="220" cy="60"  r="1"   fill="white" opacity="0.6"/>
+  <circle cx="380" cy="90"  r="2"   fill="white" opacity="0.7"/>
+  <circle cx="520" cy="40"  r="1.5" fill="white" opacity="0.9"/>
+  <circle cx="660" cy="100" r="1"   fill="white" opacity="0.5"/>
+  <circle cx="780" cy="55"  r="2"   fill="white" opacity="0.8"/>
+  <circle cx="920" cy="130" r="1.5" fill="white" opacity="0.6"/>
+  <circle cx="1020" cy="70" r="1"   fill="white" opacity="0.7"/>
+  <circle cx="140" cy="250" r="1"   fill="white" opacity="0.4"/>
+  <circle cx="460" cy="200" r="1.5" fill="white" opacity="0.5"/>
+  <circle cx="700" cy="180" r="1"   fill="white" opacity="0.6"/>
+  <circle cx="950" cy="220" r="1.5" fill="white" opacity="0.4"/>
+  <circle cx="310" cy="310" r="1"   fill="#A8DADC" opacity="0.5"/>
+  <circle cx="860" cy="280" r="1.5" fill="#A8DADC" opacity="0.4"/>
 
-  <!-- Ice crystal decorations top -->
-  <polygon points="150,300 170,260 190,300 170,280" fill="#A8DADC" opacity="0.12"/>
-  <polygon points="880,200 900,160 920,200 900,180" fill="#A8DADC" opacity="0.10"/>
+  <!-- ── AURORA BOREALIS ── -->
+  <!-- Aurora band 1 (green-teal, main) -->
+  <path d="M-100,480 Q200,360 540,400 Q880,440 1180,350" stroke="url(#aur1)" stroke-width="90" fill="none" opacity="0.7"/>
+  <!-- Aurora band 2 (purple accent) -->
+  <path d="M-100,580 Q150,480 540,510 Q900,540 1180,460" stroke="url(#aur2)" stroke-width="70" fill="none" opacity="0.8"/>
+  <!-- Aurora band 3 (blue-green, thin) -->
+  <path d="M-100,420 Q280,320 540,350 Q800,380 1180,300" stroke="url(#aur3)" stroke-width="50" fill="none" opacity="0.6"/>
+  <!-- Aurora shimmer highlight -->
+  <path d="M-100,450 Q300,370 540,390 Q780,410 1180,330" stroke="#00FFB4" stroke-width="8" fill="none" opacity="0.12"/>
 
-  <!-- Hero section -->
-  <!-- Glow circle behind penguin -->
-  <ellipse cx="540" cy="580" rx="280" ry="280" fill="url(#logoGlow)"/>
+  <!-- ── ICE FLOE (bottom) ── -->
+  <ellipse cx="540" cy="1820" rx="680" ry="220" fill="#1A3A5C" opacity="0.7"/>
+  <ellipse cx="540" cy="1790" rx="580" ry="170" fill="url(#iceFloe)" opacity="0.9"/>
+  <!-- Ice surface highlight -->
+  <ellipse cx="480" cy="1755" rx="380" ry="60" fill="white" opacity="0.15"/>
+  <!-- Ice cracks -->
+  <path d="M200,1800 L280,1770 L350,1790 L430,1760" stroke="white" stroke-width="2" fill="none" opacity="0.15"/>
+  <path d="M600,1775 L680,1800 L750,1780" stroke="white" stroke-width="1.5" fill="none" opacity="0.12"/>
+  <!-- Small snow detail -->
+  <circle cx="180" cy="1810" r="6" fill="white" opacity="0.25"/>
+  <circle cx="900" cy="1800" r="5" fill="white" opacity="0.2"/>
+  <circle cx="450" cy="1820" r="8" fill="white" opacity="0.18"/>
 
-  <!-- Penguin icon card -->
-  <rect x="390" y="380" width="300" height="300" rx="60" fill="#122233" stroke="#A8DADC" stroke-width="3" opacity="0.95"/>
-  <rect x="390" y="380" width="300" height="300" rx="60" fill="url(#glowGrad)"/>
+  <!-- ── PENGUIN CHARACTER ── -->
+  <g filter="url(#penguinShadow)">
+  <g transform="translate(540,940)">
+    <!-- Shadow on ice -->
+    <ellipse cx="0" cy="245" rx="110" ry="28" fill="#001828" opacity="0.5"/>
 
-  <!-- Penguin SVG character -->
-  <!-- Body (dark) -->
-  <ellipse cx="540" cy="560" rx="90" ry="105" fill="#1A1A2E"/>
-  <!-- Belly (white) -->
-  <ellipse cx="540" cy="570" rx="52" ry="70" fill="#E8F4F8"/>
-  <!-- Head -->
-  <ellipse cx="540" cy="450" rx="72" ry="68" fill="#1A1A2E"/>
-  <!-- Eyes -->
-  <circle cx="516" cy="438" r="14" fill="white"/>
-  <circle cx="564" cy="438" r="14" fill="white"/>
-  <circle cx="519" cy="440" r="8" fill="#0D1B2A"/>
-  <circle cx="567" cy="440" r="8" fill="#0D1B2A"/>
-  <circle cx="522" cy="437" r="3" fill="white"/>
-  <circle cx="570" cy="437" r="3" fill="white"/>
-  <!-- Beak -->
-  <polygon points="540,458 524,472 556,472" fill="#FF8C00"/>
-  <!-- Wings -->
-  <ellipse cx="444" cy="548" rx="30" ry="68" fill="#1A1A2E" transform="rotate(-15,444,548)"/>
-  <ellipse cx="636" cy="548" rx="30" ry="68" fill="#1A1A2E" transform="rotate(15,636,548)"/>
-  <!-- Feet -->
-  <ellipse cx="512" cy="655" rx="28" ry="12" fill="#FF8C00" transform="rotate(-10,512,655)"/>
-  <ellipse cx="568" cy="655" rx="28" ry="12" fill="#FF8C00" transform="rotate(10,568,655)"/>
-  <!-- Scarf -->
-  <rect x="468" y="490" width="144" height="26" rx="13" fill="#A8DADC" opacity="0.9"/>
+    <!-- Wings (behind body) -->
+    <ellipse cx="-118" cy="50" rx="32" ry="88" fill="url(#pBody)" transform="rotate(-20,-118,50)"/>
+    <ellipse cx="118"  cy="50" rx="32" ry="88" fill="url(#pBody)" transform="rotate(20,118,50)"/>
+    <!-- Wing inner highlight -->
+    <ellipse cx="-100" cy="30" rx="14" ry="38" fill="#2A2A52" opacity="0.5" transform="rotate(-20,-100,30)"/>
+    <ellipse cx="100"  cy="30" rx="14" ry="38" fill="#2A2A52" opacity="0.5" transform="rotate(20,100,30)"/>
 
-  <!-- Title -->
-  <text x="540" y="780" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="130" font-weight="900" fill="#A8DADC" filter="url(#glow)" letter-spacing="20">WADDLE</text>
+    <!-- Body -->
+    <ellipse cx="0" cy="70" rx="95" ry="120" fill="url(#pBody)"/>
+    <!-- Body side highlight (left rim light) -->
+    <ellipse cx="-60" cy="30" rx="20" ry="60" fill="#3A3A68" opacity="0.45"/>
+
+    <!-- Belly -->
+    <ellipse cx="0" cy="82" rx="60" ry="84" fill="url(#pBelly)"/>
+    <!-- Belly sheen -->
+    <ellipse cx="-12" cy="55" rx="28" ry="40" fill="white" opacity="0.22"/>
+
+    <!-- Feet -->
+    <ellipse cx="-34" cy="230" rx="38" ry="18" fill="#FF8C00" transform="rotate(-12,-34,230)"/>
+    <ellipse cx="34"  cy="230" rx="38" ry="18" fill="#FF8C00" transform="rotate(12,34,230)"/>
+    <!-- Feet shadow -->
+    <ellipse cx="-34" cy="238" rx="32" ry="10" fill="#C05000" opacity="0.4" transform="rotate(-12,-34,238)"/>
+    <ellipse cx="34"  cy="238" rx="32" ry="10" fill="#C05000" opacity="0.4" transform="rotate(12,34,238)"/>
+
+    <!-- Scarf (ice blue) -->
+    <rect x="-78" y="-18" width="156" height="36" rx="18" fill="#5BC8D8"/>
+    <rect x="-65" y="-14" width="130" height="16" rx="8" fill="#8AE0EC" opacity="0.5"/>
+    <rect x="-78" y="-4"  width="156" height="8"  rx="4" fill="#2A9AB0" opacity="0.4"/>
+
+    <!-- Head -->
+    <circle cx="0" cy="-105" r="90" fill="url(#pHead)"/>
+    <!-- Head rim light -->
+    <ellipse cx="-35" cy="-140" rx="32" ry="28" fill="#3A3A68" opacity="0.4"/>
+
+    <!-- Eyes (large, expressive) -->
+    <circle cx="-30" cy="-112" r="26" fill="white"/>
+    <circle cx="30"  cy="-112" r="26" fill="white"/>
+    <!-- Eye shadow (top lid) -->
+    <path d="M-54,-128 Q-30,-140 -6,-128" stroke="#E0ECFF" stroke-width="4" fill="none" opacity="0.5"/>
+    <path d="M6,-128 Q30,-140 54,-128" stroke="#E0ECFF" stroke-width="4" fill="none" opacity="0.5"/>
+    <!-- Pupils -->
+    <circle cx="-26" cy="-110" r="18" fill="url(#pEye)"/>
+    <circle cx="34"  cy="-110" r="18" fill="url(#pEye)"/>
+    <!-- Eye shine (main) -->
+    <circle cx="-18" cy="-120" r="7"  fill="white"/>
+    <circle cx="42"  cy="-120" r="7"  fill="white"/>
+    <!-- Eye shine (small) -->
+    <circle cx="-14" cy="-112" r="3.5" fill="white" opacity="0.6"/>
+    <circle cx="46"  cy="-112" r="3.5" fill="white" opacity="0.6"/>
+
+    <!-- Eyebrows (friendly angle) -->
+    <path d="M-52,-134 Q-30,-148 -8,-136" stroke="#1A1A3A" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M8,-136 Q30,-148 52,-134" stroke="#1A1A3A" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+    <!-- Cheek blush -->
+    <ellipse cx="-58" cy="-95" rx="22" ry="14" fill="#FF9AC0" opacity="0.28"/>
+    <ellipse cx="58"  cy="-95" rx="22" ry="14" fill="#FF9AC0" opacity="0.28"/>
+
+    <!-- Beak -->
+    <ellipse cx="0" cy="-86" rx="18" ry="13" fill="#FF8C00"/>
+    <ellipse cx="0" cy="-80" rx="15" ry="7"  fill="#D06000" opacity="0.5"/>
+    <ellipse cx="0" cy="-90" rx="10" ry="5"  fill="#FFA030" opacity="0.6"/>
+    <!-- Beak line -->
+    <line x1="-16" y1="-86" x2="16" y2="-86" stroke="#C05500" stroke-width="2" opacity="0.5"/>
+
+    <!-- Sparkles around penguin -->
+    <g fill="#A8DADC" opacity="0.7">
+      <text x="-175" y="-80" font-size="36">✦</text>
+      <text x="135"  y="-90" font-size="28">✦</text>
+      <text x="-155" y="80"  font-size="20">✦</text>
+      <text x="155"  y="60"  font-size="24">✦</text>
+    </g>
+  </g>
+  </g>
+
+  <!-- ── WADDLE LOGO ── -->
+  <!-- Shadow layer -->
+  <text x="540" y="680" text-anchor="middle"
+        font-family="Arial Black, Impact, sans-serif"
+        font-size="148" font-weight="900" letter-spacing="18"
+        fill="#003A5A" opacity="0.6">WADDLE</text>
+  <!-- Main text -->
+  <text x="540" y="672" text-anchor="middle"
+        font-family="Arial Black, Impact, sans-serif"
+        font-size="148" font-weight="900" letter-spacing="18"
+        fill="url(#logoGrad)" filter="url(#logoGlow)">WADDLE</text>
+  <!-- Ice outline effect -->
+  <text x="540" y="672" text-anchor="middle"
+        font-family="Arial Black, Impact, sans-serif"
+        font-size="148" font-weight="900" letter-spacing="18"
+        fill="none" stroke="#C8F0FF" stroke-width="1.5" opacity="0.4">WADDLE</text>
 
   <!-- Tagline -->
-  <text x="540" y="850" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#457B9D" letter-spacing="8">SLIDE • ESCAPE • WADDLE</text>
+  <text x="540" y="730" text-anchor="middle"
+        font-family="Arial, sans-serif" font-size="34"
+        fill="#7AB8CC" letter-spacing="10" opacity="0.9">SLIDE · ESCAPE · WADDLE</text>
 
-  <!-- Stats bar -->
-  <rect x="80" y="960" width="920" height="120" rx="24" fill="#122233" opacity="0.9"/>
-  <!-- Stat 1 -->
-  <text x="230" y="1010" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#A8DADC">200</text>
-  <text x="230" y="1048" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#457B9D" letter-spacing="3">LEVELS</text>
-  <!-- Divider -->
-  <rect x="388" y="980" width="2" height="80" fill="#0A1622"/>
-  <!-- Stat 2 -->
-  <text x="540" y="1010" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#A8DADC">2.5D</text>
-  <text x="540" y="1048" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#457B9D" letter-spacing="3">ISOMETRIC</text>
-  <!-- Divider -->
-  <rect x="692" y="980" width="2" height="80" fill="#0A1622"/>
-  <!-- Stat 3 -->
-  <text x="850" y="1010" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#A8DADC">∞</text>
-  <text x="850" y="1048" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#457B9D" letter-spacing="3">UNDO</text>
+  <!-- ── STATS BAR ── -->
+  <rect x="80" y="1370" width="920" height="130" rx="28" fill="url(#cardGrad)" opacity="0.96"
+        filter="url(#dropShadow)"/>
+  <rect x="80" y="1370" width="920" height="130" rx="28" fill="none"
+        stroke="#2A5070" stroke-width="1.5"/>
+  <!-- Stat: Levels -->
+  <text x="236" y="1428" text-anchor="middle" font-family="Arial Black,sans-serif"
+        font-size="52" font-weight="900" fill="#A8DADC">200</text>
+  <text x="236" y="1465" text-anchor="middle" font-family="Arial,sans-serif"
+        font-size="24" fill="#4A7890" letter-spacing="4">LEVELS</text>
+  <line x1="400" y1="1395" x2="400" y2="1485" stroke="#1A3A55" stroke-width="2"/>
+  <!-- Stat: Mode -->
+  <text x="540" y="1428" text-anchor="middle" font-family="Arial Black,sans-serif"
+        font-size="52" font-weight="900" fill="#A8DADC">2.5D</text>
+  <text x="540" y="1465" text-anchor="middle" font-family="Arial,sans-serif"
+        font-size="24" fill="#4A7890" letter-spacing="4">ISOMETRIC</text>
+  <line x1="680" y1="1395" x2="680" y2="1485" stroke="#1A3A55" stroke-width="2"/>
+  <!-- Stat: Undo -->
+  <text x="844" y="1432" text-anchor="middle" font-family="Arial Black,sans-serif"
+        font-size="58" font-weight="900" fill="#A8DADC">∞</text>
+  <text x="844" y="1465" text-anchor="middle" font-family="Arial,sans-serif"
+        font-size="24" fill="#4A7890" letter-spacing="4">UNDO</text>
 
-  <!-- Play button -->
-  <rect x="180" y="1140" width="720" height="120" rx="60" fill="#457B9D"/>
-  <rect x="180" y="1140" width="720" height="120" rx="60" fill="url(#glowGrad)" opacity="0.5"/>
-  <text x="540" y="1220" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="56" font-weight="900" fill="#F1FAEE" letter-spacing="16">PLAY</text>
+  <!-- ── PLAY BUTTON ── -->
+  <!-- Glow -->
+  <rect x="190" y="1545" width="700" height="122" rx="61" fill="#4A90A8" filter="url(#btnGlow)" opacity="0.6"/>
+  <!-- Button body -->
+  <rect x="190" y="1545" width="700" height="122" rx="61" fill="url(#btnGrad)"/>
+  <!-- Button top highlight -->
+  <rect x="210" y="1550" width="660" height="48" rx="50" fill="white" opacity="0.08"/>
+  <!-- Button stroke -->
+  <rect x="190" y="1545" width="700" height="122" rx="61" fill="none"
+        stroke="#88CCE0" stroke-width="1.5" opacity="0.5"/>
+  <!-- Play text -->
+  <text x="540" y="1630" text-anchor="middle"
+        font-family="Arial Black, Impact, sans-serif"
+        font-size="58" font-weight="900" fill="white" letter-spacing="18">PLAY</text>
 
-  <!-- Subtitle hint -->
-  <text x="540" y="1340" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#457B9D">Смахни пингвина — он скользит до стены</text>
-  <text x="540" y="1385" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#457B9D">Освободи путь золотому пингвину!</text>
+  <!-- Tagline below button -->
+  <text x="540" y="1720" text-anchor="middle" font-family="Arial,sans-serif"
+        font-size="30" fill="#3A6880" opacity="0.9">Скользи по льду · Спасай пингвинов</text>
 
-  <!-- Ice floe decoration bottom -->
-  <ellipse cx="540" cy="1820" rx="600" ry="180" fill="#122233" opacity="0.4"/>
-  <ellipse cx="540" cy="1820" rx="440" ry="130" fill="#1A4A6E" opacity="0.3"/>
-  <!-- Small penguins bottom -->
-  <ellipse cx="300" cy="1790" rx="35" ry="42" fill="#1A1A2E" opacity="0.8"/>
-  <ellipse cx="300" cy="1782" rx="20" ry="28" fill="#E8F4F8" opacity="0.7"/>
-  <ellipse cx="300" cy="1758" rx="28" ry="26" fill="#1A1A2E" opacity="0.8"/>
-
-  <ellipse cx="780" cy="1790" rx="35" ry="42" fill="#1A1A2E" opacity="0.8"/>
-  <ellipse cx="780" cy="1782" rx="20" ry="28" fill="#E8F4F8" opacity="0.7"/>
-  <ellipse cx="780" cy="1758" rx="28" ry="26" fill="#1A1A2E" opacity="0.8"/>
-
-  <!-- Footer -->
-  <text x="540" y="1900" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#2A3A4C">© 2025 SonoBzy</text>
+  <!-- Copyright -->
+  <text x="540" y="1890" text-anchor="middle" font-family="Arial,sans-serif"
+        font-size="22" fill="#1E3040" opacity="0.7">© 2025 SonoBzy</text>
 </svg>
