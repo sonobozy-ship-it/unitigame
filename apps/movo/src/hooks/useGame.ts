@@ -1,90 +1,123 @@
 import { useState, useCallback, useRef } from 'react';
-import { Level, Vehicle } from '../data/levels';
-
-export type Direction = 'up' | 'down' | 'left' | 'right';
+import { Level, SnakeDef, Wall, Direction, ExitSide } from '../data/levels';
 
 export interface GameState {
-  vehicles: Vehicle[];
+  snakes: SnakeDef[];
   moveCount: number;
   won: boolean;
-  history: Vehicle[][];
+  history: SnakeDef[][];
 }
 
-function deepCloneVehicles(vehicles: Vehicle[]): Vehicle[] {
-  return vehicles.map(v => ({ ...v }));
+function clone(snakes: SnakeDef[]): SnakeDef[] {
+  return snakes.map(s => ({ ...s }));
 }
 
-function buildGrid(vehicles: Vehicle[], size: number): (string | null)[][] {
-  const grid: (string | null)[][] = Array.from({ length: size }, () => Array(size).fill(null));
-  for (const v of vehicles) {
-    for (let i = 0; i < v.length; i++) {
-      const r = v.orientation === 'H' ? v.row : v.row + i;
-      const c = v.orientation === 'H' ? v.col + i : v.col;
-      if (r >= 0 && r < size && c >= 0 && c < size) {
-        grid[r][c] = v.id;
-      }
+// Cells occupied by a snake
+function cells(s: SnakeDef): [number, number][] {
+  const result: [number, number][] = [];
+  for (let i = 0; i < s.length; i++) {
+    if (s.direction === 'right' || s.direction === 'left') {
+      result.push([s.row, s.col + i]);
+    } else {
+      result.push([s.row + i, s.col]);
     }
   }
-  return grid;
+  return result;
 }
 
-function canMove(vehicle: Vehicle, direction: Direction, vehicles: Vehicle[], gridSize: number): boolean {
-  const grid = buildGrid(vehicles, gridSize);
-  
-  if (vehicle.orientation === 'H') {
-    if (direction === 'up' || direction === 'down') return false;
-    if (direction === 'left') {
-      const nextCol = vehicle.col - 1;
-      if (nextCol < 0) return false;
-      return grid[vehicle.row][nextCol] === null;
-    }
-    if (direction === 'right') {
-      const nextCol = vehicle.col + vehicle.length;
-      if (nextCol >= gridSize) return vehicle.isTarget; // target can exit
-      return grid[vehicle.row][nextCol] === null;
-    }
-  } else {
-    if (direction === 'left' || direction === 'right') return false;
-    if (direction === 'up') {
-      const nextRow = vehicle.row - 1;
-      if (nextRow < 0) return false;
-      return grid[nextRow][vehicle.col] === null;
-    }
-    if (direction === 'down') {
-      const nextRow = vehicle.row + vehicle.length;
-      if (nextRow >= gridSize) return false;
-      return grid[nextRow][vehicle.col] === null;
+// Head cell (the end that moves first)
+function headCell(s: SnakeDef): [number, number] {
+  switch (s.direction) {
+    case 'right': return [s.row, s.col + s.length - 1];
+    case 'left':  return [s.row, s.col];
+    case 'down':  return [s.row + s.length - 1, s.col];
+    case 'up':    return [s.row, s.col];
+  }
+}
+
+function dirDelta(d: Direction): [number, number] {
+  switch (d) {
+    case 'right': return [0, 1];
+    case 'left':  return [0, -1];
+    case 'down':  return [1, 0];
+    case 'up':    return [-1, 0];
+  }
+}
+
+function hasWall(r: number, c: number, dr: number, dc: number, walls: Wall[]): boolean {
+  const nr = r + dr;
+  const nc = c + dc;
+  return walls.some(w =>
+    (w.r1 === r && w.c1 === c && w.r2 === nr && w.c2 === nc) ||
+    (w.r1 === nr && w.c1 === nc && w.r2 === r && w.c2 === c),
+  );
+}
+
+// Check if cell (r,c) is occupied by any snake other than excludeId
+function occupied(r: number, c: number, snakes: SnakeDef[], excludeId: string): boolean {
+  for (const s of snakes) {
+    if (s.id === excludeId) continue;
+    for (const [sr, sc] of cells(s)) {
+      if (sr === r && sc === c) return true;
     }
   }
   return false;
 }
 
-function maxMoves(vehicle: Vehicle, direction: Direction, vehicles: Vehicle[], gridSize: number): number {
-  let count = 0;
-  const tempVehicles = deepCloneVehicles(vehicles);
-  const tv = tempVehicles.find(v => v.id === vehicle.id)!;
-  
-  while (canMove(tv, direction, tempVehicles, gridSize)) {
-    if (direction === 'left') tv.col -= 1;
-    else if (direction === 'right') tv.col += 1;
-    else if (direction === 'up') tv.row -= 1;
-    else if (direction === 'down') tv.row += 1;
-    count++;
-    if (tv.isTarget && direction === 'right' && tv.col + tv.length >= gridSize) break;
-    if (count > gridSize) break;
+// How many steps the snake can slide in its direction
+function calcSteps(snake: SnakeDef, snakes: SnakeDef[], walls: Wall[], size: number, exitSide: ExitSide, exitIndex: number): number {
+  const [dr, dc] = dirDelta(snake.direction);
+  const [hr, hc] = headCell(snake);
+  let steps = 0;
+
+  while (true) {
+    const checkR = hr + (steps + 1) * dr;
+    const checkC = hc + (steps + 1) * dc;
+
+    // Wall between current head position and next
+    const curR = hr + steps * dr;
+    const curC = hc + steps * dc;
+    if (hasWall(curR, curC, dr, dc, walls)) break;
+
+    // Out of bounds — allow if this is the exit
+    if (checkR < 0 || checkR >= size || checkC < 0 || checkC >= size) {
+      if (snake.isTarget && isExitDirection(snake.direction, exitSide) && exitIndex === (snake.direction === 'right' || snake.direction === 'left' ? hr : hc)) {
+        steps++; // allow one step out (win move)
+      }
+      break;
+    }
+
+    // Blocked by another snake
+    if (occupied(checkR, checkC, snakes, snake.id)) break;
+
+    steps++;
   }
-  return count;
+  return steps;
 }
 
-function checkWin(vehicles: Vehicle[], gridSize: number): boolean {
-  const target = vehicles.find(v => v.isTarget);
-  if (!target) return false;
-  return target.col + target.length >= gridSize;
+function isExitDirection(dir: Direction, exitSide: ExitSide): boolean {
+  return (
+    (dir === 'right' && exitSide === 'right') ||
+    (dir === 'left'  && exitSide === 'left')  ||
+    (dir === 'down'  && exitSide === 'bottom') ||
+    (dir === 'up'    && exitSide === 'top')
+  );
+}
+
+function checkWin(snake: SnakeDef, size: number, exitSide: ExitSide, exitIndex: number): boolean {
+  const [hr, hc] = headCell(snake);
+  if (!isExitDirection(snake.direction, exitSide)) return false;
+  switch (exitSide) {
+    case 'right':  return hc >= size && hr === exitIndex;
+    case 'left':   return hc < 0 && hr === exitIndex;
+    case 'bottom': return hr >= size && hc === exitIndex;
+    case 'top':    return hr < 0 && hc === exitIndex;
+  }
 }
 
 export function useGame(level: Level) {
   const [state, setState] = useState<GameState>({
-    vehicles: deepCloneVehicles(level.vehicles),
+    snakes: clone(level.snakes),
     moveCount: 0,
     won: false,
     history: [],
@@ -95,91 +128,51 @@ export function useGame(level: Level) {
 
   const resetGame = useCallback((newLevel?: Level) => {
     const l = newLevel ?? levelRef.current;
-    setState({
-      vehicles: deepCloneVehicles(l.vehicles),
-      moveCount: 0,
-      won: false,
-      history: [],
-    });
+    setState({ snakes: clone(l.snakes), moveCount: 0, won: false, history: [] });
   }, []);
 
-  const moveVehicle = useCallback((vehicleId: string, direction: Direction, steps?: number) => {
+  const tapSnake = useCallback((id: string) => {
     setState(prev => {
       if (prev.won) return prev;
-      
-      const vehicle = prev.vehicles.find(v => v.id === vehicleId);
-      if (!vehicle) return prev;
-      if (!canMove(vehicle, direction, prev.vehicles, level.size)) return prev;
+      const snake = prev.snakes.find(s => s.id === id);
+      if (!snake) return prev;
 
-      const newVehicles = deepCloneVehicles(prev.vehicles);
-      const tv = newVehicles.find(v => v.id === vehicleId)!;
-      
-      const stepsToMove = steps ?? maxMoves(tv, direction, newVehicles, level.size);
-      const clampedSteps = Math.max(1, Math.min(stepsToMove, level.size));
+      const { walls, size, exitSide, exitIndex } = levelRef.current;
+      const steps = calcSteps(snake, prev.snakes, walls, size, exitSide, exitIndex);
+      if (steps === 0) return prev;
 
-      let moved = 0;
-      for (let i = 0; i < clampedSteps; i++) {
-        if (!canMove(tv, direction, newVehicles, level.size)) break;
-        if (direction === 'left') tv.col -= 1;
-        else if (direction === 'right') tv.col += 1;
-        else if (direction === 'up') tv.row -= 1;
-        else if (direction === 'down') tv.row += 1;
-        moved++;
-        if (tv.isTarget && direction === 'right' && tv.col + tv.length >= level.size) break;
-      }
+      const [dr, dc] = dirDelta(snake.direction);
+      const newSnakes = clone(prev.snakes);
+      const ns = newSnakes.find(s => s.id === id)!;
+      ns.row += dr * steps;
+      ns.col += dc * steps;
 
-      if (moved === 0) return prev;
-
-      const won = checkWin(newVehicles, level.size);
+      const won = checkWin(ns, size, exitSide, exitIndex);
 
       return {
-        vehicles: newVehicles,
+        snakes: newSnakes,
         moveCount: prev.moveCount + 1,
         won,
-        history: [...prev.history, deepCloneVehicles(prev.vehicles)],
+        history: [...prev.history, clone(prev.snakes)],
       };
     });
-  }, [level.size]);
+  }, []);
 
   const undoMove = useCallback(() => {
     setState(prev => {
       if (prev.history.length === 0) return prev;
-      const newHistory = [...prev.history];
-      const previousVehicles = newHistory.pop()!;
-      return {
-        vehicles: previousVehicles,
-        moveCount: prev.moveCount - 1,
-        won: false,
-        history: newHistory,
-      };
+      const history = [...prev.history];
+      const previous = history.pop()!;
+      return { snakes: previous, moveCount: prev.moveCount - 1, won: false, history };
     });
   }, []);
 
   const getStars = useCallback((moves: number): number => {
-    if (moves <= level.par) return 3;
-    if (moves <= level.par * 1.5) return 2;
+    const { par } = levelRef.current;
+    if (moves <= par) return 3;
+    if (moves <= Math.ceil(par * 1.5)) return 2;
     return 1;
-  }, [level.par]);
+  }, []);
 
-  const canMoveVehicle = useCallback((vehicleId: string, direction: Direction): boolean => {
-    const vehicle = state.vehicles.find(v => v.id === vehicleId);
-    if (!vehicle) return false;
-    return canMove(vehicle, direction, state.vehicles, level.size);
-  }, [state.vehicles, level.size]);
-
-  const getMaxMoves = useCallback((vehicleId: string, direction: Direction): number => {
-    const vehicle = state.vehicles.find(v => v.id === vehicleId);
-    if (!vehicle) return 0;
-    return maxMoves(vehicle, direction, state.vehicles, level.size);
-  }, [state.vehicles, level.size]);
-
-  return {
-    state,
-    moveVehicle,
-    undoMove,
-    resetGame,
-    getStars,
-    canMoveVehicle,
-    getMaxMoves,
-  };
+  return { state, tapSnake, undoMove, resetGame, getStars };
 }
