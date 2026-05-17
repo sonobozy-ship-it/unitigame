@@ -1,28 +1,32 @@
 export const COLORS = {
   // Background
-  bg: '#1A1A2E',
-  bgDark: '#0D0D1A',
-  bgCard: '#16213E',
-  bgCardDark: '#0F3460',
+  bg: '#0D1B2A',
+  bgDark: '#060E17',
+  bgCard: '#122233',
+  bgCardDark: '#0A1622',
 
-  // Accents
-  primary: '#00D4FF',
-  primaryDark: '#00A0CC',
-  secondary: '#FF6B9D',
-  accent: '#FFD700',
+  // Brand / ice palette
+  primary: '#A8DADC',       // ice blue
+  primaryDark: '#78B9BC',
+  secondary: '#F1FAEE',     // white
+  accent: '#457B9D',        // teal
+
+  // Penguin colors
+  penguinBlack: '#1A1A2A',
+  penguinBelly: '#F1FAEE',
+  penguinBeak: '#FF8C00',
+  penguinFeet: '#FF8C00',
 
   // Text
-  textPrimary: '#FFFFFF',
-  textSecondary: '#A0A0B0',
-  textMuted: '#606080',
+  textPrimary: '#F1FAEE',
+  textSecondary: '#A8DADC',
+  textMuted: '#457B9D',
 
-  // Target car
-  targetCar: '#FF4444',
-  targetCarTop: '#FF6666',
-  targetCarSide: '#CC2222',
+  // Target penguin
+  targetGlow: '#FFD700',
 
-  // Car palette
-  carColors: [
+  // Penguin palette (for non-target penguins)
+  penguinColors: [
     '#4ECDC4',
     '#45B7D1',
     '#96CEB4',
@@ -40,19 +44,21 @@ export const COLORS = {
     '#D7BDE2',
   ],
 
-  // Grid / board
-  tile: '#1E2840',
-  tileDark: '#161E30',
-  tileEdge: '#2A3A5C',
-  boardBg: '#0F1629',
-  exitGlow: '#00FF88',
+  // Grid / board (ice floe)
+  tile: '#C8E8EA',
+  tileDark: '#A8D0D2',
+  tileEdge: '#78B0B2',
+  tileHighlight: '#E8F8FA',
+  boardBg: '#0D1B2A',
+  exitGlow: '#A8DADC',
+  water: '#1A3A5C',
 
   // UI elements
-  buttonPrimary: '#00D4FF',
-  buttonSecondary: '#FF6B9D',
-  buttonDisabled: '#3A3A5C',
+  buttonPrimary: '#457B9D',
+  buttonSecondary: '#A8DADC',
+  buttonDisabled: '#2A3A4C',
   starActive: '#FFD700',
-  starInactive: '#3A3A5C',
+  starInactive: '#2A3A4C',
 
   // Stars
   star1: '#FFD700',
@@ -60,4 +66,4 @@ export const COLORS = {
   star3: '#FF6B00',
 };
 
-export type CarColor = typeof COLORS.carColors[number];
+export type PenguinColor = typeof COLORS.penguinColors[number];

@@ -9,13 +9,13 @@ export const SCREEN = {
 
 export const TILE_W = 56;
 export const TILE_H = 28; // TILE_W / 2
-export const CAR_HEIGHT = 22; // 3D extrusion height for cars
+export const PENGUIN_HEIGHT = 20; // 3D extrusion / elevation for penguins
 export const GRID_SIZE = 6;
 
 // Board origin offset (top of the isometric grid on screen)
 // Centers the grid horizontally
 export const BOARD_ORIGIN_X = width / 2;
-export const BOARD_ORIGIN_Y = 60; // pixels from top of board area
+export const BOARD_ORIGIN_Y = 80; // pixels from top of board area
 
 export const THEME = {
   borderRadius: {
