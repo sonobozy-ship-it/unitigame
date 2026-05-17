@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#060E17"/>
+      <stop offset="100%" stop-color="#0D1B2A"/>
+    </linearGradient>
+    <linearGradient id="iceGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A4A6E"/>
+      <stop offset="100%" stop-color="#1C3D5A"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="goldGlow">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#bgGrad)"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1080" height="110" fill="#122233"/>
+  <!-- Back button -->
+  <rect x="20" y="18" width="74" height="74" rx="16" fill="#0A1622"/>
+  <text x="57" y="66" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" fill="#F1FAEE">←</text>
+  <!-- Level label -->
+  <text x="540" y="52" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="36" fill="#F1FAEE" letter-spacing="4">LEVEL 12</text>
+  <!-- Stars in header -->
+  <text x="480" y="92" font-family="Arial, sans-serif" font-size="28" fill="#FFD700">★</text>
+  <text x="520" y="92" font-family="Arial, sans-serif" font-size="28" fill="#FFD700">★</text>
+  <text x="560" y="92" font-family="Arial, sans-serif" font-size="28" fill="#2A3A4C">★</text>
+  <!-- Reset button -->
+  <rect x="986" y="18" width="74" height="74" rx="16" fill="#0A1622"/>
+  <text x="1023" y="66" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" fill="#F1FAEE">↺</text>
+
+  <!-- Moves / Par row -->
+  <text x="340" y="200" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="80" fill="#F1FAEE">7</text>
+  <text x="340" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#457B9D" letter-spacing="4">MOVES</text>
+  <text x="740" y="200" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="80" fill="#457B9D">9</text>
+  <text x="740" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#457B9D" letter-spacing="4">PAR</text>
+
+  <!-- ===== ISOMETRIC BOARD 6x6 ===== -->
+  <!-- Board origin: cx=540, cy=580, tile W=110, H=55 -->
+
+  <!-- Helper: toIso(r,c) = (540 + (c-r)*55, 580 + (c+r)*27.5) -->
+  <!-- We'll draw the grid and some penguins -->
+
+  <!-- ICE TILES (6x6) -->
+  <!-- Row 0 -->
+  <polygon points="540,552 595,580 540,607 485,580" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="595,580 650,607 595,635 540,607" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="650,607 705,635 650,662 595,635" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="705,635 760,662 705,690 650,662" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="760,662 815,690 760,717 705,690" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="815,690 870,717 815,745 760,717" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <!-- Row 1 -->
+  <polygon points="485,607 540,635 485,662 430,635" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="540,635 595,662 540,690 485,662" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="595,662 650,690 595,717 540,690" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="650,690 705,717 650,745 595,717" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="705,717 760,745 705,772 650,745" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="760,745 815,772 760,800 705,772" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <!-- Row 2 -->
+  <polygon points="430,662 485,690 430,717 375,690" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="485,690 540,717 485,745 430,717" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="540,717 595,745 540,772 485,745" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="595,745 650,772 595,800 540,772" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="650,772 705,800 650,827 595,800" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <!-- EXIT CELL glows -->
+  <polygon points="705,800 760,827 705,855 650,827" fill="#1A3A5C" stroke="#00FF88" stroke-width="3"/>
+  <!-- Row 3 -->
+  <polygon points="375,717 430,745 375,772 320,745" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="430,745 485,772 430,800 375,772" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="485,772 540,800 485,827 430,800" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="540,800 595,827 540,855 485,827" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="595,827 650,855 595,882 540,855" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="650,855 705,882 650,910 595,882" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <!-- Row 4 -->
+  <polygon points="320,772 375,800 320,827 265,800" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="375,800 430,827 375,855 320,827" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="430,827 485,855 430,882 375,855" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="485,855 540,882 485,910 430,882" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="540,882 595,910 540,937 485,910" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="595,910 650,937 595,965 540,937" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <!-- Row 5 -->
+  <polygon points="265,827 320,855 265,882 210,855" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="320,855 375,882 320,910 265,882" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="375,882 430,910 375,937 320,910" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="430,910 485,937 430,965 375,937" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="485,937 540,965 485,992 430,965" fill="#1C3D5A" stroke="#5A8FA0" stroke-width="1.5"/>
+  <polygon points="540,965 595,992 540,1020 485,992" fill="#1A4A6E" stroke="#5A8FA0" stroke-width="1.5"/>
+
+  <!-- Exit arrow -->
+  <polygon points="790,827 820,827 805,800" fill="#00FF88" opacity="0.9"/>
+
+  <!-- ===== PENGUINS ===== -->
+
+  <!-- TARGET PENGUIN (golden glow) at row=2, col=2, H orientation, length=2 -->
+  <!-- Spans tiles (2,2) and (2,3) -->
+  <!-- toIso(2,2)=(540,717) center, toIso(2,3)=(595,745) center -->
+  <!-- 3D box: tl=(485,717), tr=(650,745), br=(595,772), bl=(540,772) lifted 35px -->
+  <!-- Glow outline -->
+  <polygon points="485,682 650,710 595,737 540,737" fill="none" stroke="#FFD70066" stroke-width="10" stroke-linejoin="round"/>
+  <!-- Side face -->
+  <polygon points="485,682 540,737 540,772 485,717" fill="#1A0D00"/>
+  <!-- Front face -->
+  <polygon points="650,710 595,737 595,772 650,745" fill="#2A1A00"/>
+  <!-- Top face (golden) -->
+  <polygon points="485,682 650,710 595,737 540,737" fill="#3A2800"/>
+  <!-- Gold scarf -->
+  <polygon points="485,706 650,734 610,743 525,728" fill="#FFD700" opacity="0.9"/>
+  <!-- White belly -->
+  <ellipse cx="562" cy="716" rx="48" ry="16" fill="#E8F4F8" opacity="0.9"/>
+  <!-- Eyes (near right/front) -->
+  <circle cx="628" cy="712" r="5" fill="white"/>
+  <circle cx="636" cy="716" r="5" fill="white"/>
+  <circle cx="629" cy="713" r="2.5" fill="#1A1A2E"/>
+  <circle cx="637" cy="717" r="2.5" fill="#1A1A2E"/>
+  <!-- Beak -->
+  <polygon points="652,713 643,709 643,717" fill="#FF8C00"/>
+
+  <!-- BLUE PENGUIN at row=0, col=2, V orientation, length=2 -->
+  <!-- toIso(0,2)=(650,607), toIso(1,2)=(595,635) -->
+  <!-- tl=(595,580) tr=(650,552) br=(650,607) bl=(650,635) lifted 35px -->
+  <!-- Side -->
+  <polygon points="595,545 650,545 650,607 595,607" fill="#0A2A40" opacity="0.8"/>
+  <!-- Front -->
+  <polygon points="650,517 705,545 705,607 650,580" fill="#1C3D5A" opacity="0.8"/>
+  <!-- Top -->
+  <polygon points="595,517 650,490 705,517 650,545" fill="#243A50"/>
+  <!-- 4ECDC4 scarf -->
+  <polygon points="595,528 650,501 705,528 650,555" fill="#4ECDC4" opacity="0.85"/>
+  <!-- Belly -->
+  <ellipse cx="650" cy="522" rx="22" ry="14" fill="#E8F4F8" opacity="0.85"/>
+  <!-- Eyes + beak -->
+  <circle cx="688" cy="518" r="4" fill="white"/>
+  <circle cx="697" cy="522" r="4" fill="white"/>
+  <circle cx="689" cy="519" r="2" fill="#1A1A2E"/>
+  <circle cx="698" cy="523" r="2" fill="#1A1A2E"/>
+  <polygon points="706,521 700,517 700,525" fill="#FF8C00"/>
+
+  <!-- TEAL PENGUIN at row=1, col=4, H orientation, length=2 -->
+  <!-- toIso(1,4)=(760,662) toIso(1,5)=(815,690) -->
+  <polygon points="705,627 870,655 815,682 760,682" fill="none" stroke="#45B7D122" stroke-width="6"/>
+  <polygon points="705,627 760,682 760,717 705,662" fill="#0A1A2A"/>
+  <polygon points="870,655 815,682 815,717 870,690" fill="#122030"/>
+  <polygon points="705,627 870,655 815,682 760,682" fill="#182838"/>
+  <polygon points="705,648 870,675 830,686 745,670" fill="#45B7D1" opacity="0.85"/>
+  <ellipse cx="785" cy="653" rx="48" ry="16" fill="#E8F4F8" opacity="0.85"/>
+  <circle cx="848" cy="648" r="5" fill="white"/>
+  <circle cx="856" cy="652" r="5" fill="white"/>
+  <circle cx="849" cy="649" r="2.5" fill="#1A1A2E"/>
+  <circle cx="857" cy="653" r="2.5" fill="#1A1A2E"/>
+  <polygon points="872,651 863,647 863,655" fill="#FF8C00"/>
+
+  <!-- GREEN PENGUIN at row=4, col=1, V length=2 -->
+  <polygon points="320,765 375,737 430,765 375,792" fill="#182A1A"/>
+  <polygon points="320,765 375,792 375,855 320,827" fill="#0A1A0A"/>
+  <polygon points="430,765 375,792 375,855 430,827" fill="#122012"/>
+  <!-- Scarf -->
+  <polygon points="320,776 375,748 430,776 375,803" fill="#96CEB4" opacity="0.85"/>
+  <ellipse cx="375" cy="766" rx="22" ry="14" fill="#E8F4F8" opacity="0.85"/>
+  <circle cx="408" cy="768" r="4" fill="white"/>
+  <circle cx="416" cy="772" r="4" fill="white"/>
+  <circle cx="409" cy="769" r="2" fill="#1A1A2E"/>
+  <circle cx="417" cy="773" r="2" fill="#1A1A2E"/>
+  <polygon points="420,773 415,768 415,777" fill="#FF8C00"/>
+
+  <!-- Swipe hint arrow (animated look) -->
+  <line x1="510" y1="730" x2="620" y2="758" stroke="#FFD700" stroke-width="4" stroke-dasharray="12,8" opacity="0.7"/>
+  <polygon points="625,745 608,752 615,768" fill="#FFD700" opacity="0.8"/>
+
+  <!-- Bottom controls -->
+  <rect x="0" y="1080" width="1080" height="110" fill="#122233"/>
+  <rect x="20" y="1090" width="220" height="72" rx="16" fill="#0A1622" stroke="#F1FAEE" stroke-width="1.5"/>
+  <text x="130" y="1136" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#F1FAEE">⟵ Undo</text>
+  <text x="700" y="1148" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#457B9D">Смахни пингвина чтобы скользил</text>
+
+  <!-- Bottom info section -->
+  <text x="540" y="1220" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="48" fill="#F1FAEE">Скользи по льду!</text>
+  <text x="540" y="1280" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#457B9D">Пингвин едет до стены</text>
+  <text x="540" y="1325" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#457B9D">или другого пингвина</text>
+
+  <!-- Visual hint boxes -->
+  <rect x="80" y="1380" width="280" height="200" rx="20" fill="#122233"/>
+  <text x="220" y="1430" text-anchor="middle" font-size="64">🐧</text>
+  <text x="220" y="1490" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#A8DADC">Смахни</text>
+  <text x="220" y="1525" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#457B9D">пальцем</text>
+
+  <text x="400" y="1490" text-anchor="middle" font-size="48" fill="#A8DADC">→→→</text>
+
+  <rect x="440" y="1380" width="280" height="200" rx="20" fill="#122233"/>
+  <text x="580" y="1430" text-anchor="middle" font-size="64">🧊</text>
+  <text x="580" y="1490" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#A8DADC">Скользит</text>
+  <text x="580" y="1525" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#457B9D">до стены</text>
+
+  <text x="760" y="1490" text-anchor="middle" font-size="48" fill="#A8DADC">→</text>
+
+  <rect x="800" y="1380" width="200" height="200" rx="20" fill="#122233"/>
+  <text x="900" y="1430" text-anchor="middle" font-size="64">🏆</text>
+  <text x="900" y="1490" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#FFD700">Выход!</text>
+
+  <!-- Footer -->
+  <text x="540" y="1900" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#2A3A4C">© 2025 SonoBzy</text>
+</svg>

@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#060E17"/>
+      <stop offset="100%" stop-color="#0D1B2A"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A8DADC" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#457B9D" stop-opacity="0.05"/>
+    </linearGradient>
+    <radialGradient id="logoGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A8DADC" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#A8DADC" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#bgGrad)"/>
+
+  <!-- Subtle stars -->
+  <circle cx="120" cy="200" r="2" fill="#A8DADC" opacity="0.4"/>
+  <circle cx="340" cy="80" r="1.5" fill="#F1FAEE" opacity="0.3"/>
+  <circle cx="800" cy="150" r="2" fill="#A8DADC" opacity="0.5"/>
+  <circle cx="950" cy="320" r="1.5" fill="#F1FAEE" opacity="0.3"/>
+  <circle cx="200" cy="450" r="1" fill="#A8DADC" opacity="0.4"/>
+  <circle cx="900" cy="500" r="2" fill="#F1FAEE" opacity="0.2"/>
+  <circle cx="60" cy="700" r="1.5" fill="#A8DADC" opacity="0.3"/>
+  <circle cx="1020" cy="750" r="1" fill="#F1FAEE" opacity="0.4"/>
+
+  <!-- Ice crystal decorations top -->
+  <polygon points="150,300 170,260 190,300 170,280" fill="#A8DADC" opacity="0.12"/>
+  <polygon points="880,200 900,160 920,200 900,180" fill="#A8DADC" opacity="0.10"/>
+
+  <!-- Hero section -->
+  <!-- Glow circle behind penguin -->
+  <ellipse cx="540" cy="580" rx="280" ry="280" fill="url(#logoGlow)"/>
+
+  <!-- Penguin icon card -->
+  <rect x="390" y="380" width="300" height="300" rx="60" fill="#122233" stroke="#A8DADC" stroke-width="3" opacity="0.95"/>
+  <rect x="390" y="380" width="300" height="300" rx="60" fill="url(#glowGrad)"/>
+
+  <!-- Penguin SVG character -->
+  <!-- Body (dark) -->
+  <ellipse cx="540" cy="560" rx="90" ry="105" fill="#1A1A2E"/>
+  <!-- Belly (white) -->
+  <ellipse cx="540" cy="570" rx="52" ry="70" fill="#E8F4F8"/>
+  <!-- Head -->
+  <ellipse cx="540" cy="450" rx="72" ry="68" fill="#1A1A2E"/>
+  <!-- Eyes -->
+  <circle cx="516" cy="438" r="14" fill="white"/>
+  <circle cx="564" cy="438" r="14" fill="white"/>
+  <circle cx="519" cy="440" r="8" fill="#0D1B2A"/>
+  <circle cx="567" cy="440" r="8" fill="#0D1B2A"/>
+  <circle cx="522" cy="437" r="3" fill="white"/>
+  <circle cx="570" cy="437" r="3" fill="white"/>
+  <!-- Beak -->
+  <polygon points="540,458 524,472 556,472" fill="#FF8C00"/>
+  <!-- Wings -->
+  <ellipse cx="444" cy="548" rx="30" ry="68" fill="#1A1A2E" transform="rotate(-15,444,548)"/>
+  <ellipse cx="636" cy="548" rx="30" ry="68" fill="#1A1A2E" transform="rotate(15,636,548)"/>
+  <!-- Feet -->
+  <ellipse cx="512" cy="655" rx="28" ry="12" fill="#FF8C00" transform="rotate(-10,512,655)"/>
+  <ellipse cx="568" cy="655" rx="28" ry="12" fill="#FF8C00" transform="rotate(10,568,655)"/>
+  <!-- Scarf -->
+  <rect x="468" y="490" width="144" height="26" rx="13" fill="#A8DADC" opacity="0.9"/>
+
+  <!-- Title -->
+  <text x="540" y="780" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="130" font-weight="900" fill="#A8DADC" filter="url(#glow)" letter-spacing="20">WADDLE</text>
+
+  <!-- Tagline -->
+  <text x="540" y="850" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#457B9D" letter-spacing="8">SLIDE • ESCAPE • WADDLE</text>
+
+  <!-- Stats bar -->
+  <rect x="80" y="960" width="920" height="120" rx="24" fill="#122233" opacity="0.9"/>
+  <!-- Stat 1 -->
+  <text x="230" y="1010" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#A8DADC">200</text>
+  <text x="230" y="1048" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#457B9D" letter-spacing="3">LEVELS</text>
+  <!-- Divider -->
+  <rect x="388" y="980" width="2" height="80" fill="#0A1622"/>
+  <!-- Stat 2 -->
+  <text x="540" y="1010" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#A8DADC">2.5D</text>
+  <text x="540" y="1048" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#457B9D" letter-spacing="3">ISOMETRIC</text>
+  <!-- Divider -->
+  <rect x="692" y="980" width="2" height="80" fill="#0A1622"/>
+  <!-- Stat 3 -->
+  <text x="850" y="1010" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#A8DADC">∞</text>
+  <text x="850" y="1048" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#457B9D" letter-spacing="3">UNDO</text>
+
+  <!-- Play button -->
+  <rect x="180" y="1140" width="720" height="120" rx="60" fill="#457B9D"/>
+  <rect x="180" y="1140" width="720" height="120" rx="60" fill="url(#glowGrad)" opacity="0.5"/>
+  <text x="540" y="1220" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="56" font-weight="900" fill="#F1FAEE" letter-spacing="16">PLAY</text>
+
+  <!-- Subtitle hint -->
+  <text x="540" y="1340" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#457B9D">Смахни пингвина — он скользит до стены</text>
+  <text x="540" y="1385" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#457B9D">Освободи путь золотому пингвину!</text>
+
+  <!-- Ice floe decoration bottom -->
+  <ellipse cx="540" cy="1820" rx="600" ry="180" fill="#122233" opacity="0.4"/>
+  <ellipse cx="540" cy="1820" rx="440" ry="130" fill="#1A4A6E" opacity="0.3"/>
+  <!-- Small penguins bottom -->
+  <ellipse cx="300" cy="1790" rx="35" ry="42" fill="#1A1A2E" opacity="0.8"/>
+  <ellipse cx="300" cy="1782" rx="20" ry="28" fill="#E8F4F8" opacity="0.7"/>
+  <ellipse cx="300" cy="1758" rx="28" ry="26" fill="#1A1A2E" opacity="0.8"/>
+
+  <ellipse cx="780" cy="1790" rx="35" ry="42" fill="#1A1A2E" opacity="0.8"/>
+  <ellipse cx="780" cy="1782" rx="20" ry="28" fill="#E8F4F8" opacity="0.7"/>
+  <ellipse cx="780" cy="1758" rx="28" ry="26" fill="#1A1A2E" opacity="0.8"/>
+
+  <!-- Footer -->
+  <text x="540" y="1900" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#2A3A4C">© 2025 SonoBzy</text>
+</svg>

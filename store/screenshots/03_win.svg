@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#060E17"/>
+      <stop offset="100%" stop-color="#0D1B2A"/>
+    </linearGradient>
+    <radialGradient id="winGlow" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#FFD700" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#FFD700" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="goldGlow">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="starGlow">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#bgGrad)"/>
+  <rect width="1080" height="1920" fill="url(#winGlow)"/>
+
+  <!-- Confetti particles -->
+  <rect x="150" y="100" width="18" height="18" rx="4" fill="#FFD700" transform="rotate(25,159,109)" opacity="0.8"/>
+  <rect x="800" y="80" width="14" height="14" rx="3" fill="#4ECDC4" transform="rotate(-15,807,87)" opacity="0.8"/>
+  <rect x="300" y="200" width="12" height="12" rx="3" fill="#FF8C00" transform="rotate(40,306,206)" opacity="0.7"/>
+  <rect x="750" y="180" width="16" height="16" rx="4" fill="#96CEB4" transform="rotate(-30,758,188)" opacity="0.8"/>
+  <rect x="100" y="350" width="10" height="10" rx="2" fill="#A8DADC" transform="rotate(20,105,355)" opacity="0.6"/>
+  <rect x="950" y="250" width="14" height="14" rx="3" fill="#FFD700" transform="rotate(-45,957,257)" opacity="0.8"/>
+  <circle cx="400" cy="130" r="8" fill="#FF6B9D" opacity="0.7"/>
+  <circle cx="680" cy="220" r="6" fill="#FFD700" opacity="0.8"/>
+  <circle cx="200" cy="280" r="5" fill="#4ECDC4" opacity="0.7"/>
+  <circle cx="900" cy="160" r="7" fill="#96CEB4" opacity="0.6"/>
+  <rect x="500" y="90" width="12" height="12" rx="3" fill="#FF8C00" transform="rotate(35,506,96)" opacity="0.7"/>
+  <rect x="60" y="220" width="16" height="16" rx="4" fill="#DDA0DD" transform="rotate(-20,68,228)" opacity="0.7"/>
+  <rect x="1000" y="350" width="10" height="10" rx="2" fill="#FFD700" transform="rotate(55,1005,355)" opacity="0.8"/>
+
+  <!-- Main card -->
+  <rect x="60" y="380" width="960" height="900" rx="40" fill="#122233" stroke="#FFD700" stroke-width="3"/>
+
+  <!-- Penguin celebration -->
+  <!-- Glow behind penguin -->
+  <ellipse cx="540" cy="590" rx="160" ry="160" fill="#FFD700" opacity="0.08"/>
+
+  <!-- Penguin body -->
+  <ellipse cx="540" cy="620" rx="100" ry="118" fill="#1A1A2E"/>
+  <ellipse cx="540" cy="632" rx="58" ry="80" fill="#E8F4F8"/>
+  <!-- Head -->
+  <ellipse cx="540" cy="498" rx="82" ry="78" fill="#1A1A2E"/>
+  <!-- Eyes (happy — curved) -->
+  <path d="M508,488 Q516,478 524,488" stroke="white" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M556,488 Q564,478 572,488" stroke="white" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <!-- Beak -->
+  <polygon points="540,508 522,524 558,524" fill="#FF8C00"/>
+  <!-- Cheeks (blush) -->
+  <ellipse cx="498" cy="516" rx="18" ry="10" fill="#FF8C00" opacity="0.3"/>
+  <ellipse cx="582" cy="516" rx="18" ry="10" fill="#FF8C00" opacity="0.3"/>
+  <!-- Wings raised up (celebrating) -->
+  <ellipse cx="428" cy="590" rx="34" ry="85" fill="#1A1A2E" transform="rotate(-35,428,590)"/>
+  <ellipse cx="652" cy="590" rx="34" ry="85" fill="#1A1A2E" transform="rotate(35,652,590)"/>
+  <!-- Golden scarf -->
+  <rect x="452" y="548" width="176" height="30" rx="15" fill="#FFD700" opacity="0.95"/>
+  <!-- Feet -->
+  <ellipse cx="508" cy="728" rx="32" ry="14" fill="#FF8C00" transform="rotate(-12,508,728)"/>
+  <ellipse cx="572" cy="728" rx="32" ry="14" fill="#FF8C00" transform="rotate(12,572,728)"/>
+  <!-- Stars orbiting penguin -->
+  <text x="370" y="480" font-size="40" fill="#FFD700" filter="url(#starGlow)" opacity="0.9">✦</text>
+  <text x="680" y="500" font-size="32" fill="#FFD700" filter="url(#starGlow)" opacity="0.9">✦</text>
+  <text x="400" y="660" font-size="24" fill="#FFD700" opacity="0.7">✦</text>
+  <text x="690" y="640" font-size="28" fill="#FFD700" opacity="0.8">✦</text>
+
+  <!-- "Level Complete!" title -->
+  <text x="540" y="810" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="58" fill="#F1FAEE" letter-spacing="2">Level Complete!</text>
+  <text x="540" y="865" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#A8DADC" letter-spacing="6">LEVEL 12</text>
+
+  <!-- 3 Stars -->
+  <text x="310" y="990" text-anchor="middle" font-family="Arial, sans-serif" font-size="110" fill="#FFD700" filter="url(#goldGlow)">★</text>
+  <text x="540" y="1010" text-anchor="middle" font-family="Arial, sans-serif" font-size="130" fill="#FFD700" filter="url(#goldGlow)">★</text>
+  <text x="770" y="990" text-anchor="middle" font-family="Arial, sans-serif" font-size="110" fill="#FFD700" filter="url(#goldGlow)">★</text>
+
+  <!-- Stats row -->
+  <rect x="120" y="1040" width="840" height="130" rx="20" fill="#0A1622"/>
+  <!-- Moves stat -->
+  <text x="310" y="1105" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="60" fill="#F1FAEE">7</text>
+  <text x="310" y="1145" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#457B9D" letter-spacing="4">MOVES</text>
+  <rect x="488" y="1060" width="2" height="90" fill="#122233"/>
+  <!-- Par stat -->
+  <text x="540" y="1105" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="60" fill="#F1FAEE">9</text>
+  <text x="540" y="1145" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#457B9D" letter-spacing="4">PAR</text>
+  <rect x="692" y="1060" width="2" height="90" fill="#122233"/>
+  <!-- Best -->
+  <text x="850" y="1105" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="60" fill="#FFD700">7</text>
+  <text x="850" y="1145" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#457B9D" letter-spacing="4">BEST</text>
+
+  <!-- Perfect text -->
+  <text x="540" y="1225" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="42" fill="#FFD700">Perfect waddle! 🏆</text>
+
+  <!-- Share button -->
+  <rect x="120" y="1360" width="840" height="100" rx="50" fill="#457B9D" stroke="#A8DADC" stroke-width="2"/>
+  <text x="540" y="1425" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="38" fill="#F1FAEE" letter-spacing="2">Share Your Waddle 🐧</text>
+
+  <!-- Nav buttons -->
+  <rect x="120" y="1490" width="240" height="90" rx="20" fill="#122233" stroke="#0A1622" stroke-width="2"/>
+  <text x="240" y="1545" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#A8DADC" font-weight="bold">Levels</text>
+
+  <rect x="380" y="1490" width="240" height="90" rx="20" fill="#122233" stroke="#0A1622" stroke-width="2"/>
+  <text x="500" y="1545" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#A8DADC" font-weight="bold">↺ Replay</text>
+
+  <rect x="640" y="1490" width="320" height="90" rx="20" fill="#457B9D" stroke="#A8DADC" stroke-width="2"/>
+  <text x="800" y="1545" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="32" fill="#F1FAEE" font-weight="bold">Next →</text>
+
+  <!-- Footer -->
+  <text x="540" y="1900" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#2A3A4C">© 2025 SonoBzy</text>
+</svg>
