@@ -1,344 +1,381 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#020810"/>
-      <stop offset="60%" stop-color="#081422"/>
-      <stop offset="100%" stop-color="#0D1B2A"/>
+      <stop offset="0%" stop-color="#020810"/><stop offset="100%" stop-color="#0D1B2A"/>
     </linearGradient>
-    <linearGradient id="aur1" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"   stop-color="#00C896" stop-opacity="0"/>
-      <stop offset="35%"  stop-color="#00C896" stop-opacity="0.22"/>
-      <stop offset="65%"  stop-color="#0096C8" stop-opacity="0.18"/>
+    <linearGradient id="aur" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00C896" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#00C896" stop-opacity="0.18"/>
+      <stop offset="70%" stop-color="#0096C8" stop-opacity="0.14"/>
       <stop offset="100%" stop-color="#0096C8" stop-opacity="0"/>
     </linearGradient>
-    <!-- Tile gradients -->
-    <linearGradient id="tileA" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#3A7EA8"/>
-      <stop offset="100%" stop-color="#1E5070"/>
+    <linearGradient id="hdr" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#142030"/><stop offset="100%" stop-color="#0A1620"/>
     </linearGradient>
-    <linearGradient id="tileB" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#2E6A90"/>
-      <stop offset="100%" stop-color="#184060"/>
+    <!-- Ice obstacle gradients -->
+    <linearGradient id="iceTop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C8E8F8"/><stop offset="100%" stop-color="#88B8D8"/>
     </linearGradient>
-    <linearGradient id="tileExit" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#1A5A40"/>
-      <stop offset="100%" stop-color="#0A3020"/>
+    <linearGradient id="iceFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#68A0C0"/><stop offset="100%" stop-color="#3A6A88"/>
     </linearGradient>
-    <!-- Penguin parts -->
-    <radialGradient id="pBody" cx="35%" cy="28%" r="65%">
-      <stop offset="0%" stop-color="#2E2E56"/>
-      <stop offset="100%" stop-color="#070718"/>
-    </radialGradient>
-    <radialGradient id="pHead" cx="35%" cy="25%" r="65%">
-      <stop offset="0%" stop-color="#32325C"/>
-      <stop offset="100%" stop-color="#070718"/>
-    </radialGradient>
-    <radialGradient id="pBelly" cx="38%" cy="22%" r="65%">
-      <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="70%" stop-color="#D8F0F8"/>
-      <stop offset="100%" stop-color="#A8CCDC"/>
-    </radialGradient>
-    <!-- Card -->
-    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#1A304A"/>
-      <stop offset="100%" stop-color="#0C1C2C"/>
+    <linearGradient id="iceLeft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4880A0"/><stop offset="100%" stop-color="#245068"/>
     </linearGradient>
     <!-- Filters -->
-    <filter id="tileShadow">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#001020" flood-opacity="0.5"/>
+    <filter id="goldGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="pgShadow">
-      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#001020" flood-opacity="0.6"/>
+    <filter id="shadow4">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#001020" flood-opacity="0.55"/>
+    </filter>
+    <filter id="hdrShadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#000" flood-opacity="0.6"/>
     </filter>
     <filter id="exitGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="headerShadow">
-      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#000" flood-opacity="0.6"/>
-    </filter>
+    <filter id="blur6"><feGaussianBlur stdDeviation="6"/></filter>
   </defs>
 
-  <!-- Background -->
   <rect width="1080" height="1920" fill="url(#sky)"/>
-  <!-- Stars -->
-  <circle cx="80"  cy="160" r="1.5" fill="white" opacity="0.6"/>
-  <circle cx="340" cy="80"  r="1"   fill="white" opacity="0.5"/>
-  <circle cx="760" cy="110" r="1.5" fill="white" opacity="0.7"/>
-  <circle cx="980" cy="180" r="1"   fill="white" opacity="0.4"/>
-  <!-- Aurora subtle -->
-  <path d="M-100,550 Q300,440 540,470 Q780,500 1180,420" stroke="url(#aur1)" stroke-width="80" fill="none"/>
+  <!-- stars -->
+  <circle cx="100" cy="180" r="1.5" fill="white" opacity="0.5"/>
+  <circle cx="820" cy="130" r="1.5" fill="white" opacity="0.6"/>
+  <circle cx="460" cy="90"  r="1"   fill="white" opacity="0.4"/>
+  <circle cx="970" cy="210" r="1"   fill="white" opacity="0.5"/>
+  <!-- aurora -->
+  <path d="M-100,560 Q300,460 540,490 Q780,520 1180,440" stroke="url(#aur)" stroke-width="80" fill="none"/>
 
-  <!-- ── HEADER ── -->
-  <rect x="0" y="0" width="1080" height="118" fill="url(#card)" filter="url(#headerShadow)"/>
-  <rect x="0" y="116" width="1080" height="2" fill="#1E4060" opacity="0.8"/>
-  <!-- Back btn -->
+  <!-- HEADER -->
+  <rect x="0" y="0" width="1080" height="120" fill="url(#hdr)" filter="url(#hdrShadow)"/>
+  <rect x="0" y="118" width="1080" height="2" fill="#1E4060" opacity="0.8"/>
   <rect x="20" y="20" width="80" height="80" rx="18" fill="#0E1E2E" stroke="#1E3E5A" stroke-width="1.5"/>
-  <text x="60" y="74" text-anchor="middle" font-family="Arial,sans-serif" font-size="42" fill="#A8DADC">←</text>
-  <!-- Level title -->
-  <text x="540" y="60" text-anchor="middle" font-family="Arial Black,sans-serif"
-        font-size="40" fill="#E8F4FF" letter-spacing="5">LEVEL 17</text>
-  <!-- Stars in header -->
-  <text x="466" y="100" font-family="Arial,sans-serif" font-size="30" fill="#FFD700">★</text>
-  <text x="510" y="100" font-family="Arial,sans-serif" font-size="30" fill="#FFD700">★</text>
-  <text x="554" y="100" font-family="Arial,sans-serif" font-size="30" fill="#1E3A55">★</text>
-  <!-- Reset btn -->
+  <text x="60" y="74" text-anchor="middle" font-family="Arial" font-size="44" fill="#A8DADC">←</text>
+  <text x="540" y="62" text-anchor="middle" font-family="Arial Black" font-size="40" fill="#E8F4FF" letter-spacing="5">LEVEL 8</text>
+  <text x="466" y="100" font-family="Arial" font-size="30" fill="#FFD700">★</text>
+  <text x="510" y="100" font-family="Arial" font-size="30" fill="#FFD700">★</text>
+  <text x="554" y="100" font-family="Arial" font-size="30" fill="#1E3A55">★</text>
   <rect x="980" y="20" width="80" height="80" rx="18" fill="#0E1E2E" stroke="#1E3E5A" stroke-width="1.5"/>
-  <text x="1020" y="74" text-anchor="middle" font-family="Arial,sans-serif" font-size="40" fill="#A8DADC">↺</text>
+  <text x="1020" y="74" text-anchor="middle" font-family="Arial" font-size="40" fill="#A8DADC">↺</text>
 
-  <!-- ── MOVES / PAR ── -->
-  <rect x="200" y="148" width="680" height="98" rx="20" fill="#0C1A28" opacity="0.7"/>
-  <text x="310" y="210" text-anchor="middle" font-family="Arial Black,sans-serif"
-        font-size="70" fill="#F0F8FF" font-weight="900">8</text>
-  <text x="310" y="235" text-anchor="middle" font-family="Arial,sans-serif"
-        font-size="22" fill="#3A6880" letter-spacing="5">MOVES</text>
-  <line x1="540" y1="162" x2="540" y2="236" stroke="#1A3A55" stroke-width="2"/>
-  <text x="770" y="210" text-anchor="middle" font-family="Arial Black,sans-serif"
-        font-size="70" fill="#3A7090" font-weight="900">11</text>
-  <text x="770" y="235" text-anchor="middle" font-family="Arial,sans-serif"
-        font-size="22" fill="#3A6880" letter-spacing="5">PAR</text>
+  <!-- MOVES/PAR -->
+  <rect x="220" y="142" width="640" height="92" rx="18" fill="#08121E" opacity="0.8"/>
+  <text x="360"  y="206" text-anchor="middle" font-family="Arial Black" font-size="66" fill="#F0F8FF">5</text>
+  <text x="360"  y="228" text-anchor="middle" font-family="Arial" font-size="21" fill="#3A6880" letter-spacing="5">MOVES</text>
+  <line x1="540" y1="158" x2="540" y2="226" stroke="#1A3A55" stroke-width="2"/>
+  <text x="720"  y="206" text-anchor="middle" font-family="Arial Black" font-size="66" fill="#3A7090">9</text>
+  <text x="720"  y="228" text-anchor="middle" font-family="Arial" font-size="21" fill="#3A6880" letter-spacing="5">PAR</text>
 
-  <!-- ── ISOMETRIC ICE BOARD 6×6 ── -->
-  <!-- Board centred at (540,840), tile W=116 H=58, rows back-to-front -->
-  <!-- toIso(r,c) = (540+(c-r)*58, 840+(c+r)*29) -->
+  <!-- ═══════════════════════════════════════════
+       BOARD  TW=160 TH=80  centre cx=540 cy=718
+       toIso(r,c) = (540+(c-r)*80, 718+(c+r)*40)
+       tile diamond: "cx,cy-40 cx+80,cy cx,cy+40 cx-80,cy"
+       Tile A (r+c even) #2A6A8A  Tile B #1E5472
+       ═══════════════════════════════════════════ -->
 
-  <!-- Row 0 (back) -->
-  <polygon points="540,782 598,811 540,840 482,811" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="598,811 656,840 598,869 540,840" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="656,840 714,869 656,898 598,869" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="714,869 772,898 714,927 656,898" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="772,898 830,927 772,956 714,927" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="830,927 888,956 830,985 772,956" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <!-- tile highlights row 0 -->
-  <polygon points="540,782 598,811 598,818 540,789" fill="white" opacity="0.12"/>
-  <polygon points="598,811 656,840 656,847 598,818" fill="white" opacity="0.10"/>
-  <polygon points="656,840 714,869 714,876 656,847" fill="white" opacity="0.12"/>
+  <!-- ── ROW 0 ── -->
+  <polygon points="540,678 620,718 540,758 460,718" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="460" y1="718" x2="540" y2="678" stroke="white" stroke-width="2" opacity="0.18"/>
+  <polygon points="620,718 700,758 620,798 540,758" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="540" y1="758" x2="620" y2="718" stroke="white" stroke-width="2" opacity="0.14"/>
+  <polygon points="700,758 780,798 700,838 620,798" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="620" y1="798" x2="700" y2="758" stroke="white" stroke-width="2" opacity="0.18"/>
+  <polygon points="780,798 860,838 780,878 700,838" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="700" y1="838" x2="780" y2="798" stroke="white" stroke-width="2" opacity="0.14"/>
+  <polygon points="860,838 940,878 860,918 780,878" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="780" y1="878" x2="860" y2="838" stroke="white" stroke-width="2" opacity="0.18"/>
+  <polygon points="940,878 1020,918 940,958 860,918" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="860" y1="918" x2="940" y2="878" stroke="white" stroke-width="2" opacity="0.14"/>
 
-  <!-- Row 1 -->
-  <polygon points="482,811 540,840 482,869 424,840" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="540,840 598,869 540,898 482,869" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="598,869 656,898 598,927 540,898" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="656,898 714,927 656,956 598,927" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="714,927 772,956 714,985 656,956" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="772,956 830,985 772,1014 714,985" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <!-- highlights row 1 -->
-  <polygon points="482,811 540,840 540,847 482,818" fill="white" opacity="0.10"/>
-  <polygon points="540,840 598,869 598,876 540,847" fill="white" opacity="0.08"/>
+  <!-- ── ROW 1 ── -->
+  <polygon points="460,718 540,758 460,798 380,758" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="380" y1="758" x2="460" y2="718" stroke="white" stroke-width="2" opacity="0.14"/>
+  <polygon points="540,758 620,798 540,838 460,798" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="460" y1="798" x2="540" y2="758" stroke="white" stroke-width="2" opacity="0.18"/>
+  <polygon points="620,798 700,838 620,878 540,838" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="540" y1="838" x2="620" y2="798" stroke="white" stroke-width="2" opacity="0.14"/>
+  <polygon points="700,838 780,878 700,918 620,878" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="620" y1="878" x2="700" y2="838" stroke="white" stroke-width="2" opacity="0.18"/>
+  <polygon points="780,878 860,918 780,958 700,918" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="700" y1="918" x2="780" y2="878" stroke="white" stroke-width="2" opacity="0.14"/>
+  <polygon points="860,918 940,958 860,998 780,958" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="780" y1="958" x2="860" y2="918" stroke="white" stroke-width="2" opacity="0.18"/>
 
-  <!-- Row 2 -->
-  <polygon points="424,840 482,869 424,898 366,869" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="482,869 540,898 482,927 424,898" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="540,898 598,927 540,956 482,927" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="598,927 656,956 598,985 540,956" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="656,956 714,985 656,1014 598,985" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <!-- EXIT TILE row2,col5 — glowing green -->
-  <polygon points="714,985 772,1014 714,1043 656,1014" fill="url(#tileExit)" stroke="#00CC88" stroke-width="3"
-           filter="url(#exitGlow)"/>
-  <!-- EXIT arrow -->
-  <polygon points="800,1012 828,1012 814,990" fill="#00FF88" opacity="0.95" filter="url(#exitGlow)"/>
-  <polygon points="800,1016 828,1016 814,1038" fill="#00FF88" opacity="0.6"/>
-  <!-- highlights row 2 -->
-  <polygon points="424,840 482,869 482,876 424,847" fill="white" opacity="0.10"/>
-  <polygon points="598,927 656,956 656,963 598,934" fill="white" opacity="0.08"/>
+  <!-- ── ROW 2 ── -->
+  <polygon points="380,758 460,798 380,838 300,798" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="300" y1="798" x2="380" y2="758" stroke="white" stroke-width="2" opacity="0.18"/>
+  <polygon points="460,798 540,838 460,878 380,838" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="380" y1="838" x2="460" y2="798" stroke="white" stroke-width="2" opacity="0.14"/>
+  <polygon points="540,838 620,878 540,918 460,878" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="460" y1="878" x2="540" y2="838" stroke="white" stroke-width="2" opacity="0.18"/>
+  <polygon points="620,878 700,918 620,958 540,918" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="540" y1="918" x2="620" y2="878" stroke="white" stroke-width="2" opacity="0.14"/>
+  <polygon points="700,918 780,958 700,998 620,958" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="620" y1="958" x2="700" y2="918" stroke="white" stroke-width="2" opacity="0.18"/>
+  <!-- EXIT cell r2c5 -->
+  <polygon points="780,958 860,998 780,1038 700,998" fill="#0E4828" stroke="#00CC66" stroke-width="2.5" filter="url(#exitGlow)"/>
+  <line x1="700" y1="998" x2="780" y2="958" stroke="#00FF88" stroke-width="2" opacity="0.5"/>
+  <!-- exit arrow -->
+  <polygon points="878,996 906,996 892,974" fill="#00FF88" opacity="0.95" filter="url(#exitGlow)"/>
+  <text x="892" y="1028" text-anchor="middle" font-family="Arial Black" font-size="20" fill="#00CC66" opacity="0.8">EXIT</text>
 
-  <!-- Row 3 -->
-  <polygon points="366,869 424,898 366,927 308,898" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="424,898 482,927 424,956 366,927" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="482,927 540,956 482,985 424,956" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="540,956 598,985 540,1014 482,985" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="598,985 656,1014 598,1043 540,1014" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="656,1014 714,1043 656,1072 598,1043" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
+  <!-- ── ROW 3 ── -->
+  <polygon points="300,798 380,838 300,878 220,838" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="220" y1="838" x2="300" y2="798" stroke="white" stroke-width="2" opacity="0.14"/>
+  <polygon points="380,838 460,878 380,918 300,878" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="300" y1="878" x2="380" y2="838" stroke="white" stroke-width="2" opacity="0.18"/>
+  <polygon points="460,878 540,918 460,958 380,918" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="380" y1="918" x2="460" y2="878" stroke="white" stroke-width="2" opacity="0.14"/>
+  <polygon points="540,918 620,958 540,998 460,958" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="460" y1="958" x2="540" y2="918" stroke="white" stroke-width="2" opacity="0.18"/>
+  <polygon points="620,958 700,998 620,1038 540,998" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="540" y1="998" x2="620" y2="958" stroke="white" stroke-width="2" opacity="0.14"/>
+  <polygon points="700,998 780,1038 700,1078 620,1038" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="620" y1="1038" x2="700" y2="998" stroke="white" stroke-width="2" opacity="0.18"/>
 
-  <!-- Row 4 -->
-  <polygon points="308,898 366,927 308,956 250,927" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="366,927 424,956 366,985 308,956" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="424,956 482,985 424,1014 366,985" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="482,985 540,1014 482,1043 424,1014" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="540,1014 598,1043 540,1072 482,1043" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="598,1043 656,1072 598,1101 540,1072" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
+  <!-- ── ROW 4 ── -->
+  <polygon points="220,838 300,878 220,918 140,878" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="140" y1="878" x2="220" y2="838" stroke="white" stroke-width="2" opacity="0.18"/>
+  <polygon points="300,878 380,918 300,958 220,918" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="220" y1="918" x2="300" y2="878" stroke="white" stroke-width="2" opacity="0.14"/>
+  <polygon points="380,918 460,958 380,998 300,958" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="300" y1="958" x2="380" y2="918" stroke="white" stroke-width="2" opacity="0.18"/>
+  <polygon points="460,958 540,998 460,1038 380,998" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="380" y1="998" x2="460" y2="958" stroke="white" stroke-width="2" opacity="0.14"/>
+  <polygon points="540,998 620,1038 540,1078 460,1038" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="460" y1="1038" x2="540" y2="998" stroke="white" stroke-width="2" opacity="0.18"/>
+  <polygon points="620,1038 700,1078 620,1118 540,1078" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="540" y1="1078" x2="620" y2="1038" stroke="white" stroke-width="2" opacity="0.14"/>
 
-  <!-- Row 5 (front) -->
-  <polygon points="250,927 308,956 250,985 192,956" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="308,956 366,985 308,1014 250,985" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="366,985 424,1014 366,1043 308,1014" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="424,1014 482,1043 424,1072 366,1043" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="482,1043 540,1072 482,1101 424,1072" fill="url(#tileB)" stroke="#5A9AB8" stroke-width="1.5"/>
-  <polygon points="540,1072 598,1101 540,1130 482,1101" fill="url(#tileA)" stroke="#5A9AB8" stroke-width="1.5"/>
+  <!-- ── ROW 5 ── -->
+  <polygon points="140,878 220,918 140,958  60,918" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1=" 60" y1="918" x2="140" y2="878" stroke="white" stroke-width="2" opacity="0.14"/>
+  <polygon points="220,918 300,958 220,998 140,958" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="140" y1="958" x2="220" y2="918" stroke="white" stroke-width="2" opacity="0.18"/>
+  <polygon points="300,958 380,998 300,1038 220,998" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="220" y1="998" x2="300" y2="958" stroke="white" stroke-width="2" opacity="0.14"/>
+  <polygon points="380,998 460,1038 380,1078 300,1038" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="300" y1="1038" x2="380" y2="998" stroke="white" stroke-width="2" opacity="0.18"/>
+  <polygon points="460,1038 540,1078 460,1118 380,1078" fill="#1E5472" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="380" y1="1078" x2="460" y2="1038" stroke="white" stroke-width="2" opacity="0.14"/>
+  <polygon points="540,1078 620,1118 540,1158 460,1118" fill="#2A6A8A" stroke="#4A8AAA" stroke-width="1"/>
+  <line x1="460" y1="1118" x2="540" y2="1078" stroke="white" stroke-width="2" opacity="0.18"/>
 
-  <!-- ── PENGUINS ── -->
+  <!-- ════════════════════════════════
+       OBJECTS — depth order by (r+c)
+       ════════════════════════════════ -->
 
-  <!-- GOLDEN TARGET PENGUIN — row2,col2-3 (H length=2), centre≈(569,927) -->
+  <!-- ICE OBSTACLE r1c1 (540,798) OH=92 — depth 2 -->
+  <!-- top:  "540,666 620,706 540,746 460,706"
+       right: "620,706 540,746 540,838 620,798"
+       left:  "460,706 540,746 540,838 460,798" -->
+  <polygon points="460,706 540,746 540,838 460,798" fill="url(#iceLeft)" stroke="#2A6080" stroke-width="1.5"/>
+  <polygon points="620,706 540,746 540,838 620,798" fill="url(#iceFront)" stroke="#2A6080" stroke-width="1.5"/>
+  <polygon points="540,666 620,706 540,746 460,706" fill="url(#iceTop)" stroke="#5AACCC" stroke-width="1.5"/>
+  <!-- ice top highlight -->
+  <polygon points="540,666 620,706 580,726 520,686" fill="white" opacity="0.22"/>
+  <!-- cracks on face -->
+  <line x1="530" y1="720" x2="555" y2="740" stroke="white" stroke-width="1.5" opacity="0.35"/>
+  <line x1="510" y1="738" x2="540" y2="746" stroke="white" stroke-width="1" opacity="0.25"/>
+  <!-- snowflake on top -->
+  <text x="540" y="726" text-anchor="middle" font-family="Arial" font-size="26" fill="white" opacity="0.55">❄</text>
+
+  <!-- TEAL PENGUIN H r0 col3-4 — depth 4
+       start=toIso(0,3)=(780,838) end=toIso(0,4)=(860,878)
+       tl=(700,838) tr=(940,878) br=(860,918) bl=(780,918)
+       PH=50 → top lifted 50px -->
+  <g filter="url(#shadow4)">
+    <!-- floor shadow -->
+    <ellipse cx="820" cy="900" rx="80" ry="22" fill="#001020" opacity="0.3" filter="url(#blur6)"/>
+    <!-- side face -->
+    <polygon points="700,788 780,828 780,918 700,878" fill="#082840"/>
+    <!-- front face -->
+    <polygon points="940,828 860,868 860,918 940,878" fill="#0E3850"/>
+    <!-- top face -->
+    <polygon points="700,788 940,828 860,868 780,828" fill="#143A58"/>
+    <!-- belly on top -->
+    <ellipse cx="820" cy="826" rx="60" ry="20" fill="#D8EEFA" opacity="0.88"/>
+    <!-- scarf stripe -->
+    <polygon points="700,808 940,848 900,860 760,844" fill="#4ECDC4" opacity="0.9"/>
+    <polygon points="700,808 940,848 940,856 700,816" fill="#80E8E0" opacity="0.25"/>
+  </g>
+  <!-- TEAL head (round, at right-forward end near tr_top=(940,828)) -->
+  <circle cx="914" cy="810" r="42" fill="#0A2030" filter="url(#shadow4)"/>
+  <ellipse cx="900" cy="794" rx="22" ry="17" fill="#183848" opacity="0.45"/>
+  <!-- eyes -->
+  <circle cx="894" cy="800" r="14" fill="white"/>
+  <circle cx="926" cy="812" r="14" fill="white"/>
+  <circle cx="897" cy="802" r="9"  fill="#081820"/>
+  <circle cx="929" cy="814" r="9"  fill="#081820"/>
+  <!-- eye shine -->
+  <circle cx="902" cy="796" r="5"  fill="white"/>
+  <circle cx="934" cy="808" r="5"  fill="white"/>
+  <circle cx="904" cy="800" r="2.5" fill="white" opacity="0.6"/>
+  <circle cx="936" cy="812" r="2.5" fill="white" opacity="0.6"/>
+  <!-- beak -->
+  <ellipse cx="942" cy="818" rx="12" ry="8" fill="#FF8C00"/>
+  <ellipse cx="942" cy="816" rx="9"  ry="4" fill="#FFA030" opacity="0.6"/>
+  <!-- blush -->
+  <ellipse cx="880" cy="812" rx="13" ry="8" fill="#FF9AC0" opacity="0.28"/>
+
+  <!-- TARGET PENGUIN gold H r2 col0-1 — depth 3
+       start=toIso(2,0)=(380,798) end=toIso(2,1)=(460,838)
+       tl=(300,798) tr=(540,838) br=(460,878) bl=(380,838)
+       PH=55 → lifted 55 -->
   <g filter="url(#goldGlow)">
-  <g transform="translate(569,895) scale(0.68)">
-    <!-- Gold glow halo -->
-    <ellipse cx="0" cy="0" rx="140" ry="70" fill="#FFD700" opacity="0.12"/>
-    <!-- Shadow -->
-    <ellipse cx="0" cy="195" rx="90" ry="22" fill="#000" opacity="0.4"/>
-    <!-- Wings -->
-    <ellipse cx="-100" cy="35" rx="26" ry="72" fill="#1A0D00" transform="rotate(-18,-100,35)"/>
-    <ellipse cx="100"  cy="35" rx="26" ry="72" fill="#1A0D00" transform="rotate(18,100,35)"/>
-    <!-- Body (golden dark) -->
-    <ellipse cx="0" cy="55" rx="80" ry="100" fill="#2A1A00"/>
-    <!-- Belly -->
-    <ellipse cx="0" cy="65" rx="48" ry="68" fill="#FFF8E0"/>
-    <ellipse cx="-10" cy="42" rx="24" ry="36" fill="white" opacity="0.25"/>
-    <!-- Golden scarf -->
-    <rect x="-66" y="-12" width="132" height="30" rx="15" fill="#FFD700"/>
-    <rect x="-55" y="-9" width="110" height="12" rx="6" fill="#FFEF88" opacity="0.6"/>
-    <!-- Feet -->
-    <ellipse cx="-28" cy="190" rx="32" ry="15" fill="#FF8C00" transform="rotate(-10,-28,190)"/>
-    <ellipse cx="28"  cy="190" rx="32" ry="15" fill="#FF8C00" transform="rotate(10,28,190)"/>
-    <!-- Head -->
-    <circle cx="0" cy="-88" r="76" fill="#2A1800"/>
-    <ellipse cx="-28" cy="-116" rx="26" ry="22" fill="#3A2800" opacity="0.5"/>
-    <!-- Eyes -->
-    <circle cx="-26" cy="-94" r="22" fill="white"/>
-    <circle cx="26"  cy="-94" r="22" fill="white"/>
-    <circle cx="-22" cy="-92" r="15" fill="#1A1000"/>
-    <circle cx="30"  cy="-92" r="15" fill="#1A1000"/>
-    <circle cx="-15" cy="-100" r="6" fill="white"/>
-    <circle cx="37"  cy="-100" r="6" fill="white"/>
-    <!-- Beak (gold) -->
-    <ellipse cx="0" cy="-70" rx="16" ry="11" fill="#FFB030"/>
-    <!-- Stars orbit -->
-    <text x="-130" y="-60" font-size="32" fill="#FFD700">★</text>
-    <text x="100"  y="-75" font-size="26" fill="#FFD700">★</text>
+    <ellipse cx="418" cy="862" rx="90" ry="24" fill="#FFD700" opacity="0.08" filter="url(#blur6)"/>
+    <!-- side face -->
+    <polygon points="300,743 380,783 380,838 300,798" fill="#180E00"/>
+    <!-- front face -->
+    <polygon points="540,783 460,823 460,878 540,838" fill="#281800"/>
+    <!-- top face -->
+    <polygon points="300,743 540,783 460,823 380,783" fill="#2E1C00"/>
+    <!-- belly -->
+    <ellipse cx="418" cy="782" rx="66" ry="22" fill="#FFF8E0" opacity="0.9"/>
+    <!-- golden scarf -->
+    <polygon points="300,763 540,803 500,816 340,800" fill="#FFD700" opacity="0.95"/>
+    <polygon points="300,763 540,803 540,811 300,771" fill="#FFEF80" opacity="0.3"/>
   </g>
-  </g>
+  <!-- GOLD head -->
+  <circle cx="516" cy="762" r="46" fill="#1E0E00" filter="url(#goldGlow)"/>
+  <ellipse cx="500" cy="745" rx="24" ry="18" fill="#2E1C00" opacity="0.5"/>
+  <!-- gold glow ring -->
+  <circle cx="516" cy="762" r="46" fill="none" stroke="#FFD700" stroke-width="2.5" opacity="0.35"/>
+  <!-- eyes (large, expressive) -->
+  <circle cx="494" cy="752" r="16" fill="white"/>
+  <circle cx="530" cy="764" r="16" fill="white"/>
+  <circle cx="497" cy="754" r="10" fill="#100800"/>
+  <circle cx="533" cy="766" r="10" fill="#100800"/>
+  <circle cx="502" cy="748" r="5.5" fill="white"/>
+  <circle cx="538" cy="760" r="5.5" fill="white"/>
+  <circle cx="505" cy="751" r="2.5" fill="white" opacity="0.6"/>
+  <circle cx="541" cy="763" r="2.5" fill="white" opacity="0.6"/>
+  <!-- beak gold -->
+  <ellipse cx="549" cy="770" rx="13" ry="9" fill="#FFA030"/>
+  <ellipse cx="549" cy="768" rx="10" ry="5" fill="#FFD060" opacity="0.6"/>
+  <!-- blush -->
+  <ellipse cx="476" cy="762" rx="14" ry="9" fill="#FF9AC0" opacity="0.3"/>
+  <!-- stars orbiting -->
+  <text x="442" y="724" font-size="26" fill="#FFD700" opacity="0.8">✦</text>
+  <text x="555" y="740" font-size="20" fill="#FFD700" opacity="0.7">✦</text>
 
-  <!-- TEAL PENGUIN — row0,col3-4 (H length=2), centre≈(714,869) -->
-  <g filter="url(#pgShadow)">
-  <g transform="translate(714,840) scale(0.52)">
-    <ellipse cx="0" cy="185" rx="70" ry="18" fill="#000" opacity="0.35"/>
-    <ellipse cx="-80" cy="30" rx="22" ry="60" fill="#082030" transform="rotate(-18,-80,30)"/>
-    <ellipse cx="80"  cy="30" rx="22" ry="60" fill="#082030" transform="rotate(18,80,30)"/>
-    <ellipse cx="0"   cy="48" rx="66" ry="82" fill="#0A1830"/>
-    <ellipse cx="0"   cy="58" rx="40" ry="56" fill="#D8F0F8"/>
-    <rect x="-55" y="-10" width="110" height="26" rx="13" fill="#4ECDC4"/>
-    <rect x="-45" y="-7" width="90" height="10" rx="5" fill="#8AE8E0" opacity="0.5"/>
-    <ellipse cx="-22" cy="180" rx="26" ry="12" fill="#FF8C00" transform="rotate(-10,-22,180)"/>
-    <ellipse cx="22"  cy="180" rx="26" ry="12" fill="#FF8C00" transform="rotate(10,22,180)"/>
-    <circle cx="0" cy="-74" r="62" fill="#0A1830"/>
-    <circle cx="-22" cy="-80" r="18" fill="white"/>
-    <circle cx="22"  cy="-80" r="18" fill="white"/>
-    <circle cx="-19" cy="-78" r="12" fill="#080818"/>
-    <circle cx="25"  cy="-78" r="12" fill="#080818"/>
-    <circle cx="-13" cy="-85" r="5" fill="white"/>
-    <circle cx="31"  cy="-85" r="5" fill="white"/>
-    <ellipse cx="0" cy="-60" rx="13" ry="9" fill="#FF8C00"/>
-  </g>
-  </g>
+  <!-- swipe hint arrow on target -->
+  <path d="M430,836 Q490,822 548,836" stroke="#FFD700" stroke-width="4"
+        fill="none" stroke-dasharray="12,7" stroke-linecap="round" opacity="0.7"/>
+  <polygon points="556,826 544,838 532,826" fill="#FFD700" opacity="0.8"/>
 
-  <!-- PURPLE PENGUIN — row1,col5 (V length=2), centre≈(830,956) -->
-  <g filter="url(#pgShadow)">
-  <g transform="translate(830,920) scale(0.50)">
-    <ellipse cx="0" cy="185" rx="70" ry="18" fill="#000" opacity="0.35"/>
-    <ellipse cx="-80" cy="30" rx="22" ry="60" fill="#120820" transform="rotate(-18,-80,30)"/>
-    <ellipse cx="80"  cy="30" rx="22" ry="60" fill="#120820" transform="rotate(18,80,30)"/>
-    <ellipse cx="0"   cy="48" rx="66" ry="82" fill="#1A0A28"/>
-    <ellipse cx="0"   cy="58" rx="40" ry="56" fill="#D8F0F8"/>
-    <rect x="-55" y="-10" width="110" height="26" rx="13" fill="#DDA0DD"/>
-    <rect x="-45" y="-7" width="90" height="10" rx="5" fill="#EEC0EE" opacity="0.5"/>
-    <ellipse cx="-22" cy="180" rx="26" ry="12" fill="#FF8C00" transform="rotate(-10,-22,180)"/>
-    <ellipse cx="22"  cy="180" rx="26" ry="12" fill="#FF8C00" transform="rotate(10,22,180)"/>
-    <circle cx="0" cy="-74" r="62" fill="#1A0A28"/>
-    <circle cx="-22" cy="-80" r="18" fill="white"/>
-    <circle cx="22"  cy="-80" r="18" fill="white"/>
-    <circle cx="-19" cy="-78" r="12" fill="#100818"/>
-    <circle cx="25"  cy="-78" r="12" fill="#100818"/>
-    <circle cx="-13" cy="-85" r="5" fill="white"/>
-    <circle cx="31"  cy="-85" r="5" fill="white"/>
-    <ellipse cx="0" cy="-60" rx="13" ry="9" fill="#FF8C00"/>
-  </g>
-  </g>
+  <!-- ICE OBSTACLE r2c3 (620,918) OH=95 — depth 5  BLOCKS TARGET -->
+  <!-- top:  "620,783 700,823 620,863 540,823"
+       right: "700,823 620,863 620,958 700,918"
+       left:  "540,823 620,863 620,958 540,918" -->
+  <polygon points="540,823 620,863 620,958 540,918" fill="url(#iceLeft)" stroke="#2A6080" stroke-width="1.5"/>
+  <polygon points="700,823 620,863 620,958 700,918" fill="url(#iceFront)" stroke="#2A6080" stroke-width="1.5"/>
+  <polygon points="620,783 700,823 620,863 540,823" fill="url(#iceTop)" stroke="#5AACCC" stroke-width="2"/>
+  <!-- highlight -->
+  <polygon points="620,783 700,823 668,843 588,803" fill="white" opacity="0.24"/>
+  <!-- cracks -->
+  <line x1="612" y1="838" x2="640" y2="863" stroke="white" stroke-width="1.5" opacity="0.38"/>
+  <line x1="590" y1="848" x2="618" y2="860" stroke="white" stroke-width="1" opacity="0.28"/>
+  <!-- snowflake -->
+  <text x="620" y="832" text-anchor="middle" font-family="Arial" font-size="28" fill="white" opacity="0.6">❄</text>
+  <!-- "BLOCKED" indicator — red X glow -->
+  <text x="620" y="778" text-anchor="middle" font-family="Arial Black" font-size="28" fill="#FF4444" opacity="0.8">✕</text>
 
-  <!-- GREEN PENGUIN — row4,col1 (V length=2), centre≈(366,985) -->
-  <g filter="url(#pgShadow)">
-  <g transform="translate(366,952) scale(0.50)">
-    <ellipse cx="0" cy="185" rx="70" ry="18" fill="#000" opacity="0.35"/>
-    <ellipse cx="-80" cy="30" rx="22" ry="60" fill="#081808" transform="rotate(-18,-80,30)"/>
-    <ellipse cx="80"  cy="30" rx="22" ry="60" fill="#081808" transform="rotate(18,80,30)"/>
-    <ellipse cx="0"   cy="48" rx="66" ry="82" fill="#0A1E0A"/>
-    <ellipse cx="0"   cy="58" rx="40" ry="56" fill="#D8F0F8"/>
-    <rect x="-55" y="-10" width="110" height="26" rx="13" fill="#96CEB4"/>
-    <rect x="-45" y="-7" width="90" height="10" rx="5" fill="#B8E4CC" opacity="0.5"/>
-    <ellipse cx="-22" cy="180" rx="26" ry="12" fill="#FF8C00" transform="rotate(-10,-22,180)"/>
-    <ellipse cx="22"  cy="180" rx="26" ry="12" fill="#FF8C00" transform="rotate(10,22,180)"/>
-    <circle cx="0" cy="-74" r="62" fill="#0A1E0A"/>
-    <circle cx="-22" cy="-80" r="18" fill="white"/>
-    <circle cx="22"  cy="-80" r="18" fill="white"/>
-    <circle cx="-19" cy="-78" r="12" fill="#081008"/>
-    <circle cx="25"  cy="-78" r="12" fill="#081008"/>
-    <circle cx="-13" cy="-85" r="5" fill="white"/>
-    <circle cx="31"  cy="-85" r="5" fill="white"/>
-    <ellipse cx="0" cy="-60" rx="13" ry="9" fill="#FF8C00"/>
+  <!-- GREEN PENGUIN H r5 col1-2 — depth 7
+       start=toIso(5,1)=(220,958) end=toIso(5,2)=(300,998)
+       tl=(140,958) tr=(380,998) br=(300,1038) bl=(220,1038)
+       PH=48 -->
+  <g filter="url(#shadow4)">
+    <ellipse cx="256" cy="1022" rx="80" ry="20" fill="#001020" opacity="0.28" filter="url(#blur6)"/>
+    <polygon points="140,910 220,950 220,1038 140,998" fill="#061408"/>
+    <polygon points="380,950 300,990 300,1038 380,998" fill="#0C1E0C"/>
+    <polygon points="140,910 380,950 300,990 220,950" fill="#122014"/>
+    <ellipse cx="256" cy="948" rx="62" ry="21" fill="#D8F0E0" opacity="0.88"/>
+    <polygon points="140,930 380,970 344,982 176,966" fill="#96CEB4" opacity="0.92"/>
+    <polygon points="140,930 380,970 380,978 140,938" fill="#B8E8CC" opacity="0.28"/>
   </g>
+  <!-- green head -->
+  <circle cx="354" cy="930" r="40" fill="#081408" filter="url(#shadow4)"/>
+  <ellipse cx="340" cy="916" rx="20" ry="16" fill="#102018" opacity="0.4"/>
+  <circle cx="334" cy="920" r="13" fill="white"/>
+  <circle cx="364" cy="932" r="13" fill="white"/>
+  <circle cx="337" cy="922" r="8"  fill="#080E08"/>
+  <circle cx="367" cy="934" r="8"  fill="#080E08"/>
+  <circle cx="342" cy="917" r="5"  fill="white"/>
+  <circle cx="372" cy="929" r="5"  fill="white"/>
+  <ellipse cx="376" cy="937" rx="11" ry="7" fill="#FF8C00"/>
+  <ellipse cx="314" cy="930" rx="12" ry="8" fill="#FF9AC0" opacity="0.26"/>
+
+  <!-- PURPLE PENGUIN V r3-4 col5 — depth 9
+       startIso=toIso(3,5)=(700,1038) endIso=toIso(4,5)=(620,1078)
+       tl=(620,1038) tr=(700,998) br=(700,1078) bl=(620,1118)
+       PH=48 -->
+  <g filter="url(#shadow4)">
+    <ellipse cx="660" cy="1108" rx="54" ry="16" fill="#001020" opacity="0.28" filter="url(#blur6)"/>
+    <!-- side (left stripe) -->
+    <polygon points="620,990 620,1070 620,1118 620,1038" fill="#120820"/>
+    <!-- front (right stripe) -->
+    <polygon points="700,950 700,1030 700,1078 700,998" fill="#1A0E28"/>
+    <!-- top face -->
+    <polygon points="620,990 700,950 700,1030 620,1070" fill="#200E30"/>
+    <!-- belly on top face -->
+    <ellipse cx="660" cy="1010" rx="24" ry="50" fill="#D8E8F8" opacity="0.85"/>
+    <!-- scarf stripe -->
+    <polygon points="620,1010 700,970 700,980 620,1020" fill="#DDA0DD" opacity="0.92"/>
   </g>
+  <!-- purple head at bottom-forward end -->
+  <circle cx="638" cy="1056" r="38" fill="#120820" filter="url(#shadow4)"/>
+  <ellipse cx="625" cy="1042" rx="18" ry="14" fill="#1E1030" opacity="0.4"/>
+  <circle cx="622" cy="1048" r="12" fill="white"/>
+  <circle cx="650" cy="1060" r="12" fill="white"/>
+  <circle cx="625" cy="1050" r="8"  fill="#0E0818"/>
+  <circle cx="653" cy="1062" r="8"  fill="#0E0818"/>
+  <circle cx="630" cy="1045" r="4.5" fill="white"/>
+  <circle cx="658" cy="1057" r="4.5" fill="white"/>
+  <ellipse cx="660" cy="1065" rx="10" ry="7" fill="#FF8C00"/>
+  <ellipse cx="610" cy="1056" rx="11" ry="7" fill="#FF9AC0" opacity="0.26"/>
 
-  <!-- Swipe arrow hint -->
-  <path d="M490,960 Q560,940 630,960" stroke="#FFD700" stroke-width="5"
-        fill="none" stroke-dasharray="14,8" stroke-linecap="round" opacity="0.75"/>
-  <polygon points="640,950 628,963 616,950" fill="#FFD700" opacity="0.8"/>
+  <!-- BOTTOM CONTROLS -->
+  <rect x="0" y="1195" width="1080" height="96" fill="url(#hdr)" opacity="0.97"/>
+  <rect x="0" y="1195" width="1080" height="1.5" fill="#1E4060"/>
+  <rect x="24" y="1208" width="240" height="70" rx="18" fill="#0E1E2E" stroke="#2A5070" stroke-width="1.5"/>
+  <text x="144" y="1252" text-anchor="middle" font-family="Arial" font-size="30" fill="#A8DADC" font-weight="bold">⟵ Undo</text>
+  <text x="680" y="1248" text-anchor="middle" font-family="Arial" font-size="24" fill="#2A5070">Смахни пингвина — скользит до стены</text>
 
-  <!-- ── BOTTOM CONTROLS ── -->
-  <rect x="0" y="1170" width="1080" height="100" fill="url(#card)" opacity="0.97"/>
-  <rect x="0" y="1170" width="1080" height="1.5" fill="#1E4060"/>
-  <!-- Undo button -->
-  <rect x="24" y="1182" width="240" height="76" rx="18" fill="#0E1E2E" stroke="#2A5070" stroke-width="1.5"/>
-  <text x="144" y="1232" text-anchor="middle" font-family="Arial,sans-serif"
-        font-size="32" fill="#A8DADC" font-weight="bold">⟵ Undo</text>
-  <!-- Hint -->
-  <text x="680" y="1228" text-anchor="middle" font-family="Arial,sans-serif"
-        font-size="26" fill="#2A5070">Смахни пингвина — он поедет до стены</text>
+  <!-- FEATURE CALLOUTS -->
+  <text x="540" y="1360" text-anchor="middle" font-family="Arial Black" font-size="52" fill="#E8F4FF">Скользкий лёд!</text>
+  <text x="540" y="1416" text-anchor="middle" font-family="Arial" font-size="30" fill="#3A6880">Пингвин едет до препятствия или стены</text>
 
-  <!-- ── CALLOUT BADGES ── -->
-  <g transform="translate(80,1310)">
-    <rect x="0" y="0" width="290" height="180" rx="24" fill="#0E1E2E" stroke="#1A4060" stroke-width="1.5"/>
-    <text x="145" y="52" text-anchor="middle" font-size="52">🐧</text>
-    <text x="145" y="100" text-anchor="middle" font-family="Arial Black,sans-serif"
-          font-size="28" fill="#A8DADC">Смахни</text>
-    <text x="145" y="135" text-anchor="middle" font-family="Arial,sans-serif"
-          font-size="24" fill="#3A6880">пальцем</text>
-  </g>
-  <text x="420" y="1415" text-anchor="middle" font-family="Arial Black,sans-serif"
-        font-size="44" fill="#3A7090">→→→</text>
-  <g transform="translate(480,1310)">
-    <rect x="0" y="0" width="290" height="180" rx="24" fill="#0E1E2E" stroke="#1A4060" stroke-width="1.5"/>
-    <text x="145" y="52" text-anchor="middle" font-size="52">🧊</text>
-    <text x="145" y="100" text-anchor="middle" font-family="Arial Black,sans-serif"
-          font-size="28" fill="#A8DADC">Скользит</text>
-    <text x="145" y="135" text-anchor="middle" font-family="Arial,sans-serif"
-          font-size="24" fill="#3A6880">до препятствия</text>
-  </g>
-  <text x="820" y="1415" text-anchor="middle" font-family="Arial Black,sans-serif"
-        font-size="44" fill="#3A7090">→</text>
-  <g transform="translate(860,1310)">
-    <rect x="0" y="0" width="170" height="180" rx="24" fill="#0E1E2E" stroke="#1A4060" stroke-width="1.5"/>
-    <text x="85" y="52" text-anchor="middle" font-size="52">🏆</text>
-    <text x="85" y="104" text-anchor="middle" font-family="Arial Black,sans-serif"
-          font-size="28" fill="#FFD700">Выход!</text>
-  </g>
+  <rect x="54"  y="1448" width="290" height="188" rx="24" fill="#0E1E2E" stroke="#1A4060" stroke-width="1.5"/>
+  <text x="199" y="1506" text-anchor="middle" font-size="52">🐧</text>
+  <text x="199" y="1556" text-anchor="middle" font-family="Arial Black" font-size="28" fill="#A8DADC">Смахни</text>
+  <text x="199" y="1592" text-anchor="middle" font-family="Arial" font-size="22" fill="#3A6880">пальцем</text>
 
-  <!-- Headline -->
-  <text x="540" y="1560" text-anchor="middle" font-family="Arial Black,sans-serif"
-        font-size="52" fill="#E8F4FF">200 уровней головоломок</text>
-  <text x="540" y="1618" text-anchor="middle" font-family="Arial,sans-serif"
-        font-size="32" fill="#3A6880">от лёгких до «это невозможно»</text>
+  <text x="388" y="1560" text-anchor="middle" font-family="Arial Black" font-size="40" fill="#3A7090">→→</text>
 
-  <!-- Difficulty pills -->
-  <rect x="86"  y="1660" width="200" height="52" rx="26" fill="#2A4A2A"/>
-  <text x="186" y="1695" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="26" fill="#82E0AA">🟢 Easy</text>
-  <rect x="306" y="1660" width="200" height="52" rx="26" fill="#4A3A18"/>
-  <text x="406" y="1695" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="26" fill="#F7DC6F">🟡 Medium</text>
-  <rect x="526" y="1660" width="200" height="52" rx="26" fill="#4A2A18"/>
-  <text x="626" y="1695" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="26" fill="#F0B27A">🟠 Hard</text>
-  <rect x="746" y="1660" width="230" height="52" rx="26" fill="#4A1A2A"/>
-  <text x="861" y="1695" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="26" fill="#FF6B9D">🔴 Expert</text>
+  <rect x="432" y="1448" width="290" height="188" rx="24" fill="#0E1E2E" stroke="#1A4060" stroke-width="1.5"/>
+  <text x="577" y="1506" text-anchor="middle" font-size="52">🧊</text>
+  <text x="577" y="1556" text-anchor="middle" font-family="Arial Black" font-size="28" fill="#A8DADC">❄ Преграда</text>
+  <text x="577" y="1592" text-anchor="middle" font-family="Arial" font-size="22" fill="#3A6880">ледяной блок</text>
 
-  <text x="540" y="1890" text-anchor="middle" font-family="Arial,sans-serif"
-        font-size="22" fill="#1A3040" opacity="0.8">© 2025 SonoBzy</text>
+  <text x="766" y="1560" text-anchor="middle" font-family="Arial Black" font-size="40" fill="#3A7090">→</text>
+
+  <rect x="808" y="1448" width="218" height="188" rx="24" fill="#0E1E2E" stroke="#1A4060" stroke-width="1.5"/>
+  <text x="917" y="1506" text-anchor="middle" font-size="52">🏆</text>
+  <text x="917" y="1556" text-anchor="middle" font-family="Arial Black" font-size="28" fill="#FFD700">Выход!</text>
+
+  <!-- difficulty pills -->
+  <rect x="54"  y="1660" width="220" height="50" rx="25" fill="#1A3A1A"/>
+  <text x="164" y="1692" text-anchor="middle" font-family="Arial Black" font-size="24" fill="#82E0AA">🟢 Лёгкий</text>
+  <rect x="294" y="1660" width="220" height="50" rx="25" fill="#3A2C10"/>
+  <text x="404" y="1692" text-anchor="middle" font-family="Arial Black" font-size="24" fill="#F7DC6F">🟡 Средний</text>
+  <rect x="534" y="1660" width="220" height="50" rx="25" fill="#3A1C10"/>
+  <text x="644" y="1692" text-anchor="middle" font-family="Arial Black" font-size="24" fill="#F0B27A">🟠 Сложный</text>
+  <rect x="774" y="1660" width="252" height="50" rx="25" fill="#3A0E20"/>
+  <text x="900" y="1692" text-anchor="middle" font-family="Arial Black" font-size="24" fill="#FF6B9D">🔴 Эксперт</text>
+
+  <text x="540" y="1890" text-anchor="middle" font-family="Arial" font-size="22" fill="#1A3040" opacity="0.8">© 2025 SonoBzy</text>
 </svg>
