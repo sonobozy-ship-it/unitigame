@@ -48,9 +48,6 @@ jobs:
   build-waddle:
     name: Build WADDLE APK
     runs-on: ubuntu-latest
-    # WADDLE needs 'eas init' run once locally to get a real projectId
-    # Until then this job is skipped to not block KORU
-    if: false
     defaults:
       run:
         working-directory: apps/movo
@@ -74,6 +71,9 @@ jobs:
         with:
           eas-version: latest
           token: ${{ secrets.KORU_PUZZLE }}
+
+      - name: Register project with EAS (if not yet linked)
+        run: eas init --non-interactive || true
 
       - name: Build APK
         run: eas build --platform android --profile preview --non-interactive
