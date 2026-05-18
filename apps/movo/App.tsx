@@ -6,7 +6,8 @@ import { HomeScreen } from './src/screens/HomeScreen';
 import { LevelSelectScreen } from './src/screens/LevelSelectScreen';
 import { GameScreen } from './src/screens/GameScreen';
 import { WinScreen } from './src/screens/WinScreen';
-import { LEVELS, getLevel } from './src/data/levels';
+import { generateLevel } from './src/data/levels';
+import type { Level } from './src/data/levels';
 import { useProgress } from './src/hooks/useProgress';
 
 type Screen = 'home' | 'select' | 'game' | 'win';
@@ -14,10 +15,9 @@ type Screen = 'home' | 'select' | 'game' | 'win';
 export default function App() {
   const [screen, setScreen] = useState<Screen>('home');
   const [currentLevelId, setCurrentLevelId] = useState(1);
+  const [currentLevel, setCurrentLevel] = useState<Level>(() => generateLevel(1));
   const [winData, setWinData] = useState({ stars: 1, moves: 0 });
   const { completeLevel } = useProgress();
-
-  const currentLevel = getLevel(currentLevelId) ?? LEVELS[0];
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -27,7 +27,11 @@ export default function App() {
         )}
         {screen === 'select' && (
           <LevelSelectScreen
-            onSelectLevel={(id) => { setCurrentLevelId(id); setScreen('game'); }}
+            onSelectLevel={(id) => {
+              setCurrentLevel(generateLevel(id));
+              setCurrentLevelId(id);
+              setScreen('game');
+            }}
             onBack={() => setScreen('home')}
           />
         )}
@@ -50,15 +54,14 @@ export default function App() {
             par={currentLevel.par}
             onNext={() => {
               const nextId = currentLevelId + 1;
-              const nextLevel = getLevel(nextId);
-              if (nextLevel) {
-                setCurrentLevelId(nextId);
-                setScreen('game');
-              } else {
-                setScreen('select');
-              }
+              setCurrentLevel(generateLevel(nextId));
+              setCurrentLevelId(nextId);
+              setScreen('game');
             }}
-            onReplay={() => setScreen('game')}
+            onReplay={() => {
+              setCurrentLevel(generateLevel(currentLevelId));
+              setScreen('game');
+            }}
             onMenu={() => setScreen('select')}
           />
         )}
