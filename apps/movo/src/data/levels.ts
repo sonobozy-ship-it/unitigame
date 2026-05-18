@@ -1,164 +1,184 @@
 export type Direction = 'right' | 'left' | 'up' | 'down';
 export type ExitSide = 'right' | 'left' | 'top' | 'bottom';
 
-export interface Wall {
-  r1: number; c1: number;
-  r2: number; c2: number;
-}
-
 export interface SnakeDef {
   id: string;
   color: string;
-  row: number;
-  col: number;
-  length: 2 | 3 | 4;
-  direction: Direction;
+  /** cell path from tail to head, each cell is [row, col] */
+  cells: [number, number][];
   isTarget: boolean;
 }
 
 export interface Level {
   id: number;
   size: number;
-  walls: Wall[];
-  snakes: SnakeDef[];
   exitSide: ExitSide;
   exitIndex: number;
+  snakes: SnakeDef[];
   par: number;
 }
 
-function w(r1: number, c1: number, r2: number, c2: number): Wall {
-  return { r1, c1, r2, c2 };
+// ── RNG ────────────────────────────────────────────────────────────────────────
+function mulberry32(a: number): () => number {
+  return function () {
+    a |= 0;
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
 }
-function s(
-  id: string, color: string,
-  row: number, col: number, length: 2 | 3 | 4,
-  direction: Direction, isTarget = false,
-): SnakeDef {
-  return { id, color, row, col, length, direction, isTarget };
-}
 
-const C = {
-  gold:   '#FFD700',
-  red:    '#FF4455',
-  blue:   '#44AAFF',
-  green:  '#44EE88',
-  purple: '#BB66FF',
-  orange: '#FF9944',
-  teal:   '#22DDCC',
-  pink:   '#FF66BB',
-  lime:   '#AAEE22',
-  indigo: '#6677FF',
-};
-
-export const LEVELS: Level[] = [
-  // ━━━ Pack 1 — 4×4, no walls ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  { id: 1, size: 4, walls: [],
-    snakes: [s('t',C.gold,1,0,2,'right',true), s('a',C.blue,1,3,2,'up')],
-    exitSide:'right', exitIndex:1, par:2 },
-  { id: 2, size: 4, walls: [],
-    snakes: [s('t',C.gold,2,0,2,'right',true), s('a',C.red,2,2,2,'left')],
-    exitSide:'right', exitIndex:2, par:2 },
-  { id: 3, size: 4, walls: [],
-    snakes: [s('t',C.gold,1,0,2,'right',true), s('a',C.red,1,2,2,'left'), s('b',C.blue,0,3,2,'down')],
-    exitSide:'right', exitIndex:1, par:3 },
-  { id: 4, size: 4, walls: [],
-    snakes: [s('t',C.gold,0,0,2,'right',true), s('a',C.green,0,2,2,'up'), s('b',C.purple,2,1,2,'right')],
-    exitSide:'right', exitIndex:0, par:2 },
-  { id: 5, size: 4, walls: [],
-    snakes: [s('t',C.gold,1,0,2,'right',true), s('a',C.red,0,2,2,'down'), s('b',C.blue,1,3,2,'up')],
-    exitSide:'right', exitIndex:1, par:3 },
-  { id: 6, size: 4, walls: [],
-    snakes: [s('t',C.gold,0,2,2,'down',true), s('a',C.teal,2,2,2,'right'), s('b',C.orange,1,0,2,'right')],
-    exitSide:'bottom', exitIndex:2, par:2 },
-  { id: 7, size: 4, walls: [],
-    snakes: [s('t',C.gold,2,0,2,'right',true), s('a',C.red,2,2,2,'up'), s('b',C.blue,0,3,2,'down'), s('c',C.green,0,2,2,'left')],
-    exitSide:'right', exitIndex:2, par:4 },
-  { id: 8, size: 4, walls: [],
-    snakes: [s('t',C.gold,1,0,3,'right',true), s('a',C.purple,0,3,2,'down')],
-    exitSide:'right', exitIndex:1, par:2 },
-  { id: 9, size: 4, walls: [],
-    snakes: [s('t',C.gold,0,0,2,'right',true), s('a',C.red,0,2,2,'down'), s('b',C.blue,2,1,2,'right'), s('c',C.green,3,3,2,'up')],
-    exitSide:'right', exitIndex:0, par:3 },
-  { id: 10, size: 4, walls: [],
-    snakes: [s('t',C.gold,2,0,2,'right',true), s('a',C.teal,0,2,3,'down'), s('b',C.pink,3,3,2,'up')],
-    exitSide:'right', exitIndex:2, par:3 },
-
-  // ━━━ Pack 2 — 5×5, walls ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  { id: 11, size: 5, walls: [w(1,2,1,3)],
-    snakes: [s('t',C.gold,1,0,2,'right',true), s('a',C.blue,0,4,2,'down'), s('b',C.red,3,3,2,'up')],
-    exitSide:'right', exitIndex:1, par:3 },
-  { id: 12, size: 5, walls: [w(2,1,3,1)],
-    snakes: [s('t',C.gold,2,0,2,'right',true), s('a',C.purple,2,3,2,'left'), s('b',C.green,4,2,2,'up')],
-    exitSide:'right', exitIndex:2, par:3 },
-  { id: 13, size: 5, walls: [w(1,2,2,2), w(2,3,2,4)],
-    snakes: [s('t',C.gold,1,0,2,'right',true), s('a',C.red,0,3,2,'down'), s('b',C.blue,1,4,2,'up'), s('c',C.orange,3,2,2,'right')],
-    exitSide:'right', exitIndex:1, par:4 },
-  { id: 14, size: 5, walls: [w(3,2,3,3)],
-    snakes: [s('t',C.gold,0,3,2,'down',true), s('a',C.teal,3,3,2,'left'), s('b',C.pink,2,0,2,'right')],
-    exitSide:'bottom', exitIndex:3, par:2 },
-  { id: 15, size: 5, walls: [w(0,2,1,2), w(3,1,4,1)],
-    snakes: [s('t',C.gold,2,0,2,'right',true), s('a',C.red,2,3,2,'up'), s('b',C.blue,0,3,3,'down'), s('c',C.green,4,2,2,'left')],
-    exitSide:'right', exitIndex:2, par:4 },
-  { id: 16, size: 5, walls: [w(1,1,1,2), w(2,2,2,3)],
-    snakes: [s('t',C.gold,1,0,2,'right',true), s('a',C.purple,0,2,2,'down'), s('b',C.orange,1,3,2,'up'), s('c',C.lime,3,0,2,'right')],
-    exitSide:'right', exitIndex:1, par:4 },
-  { id: 17, size: 5, walls: [w(0,3,1,3)],
-    snakes: [s('t',C.gold,0,0,2,'right',true), s('a',C.red,0,3,2,'down'), s('b',C.blue,2,3,2,'up'), s('c',C.teal,1,2,2,'right')],
-    exitSide:'right', exitIndex:0, par:4 },
-  { id: 18, size: 5, walls: [w(2,0,2,1), w(2,3,2,4)],
-    snakes: [s('t',C.gold,2,1,2,'right',true), s('a',C.indigo,1,3,2,'down'), s('b',C.pink,3,3,2,'up')],
-    exitSide:'right', exitIndex:2, par:3 },
-  { id: 19, size: 5, walls: [w(1,2,1,3), w(3,2,3,3)],
-    snakes: [s('t',C.gold,2,0,2,'right',true), s('a',C.green,2,3,2,'left'), s('b',C.red,0,4,3,'down'), s('c',C.blue,4,1,2,'right')],
-    exitSide:'right', exitIndex:2, par:4 },
-  { id: 20, size: 5, walls: [w(1,1,2,1), w(2,3,3,3)],
-    snakes: [s('t',C.gold,1,0,3,'right',true), s('a',C.purple,1,3,2,'up'), s('b',C.orange,3,2,2,'up'), s('c',C.teal,4,0,2,'right')],
-    exitSide:'right', exitIndex:1, par:4 },
-
-  // ━━━ Pack 3 — 6×6 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  { id: 21, size: 6, walls: [w(2,2,2,3), w(3,1,4,1)],
-    snakes: [s('t',C.gold,2,0,2,'right',true), s('a',C.red,2,3,2,'up'), s('b',C.blue,0,4,3,'down'), s('c',C.green,4,2,2,'right'), s('d',C.purple,5,4,2,'up')],
-    exitSide:'right', exitIndex:2, par:5 },
-  { id: 22, size: 6, walls: [w(1,3,2,3), w(3,3,3,4)],
-    snakes: [s('t',C.gold,1,0,2,'right',true), s('a',C.teal,1,3,2,'up'), s('b',C.orange,0,4,2,'down'), s('c',C.pink,3,1,2,'right'), s('d',C.indigo,4,4,2,'up')],
-    exitSide:'right', exitIndex:1, par:5 },
-  { id: 23, size: 6, walls: [w(0,2,1,2), w(2,4,3,4)],
-    snakes: [s('t',C.gold,3,0,2,'right',true), s('a',C.red,3,3,2,'up'), s('b',C.blue,1,3,2,'down'), s('c',C.green,5,2,3,'right'), s('d',C.lime,0,5,3,'down')],
-    exitSide:'right', exitIndex:3, par:5 },
-
-  // ━━━ Packs 4–6 — generated 24–100 ━━━━━━━━━━━━━━━━━━━━━━━
-  ...Array.from({ length: 77 }, (_, i): Level => {
-    const id = 24 + i;
-    const size = id < 41 ? 6 : id < 61 ? 7 : id < 81 ? 8 : 9;
-    const maxR = size - 2;
-    const row = (id * 7 + 3) % maxR;
-    const mid = Math.floor(size / 2);
-    const walls: Wall[] = [
-      w(row, mid - 1, row, mid),
-      w((row + 2) % maxR, size - 3, (row + 2) % maxR + 1, size - 3),
-    ];
-    if (size >= 7) walls.push(w((row + 4) % maxR, 1, (row + 4) % maxR, 2));
-    if (size >= 8) walls.push(w((row + 3) % maxR, size - 4, (row + 3) % maxR, size - 3));
-
-    const snakes: SnakeDef[] = [
-      s('t', C.gold,   row, 0, 2, 'right', true),
-      s('a', C.red,    row, mid, 2, 'up'),
-      s('b', C.blue,   0, size - 2, size >= 8 ? 3 : 2, 'down'),
-      s('c', C.green,  (row + 3) % maxR + 1, 1, 2, 'right'),
-      s('d', C.purple, size - 1, (id % (size - 2)) + 1, 2, 'up'),
-    ];
-    if (size >= 7) snakes.push(s('e', C.teal,   (row + 1) % maxR, mid - 1, 2, 'left'));
-    if (size >= 8) snakes.push(s('f', C.orange, (row + 5) % maxR, size - 3, 2, 'up'));
-    if (size >= 9) snakes.push(s('g', C.pink,   (row + 6) % maxR, 2, 2, 'down'));
-
-    return {
-      id, size, walls, snakes,
-      exitSide: 'right', exitIndex: row,
-      par: 3 + Math.floor(size / 2) + (id % 3),
-    };
-  }),
+// 25 distinct bright non-gold colors
+const COLORS = [
+  '#FF4455', '#44AAFF', '#44EE88', '#BB66FF', '#FF9944',
+  '#22DDCC', '#FF66BB', '#AAEE22', '#6677FF', '#FF3388',
+  '#00CCFF', '#FF8800', '#33FF99', '#FF44CC', '#88FF00',
+  '#0088FF', '#FF6644', '#44FFDD', '#CC44FF', '#FFCC00',
+  '#FF2266', '#66FF44', '#FF00AA', '#44BBFF', '#CCFF33',
 ];
 
-export function getLevel(id: number): Level {
-  return LEVELS.find(l => l.id === id) ?? LEVELS[0];
+function gridSize(levelId: number): number {
+  if (levelId <= 10) return 20;
+  if (levelId <= 25) return 25;
+  if (levelId <= 50) return 30;
+  if (levelId <= 80) return 35;
+  return 40;
+}
+
+export function getTotalLevels(): number {
+  return 100;
+}
+
+export function generateLevel(levelId: number, seed?: number): Level {
+  const rngSeed = ((seed ?? levelId * 997331) ^ 0xABCD1234) >>> 0;
+  const rng = mulberry32(rngSeed);
+
+  const size = gridSize(levelId);
+
+  // Pick exit index avoiding edges by 2
+  const exitIndex = 2 + Math.floor(rng() * (size - 4));
+  const exitSide: ExitSide = 'right';
+
+  // Target snake: horizontal at exitIndex row, from col 0 to targetLen-1
+  const targetLen = 3 + Math.floor(rng() * 3); // 3-5
+  const targetCells: [number, number][] = [];
+  for (let c = 0; c < targetLen; c++) {
+    targetCells.push([exitIndex, c]);
+  }
+
+  const targetSnake: SnakeDef = {
+    id: 't',
+    color: '#FFD700',
+    cells: targetCells,
+    isTarget: true,
+  };
+
+  // Build occupied set
+  const occupiedSet = new Set<string>();
+  const key = (r: number, c: number) => `${r},${c}`;
+
+  for (const [r, c] of targetCells) {
+    occupiedSet.add(key(r, c));
+  }
+
+  // Shuffle all empty cells
+  const allCells: [number, number][] = [];
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      if (!occupiedSet.has(key(r, c))) {
+        allCells.push([r, c]);
+      }
+    }
+  }
+
+  // Fisher-Yates shuffle
+  for (let i = allCells.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [allCells[i], allCells[j]] = [allCells[j], allCells[i]];
+  }
+
+  const directions: Direction[] = ['right', 'left', 'up', 'down'];
+  const deltas: Record<Direction, [number, number]> = {
+    right: [0, 1], left: [0, -1], up: [-1, 0], down: [1, 0],
+  };
+
+  const extraSnakes: SnakeDef[] = [];
+  let colorIdx = 0;
+
+  for (const startCell of allCells) {
+    if (occupiedSet.has(key(startCell[0], startCell[1]))) continue;
+
+    // Random walk snake
+    const desiredLen = 4 + Math.floor(rng() * 7); // 4-10
+    const snakeCells: [number, number][] = [startCell];
+    occupiedSet.add(key(startCell[0], startCell[1]));
+
+    // Pick initial direction
+    let dir = directions[Math.floor(rng() * 4)];
+
+    for (let step = 1; step < desiredLen; step++) {
+      // Prefer continuing, but sometimes turn
+      const candidates: Direction[] = [];
+      if (rng() < 0.65) {
+        candidates.push(dir);
+      }
+      // Add shuffled alternates
+      const others = directions.filter(d => d !== dir);
+      for (let i = others.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1));
+        [others[i], others[j]] = [others[j], others[i]];
+      }
+      for (const d of others) candidates.push(d);
+      candidates.push(dir); // ensure dir is always in list
+
+      const head = snakeCells[snakeCells.length - 1];
+      let moved = false;
+      for (const d of candidates) {
+        const [dr, dc] = deltas[d];
+        const nr = head[0] + dr;
+        const nc = head[1] + dc;
+        if (nr >= 0 && nr < size && nc >= 0 && nc < size && !occupiedSet.has(key(nr, nc))) {
+          snakeCells.push([nr, nc]);
+          occupiedSet.add(key(nr, nc));
+          dir = d;
+          moved = true;
+          break;
+        }
+      }
+      if (!moved) break;
+    }
+
+    if (snakeCells.length >= 1) {
+      const color = COLORS[colorIdx % COLORS.length];
+      colorIdx++;
+      extraSnakes.push({
+        id: `s${extraSnakes.length}`,
+        color,
+        cells: snakeCells,
+        isTarget: false,
+      });
+    }
+  }
+
+  // Calculate par: count blockers in target row at cols >= targetLen, multiply by 2 + 2
+  let blockerCount = 0;
+  for (const s of extraSnakes) {
+    for (const [r, c] of s.cells) {
+      if (r === exitIndex && c >= targetLen) {
+        blockerCount++;
+        break; // count each snake once
+      }
+    }
+  }
+  const par = blockerCount * 2 + 2;
+
+  return {
+    id: levelId,
+    size,
+    exitSide,
+    exitIndex,
+    snakes: [targetSnake, ...extraSnakes],
+    par: Math.max(par, 2),
+  };
 }
