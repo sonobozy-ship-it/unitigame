@@ -1,224 +1,206 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="390" height="780" viewBox="0 0 390 780" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 480" width="360" height="480">
 <defs>
-  <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#080E1C"/><stop offset="100%" stop-color="#0D1628"/>
-  </linearGradient>
-  <linearGradient id="gGold" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%" stop-color="#FFE44D"/><stop offset="50%" stop-color="#FFD700"/><stop offset="100%" stop-color="#CC8800"/>
-  </linearGradient>
-  <linearGradient id="gRed" x1="0%" y1="0%" x2="0%" y2="100%">
-    <stop offset="0%" stop-color="#FF6677"/><stop offset="50%" stop-color="#FF4455"/><stop offset="100%" stop-color="#CC1122"/>
-  </linearGradient>
-  <linearGradient id="gBlue" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%" stop-color="#66BBFF"/><stop offset="50%" stop-color="#44AAFF"/><stop offset="100%" stop-color="#1166CC"/>
-  </linearGradient>
-  <linearGradient id="gGreen" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%" stop-color="#66FF99"/><stop offset="50%" stop-color="#44EE88"/><stop offset="100%" stop-color="#008844"/>
-  </linearGradient>
-  <linearGradient id="gPurple" x1="0%" y1="0%" x2="0%" y2="100%">
-    <stop offset="0%" stop-color="#CC88FF"/><stop offset="50%" stop-color="#BB66FF"/><stop offset="100%" stop-color="#6600CC"/>
-  </linearGradient>
-  <linearGradient id="gTeal" x1="100%" y1="0%" x2="0%" y2="0%">
-    <stop offset="0%" stop-color="#44FFEE"/><stop offset="50%" stop-color="#22DDCC"/><stop offset="100%" stop-color="#008877"/>
-  </linearGradient>
-  <filter id="glowGold" x="-30%" y="-30%" width="160%" height="160%">
-    <feGaussianBlur stdDeviation="5" result="b"/>
-    <feFlood flood-color="#FFD700" flood-opacity="0.5" result="c"/>
-    <feComposite in="c" in2="b" operator="in" result="g"/>
-    <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+  <pattern id="cells" x="30" y="112" width="50" height="50" patternUnits="userSpaceOnUse">
+    <rect width="25" height="25" fill="#0D1A2A"/>
+    <rect x="25" width="25" height="25" fill="#0E1C2E"/>
+    <rect y="25" width="25" height="25" fill="#0E1C2E"/>
+    <rect x="25" y="25" width="25" height="25" fill="#0D1A2A"/>
+  </pattern>
+  <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="4" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
-  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-    <feGaussianBlur stdDeviation="3" result="b"/>
-    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  <filter id="glow2" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="6" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
 </defs>
 
-<rect width="390" height="780" fill="url(#bg)"/>
-<ellipse cx="80" cy="100" rx="200" ry="80" fill="#1A3A6A" opacity="0.12"/>
-<ellipse cx="320" cy="680" rx="180" ry="70" fill="#3A1A7A" opacity="0.10"/>
+<!-- Full background -->
+<rect width="360" height="480" fill="#08111C"/>
 
-<!-- HEADER -->
-<rect width="390" height="64" fill="#0A1220" opacity="0.95"/>
-<rect x="12" y="12" width="40" height="40" rx="10" fill="#1A2A40"/>
-<text x="32" y="37" text-anchor="middle" font-family="Arial" font-size="20" fill="#88AACC">←</text>
-<text x="195" y="30" text-anchor="middle" font-family="Arial Black,Arial" font-size="14" font-weight="900" fill="#FFFFFF" letter-spacing="3">LEVEL  7</text>
-<text x="183" y="54" font-family="Arial" font-size="16" fill="#FFD700">★</text>
-<text x="201" y="54" font-family="Arial" font-size="16" fill="#FFD700">★</text>
-<text x="219" y="54" font-family="Arial" font-size="16" fill="#334466">★</text>
-<rect x="338" y="12" width="40" height="40" rx="10" fill="#1A2A40"/>
-<text x="358" y="37" text-anchor="middle" font-family="Arial" font-size="18" fill="#88AACC">↺</text>
+<!-- Header bg -->
+<rect width="360" height="72" fill="#0C1826"/>
+<line x1="0" y1="72" x2="360" y2="72" stroke="#1A3050" stroke-width="1"/>
 
-<!-- MOVES / PAR -->
-<rect x="100" y="72" width="90" height="52" rx="8" fill="#111827"/>
-<text x="145" y="98" text-anchor="middle" font-family="Arial Black" font-size="24" font-weight="900" fill="#44AAFF">3</text>
-<text x="145" y="117" text-anchor="middle" font-family="Arial" font-size="11" fill="#445566" letter-spacing="2">MOVES</text>
-<rect x="200" y="72" width="90" height="52" rx="8" fill="#111827"/>
-<text x="245" y="98" text-anchor="middle" font-family="Arial Black" font-size="24" font-weight="900" fill="#334455">7</text>
-<text x="245" y="117" text-anchor="middle" font-family="Arial" font-size="11" fill="#334455" letter-spacing="2">PAR</text>
+<!-- Back button -->
+<rect x="10" y="14" width="44" height="44" rx="10" fill="#132030"/>
+<text x="32" y="42" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#7799BB">←</text>
 
-<!-- GRID 6x6, cs=54, origin=(33,140) -->
-<rect x="33" y="140" width="324" height="324" rx="8" fill="#0C1824"/>
-<rect x="33"  y="140" width="54" height="54" fill="#0E1E2E"/>
-<rect x="141" y="140" width="54" height="54" fill="#0E1E2E"/>
-<rect x="249" y="140" width="54" height="54" fill="#0E1E2E"/>
-<rect x="87"  y="194" width="54" height="54" fill="#0E1E2E"/>
-<rect x="195" y="194" width="54" height="54" fill="#0E1E2E"/>
-<rect x="303" y="194" width="54" height="54" fill="#0E1E2E"/>
-<rect x="33"  y="248" width="54" height="54" fill="#0E1E2E"/>
-<rect x="141" y="248" width="54" height="54" fill="#0E1E2E"/>
-<rect x="249" y="248" width="54" height="54" fill="#0E1E2E"/>
-<rect x="87"  y="302" width="54" height="54" fill="#0E1E2E"/>
-<rect x="195" y="302" width="54" height="54" fill="#0E1E2E"/>
-<rect x="303" y="302" width="54" height="54" fill="#0E2E1A" stroke="#00FF88" stroke-width="2"/>
-<rect x="33"  y="356" width="54" height="54" fill="#0E1E2E"/>
-<rect x="141" y="356" width="54" height="54" fill="#0E1E2E"/>
-<rect x="249" y="356" width="54" height="54" fill="#0E1E2E"/>
-<rect x="87"  y="410" width="54" height="54" fill="#0E1E2E"/>
-<rect x="195" y="410" width="54" height="54" fill="#0E1E2E"/>
-<rect x="303" y="410" width="54" height="54" fill="#0E1E2E"/>
-<line x1="87"  y1="140" x2="87"  y2="464" stroke="#1A3050" stroke-width="0.8"/>
-<line x1="141" y1="140" x2="141" y2="464" stroke="#1A3050" stroke-width="0.8"/>
-<line x1="195" y1="140" x2="195" y2="464" stroke="#1A3050" stroke-width="0.8"/>
-<line x1="249" y1="140" x2="249" y2="464" stroke="#1A3050" stroke-width="0.8"/>
-<line x1="303" y1="140" x2="303" y2="464" stroke="#1A3050" stroke-width="0.8"/>
-<line x1="33"  y1="194" x2="357" y2="194" stroke="#1A3050" stroke-width="0.8"/>
-<line x1="33"  y1="248" x2="357" y2="248" stroke="#1A3050" stroke-width="0.8"/>
-<line x1="33"  y1="302" x2="357" y2="302" stroke="#1A3050" stroke-width="0.8"/>
-<line x1="33"  y1="356" x2="357" y2="356" stroke="#1A3050" stroke-width="0.8"/>
-<line x1="33"  y1="410" x2="357" y2="410" stroke="#1A3050" stroke-width="0.8"/>
-<rect x="33" y="140" width="324" height="324" rx="8" fill="none" stroke="#2A4A70" stroke-width="2"/>
+<!-- Level + stars -->
+<text x="180" y="34" text-anchor="middle" font-family="monospace" font-size="13" font-weight="bold" fill="#A0B8CC" letter-spacing="3">LEVEL 7</text>
+<text x="156" y="59" font-family="sans-serif" font-size="22" fill="#FFD700">★</text>
+<text x="178" y="59" font-family="sans-serif" font-size="22" fill="#FFD700">★</text>
+<text x="200" y="59" font-family="sans-serif" font-size="22" fill="#FFD700">★</text>
 
-<!-- MAZE WALLS -->
-<line x1="249" y1="248" x2="249" y2="302" stroke="#4A8AC8" stroke-width="5" stroke-linecap="round"/>
-<line x1="87"  y1="356" x2="141" y2="356" stroke="#4A8AC8" stroke-width="5" stroke-linecap="round"/>
-<line x1="195" y1="248" x2="249" y2="248" stroke="#4A8AC8" stroke-width="5" stroke-linecap="round"/>
+<!-- Reset button -->
+<rect x="306" y="14" width="44" height="44" rx="10" fill="#132030"/>
+<text x="328" y="42" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#7799BB">↺</text>
 
-<!-- EXIT -->
-<rect x="354" y="306" width="10" height="46" fill="#0C1824"/>
-<rect x="356" y="308" width="5" height="42" rx="2" fill="#00FF88" opacity="0.9"/>
-<polygon points="362,329 372,329 367,318" fill="#00FF88" transform="rotate(90 367 329)"/>
-<text x="374" y="325" font-family="Arial" font-size="9" font-weight="bold" fill="#00FF88">EXIT</text>
-<text x="370" y="338" font-family="Arial" font-size="14" fill="#00FF88">→</text>
+<!-- Moves/Par row (72-112) -->
+<rect y="72" width="360" height="40" fill="#0A1520"/>
+<line x1="0" y1="112" x2="360" y2="112" stroke="#152030" stroke-width="1"/>
+<text x="130" y="96" text-anchor="middle" font-family="monospace" font-size="26" font-weight="bold" fill="#00DDAA">5</text>
+<text x="130" y="108" text-anchor="middle" font-family="monospace" font-size="8" fill="#445566" letter-spacing="2">MOVES</text>
+<text x="230" y="96" text-anchor="middle" font-family="monospace" font-size="26" font-weight="bold" fill="#445566">12</text>
+<text x="230" y="108" text-anchor="middle" font-family="monospace" font-size="8" fill="#445566" letter-spacing="2">PAR</text>
 
-<!-- TARGET gold H r=2 c=0-1 → x=36,y=251,w=102,h=48 -->
-<rect x="36" y="251" width="102" height="48" rx="24" fill="url(#gGold)" filter="url(#glowGold)"/>
-<line x1="72"  y1="255" x2="72"  y2="295" stroke="#FFD700" stroke-width="0.8" opacity="0.3"/>
-<line x1="108" y1="255" x2="108" y2="295" stroke="#FFD700" stroke-width="0.8" opacity="0.3"/>
-<rect x="90" y="254" width="46" height="42" rx="21" fill="#FFD700" opacity="0.2"/>
-<line x1="136" y1="275" x2="144" y2="275" stroke="#FF3366" stroke-width="2" stroke-linecap="round"/>
-<line x1="144" y1="275" x2="149" y2="269" stroke="#FF3366" stroke-width="1.5" stroke-linecap="round"/>
-<line x1="144" y1="275" x2="149" y2="281" stroke="#FF3366" stroke-width="1.5" stroke-linecap="round"/>
-<circle cx="126" cy="265" r="6" fill="white"/>
-<circle cx="126" cy="285" r="6" fill="white"/>
-<circle cx="127" cy="266" r="3.5" fill="#111"/>
-<circle cx="127" cy="286" r="3.5" fill="#111"/>
-<circle cx="125" cy="264" r="1.8" fill="white"/>
-<circle cx="125" cy="284" r="1.8" fill="white"/>
-<polygon points="106,249 114,239 122,249" fill="#FFD700" opacity="0.9"/>
+<!-- Board background: checkerboard -->
+<rect x="30" y="112" width="300" height="300" fill="url(#cells)"/>
 
-<!-- RED V r=0-2 c=2 → x=144,y=143,w=48,h=156 -->
-<rect x="144" y="143" width="48" height="156" rx="24" fill="url(#gRed)" filter="url(#glow)"/>
-<line x1="148" y1="197" x2="188" y2="197" stroke="#FF4455" stroke-width="0.8" opacity="0.25"/>
-<line x1="148" y1="251" x2="188" y2="251" stroke="#FF4455" stroke-width="0.8" opacity="0.25"/>
-<rect x="147" y="246" width="42" height="48" rx="21" fill="#FF4455" opacity="0.2"/>
-<line x1="168" y1="297" x2="168" y2="305" stroke="#FF3366" stroke-width="2" stroke-linecap="round"/>
-<line x1="168" y1="305" x2="163" y2="312" stroke="#FF3366" stroke-width="1.5" stroke-linecap="round"/>
-<line x1="168" y1="305" x2="173" y2="312" stroke="#FF3366" stroke-width="1.5" stroke-linecap="round"/>
-<circle cx="159" cy="284" r="6" fill="white"/>
-<circle cx="177" cy="284" r="6" fill="white"/>
-<circle cx="160" cy="285" r="3.5" fill="#111"/>
-<circle cx="178" cy="285" r="3.5" fill="#111"/>
-<circle cx="158" cy="283" r="1.8" fill="white"/>
-<circle cx="176" cy="283" r="1.8" fill="white"/>
+<!-- Grid lines (very subtle) -->
+<g stroke="#1A3050" stroke-width="0.6" opacity="0.7">
+  <line x1="55" y1="112" x2="55" y2="412"/>
+  <line x1="80" y1="112" x2="80" y2="412"/>
+  <line x1="105" y1="112" x2="105" y2="412"/>
+  <line x1="130" y1="112" x2="130" y2="412"/>
+  <line x1="155" y1="112" x2="155" y2="412"/>
+  <line x1="180" y1="112" x2="180" y2="412"/>
+  <line x1="205" y1="112" x2="205" y2="412"/>
+  <line x1="230" y1="112" x2="230" y2="412"/>
+  <line x1="255" y1="112" x2="255" y2="412"/>
+  <line x1="280" y1="112" x2="280" y2="412"/>
+  <line x1="305" y1="112" x2="305" y2="412"/>
+  <line x1="30" y1="137" x2="330" y2="137"/>
+  <line x1="30" y1="162" x2="330" y2="162"/>
+  <line x1="30" y1="187" x2="330" y2="187"/>
+  <line x1="30" y1="212" x2="330" y2="212"/>
+  <line x1="30" y1="237" x2="330" y2="237"/>
+  <line x1="30" y1="262" x2="330" y2="262"/>
+  <line x1="30" y1="287" x2="330" y2="287"/>
+  <line x1="30" y1="312" x2="330" y2="312"/>
+  <line x1="30" y1="337" x2="330" y2="337"/>
+  <line x1="30" y1="362" x2="330" y2="362"/>
+  <line x1="30" y1="387" x2="330" y2="387"/>
+</g>
 
-<!-- BLUE H r=0 c=3-4 dir=left → x=198,y=143,w=102 -->
-<rect x="198" y="143" width="102" height="48" rx="24" fill="url(#gBlue)" filter="url(#glow)"/>
-<line x1="252" y1="147" x2="252" y2="187" stroke="#44AAFF" stroke-width="0.8" opacity="0.25"/>
-<rect x="201" y="146" width="46" height="42" rx="21" fill="#44AAFF" opacity="0.2"/>
-<line x1="202" y1="167" x2="194" y2="167" stroke="#FF3366" stroke-width="2" stroke-linecap="round"/>
-<line x1="194" y1="167" x2="188" y2="161" stroke="#FF3366" stroke-width="1.5" stroke-linecap="round"/>
-<line x1="194" y1="167" x2="188" y2="173" stroke="#FF3366" stroke-width="1.5" stroke-linecap="round"/>
-<circle cx="213" cy="158" r="6" fill="white"/>
-<circle cx="213" cy="176" r="6" fill="white"/>
-<circle cx="212" cy="159" r="3.5" fill="#111"/>
-<circle cx="212" cy="177" r="3.5" fill="#111"/>
-<circle cx="211" cy="158" r="1.8" fill="white"/>
-<circle cx="211" cy="176" r="1.8" fill="white"/>
+<!-- Board border -->
+<rect x="30" y="112" width="300" height="300" rx="4" fill="none" stroke="#2A4A70" stroke-width="2"/>
 
-<!-- GREEN H r=5 c=2-4 dir=right → x=144,y=413,w=156 -->
-<rect x="144" y="413" width="156" height="48" rx="24" fill="url(#gGreen)" filter="url(#glow)"/>
-<line x1="198" y1="417" x2="198" y2="457" stroke="#44EE88" stroke-width="0.8" opacity="0.25"/>
-<line x1="252" y1="417" x2="252" y2="457" stroke="#44EE88" stroke-width="0.8" opacity="0.25"/>
-<rect x="249" y="416" width="46" height="42" rx="21" fill="#44EE88" opacity="0.2"/>
-<line x1="293" y1="437" x2="301" y2="437" stroke="#FF3366" stroke-width="2" stroke-linecap="round"/>
-<line x1="301" y1="437" x2="306" y2="431" stroke="#FF3366" stroke-width="1.5" stroke-linecap="round"/>
-<line x1="301" y1="437" x2="306" y2="443" stroke="#FF3366" stroke-width="1.5" stroke-linecap="round"/>
-<circle cx="280" cy="428" r="6" fill="white"/>
-<circle cx="280" cy="446" r="6" fill="white"/>
-<circle cx="281" cy="429" r="3.5" fill="#111"/>
-<circle cx="281" cy="447" r="3.5" fill="#111"/>
-<circle cx="279" cy="427" r="1.8" fill="white"/>
-<circle cx="279" cy="445" r="1.8" fill="white"/>
+<!-- EXIT: right side at row 0 (gap in border + glow arrow) -->
+<rect x="329" y="116" width="3" height="21" fill="#08111C"/>
+<rect x="332" y="117" width="5" height="19" rx="2" fill="#00FF88" opacity="0.9"/>
+<polygon points="339,124.5 347,127.5 339,130.5" fill="#00FF88"/>
+<rect x="28" y="116" width="3" height="21" fill="#08111C"/>
 
-<!-- PURPLE V r=3-4 c=1 dir=up → x=90,y=305,w=48,h=102 -->
-<rect x="90" y="305" width="48" height="102" rx="24" fill="url(#gPurple)" filter="url(#glow)"/>
-<line x1="94" y1="356" x2="134" y2="356" stroke="#BB66FF" stroke-width="0.8" opacity="0.25"/>
-<rect x="93" y="308" width="42" height="46" rx="21" fill="#BB66FF" opacity="0.2"/>
-<line x1="114" y1="307" x2="114" y2="299" stroke="#FF3366" stroke-width="2" stroke-linecap="round"/>
-<line x1="114" y1="299" x2="108" y2="292" stroke="#FF3366" stroke-width="1.5" stroke-linecap="round"/>
-<line x1="114" y1="299" x2="120" y2="292" stroke="#FF3366" stroke-width="1.5" stroke-linecap="round"/>
-<circle cx="105" cy="318" r="6" fill="white"/>
-<circle cx="123" cy="318" r="6" fill="white"/>
-<circle cx="106" cy="319" r="3.5" fill="#111"/>
-<circle cx="124" cy="319" r="3.5" fill="#111"/>
-<circle cx="104" cy="317" r="1.8" fill="white"/>
-<circle cx="122" cy="317" r="1.8" fill="white"/>
+<!-- ============================================================ -->
+<!-- SNAKES (body=polyline strokeWidth=16, head=circle r=10.5)    -->
+<!-- Cell center formula: x=42.5+c*25, y=124.5+r*25              -->
+<!-- ============================================================ -->
 
-<!-- TEAL H r=4 c=3-5 dir=left → x=198,y=359,w=156 -->
-<rect x="198" y="359" width="156" height="48" rx="24" fill="url(#gTeal)" filter="url(#glow)"/>
-<line x1="252" y1="363" x2="252" y2="403" stroke="#22DDCC" stroke-width="0.8" opacity="0.25"/>
-<line x1="306" y1="363" x2="306" y2="403" stroke="#22DDCC" stroke-width="0.8" opacity="0.25"/>
-<rect x="201" y="362" width="46" height="42" rx="21" fill="#22DDCC" opacity="0.2"/>
-<line x1="200" y1="383" x2="192" y2="383" stroke="#FF3366" stroke-width="2" stroke-linecap="round"/>
-<line x1="192" y1="383" x2="186" y2="377" stroke="#FF3366" stroke-width="1.5" stroke-linecap="round"/>
-<line x1="192" y1="383" x2="186" y2="389" stroke="#FF3366" stroke-width="1.5" stroke-linecap="round"/>
-<circle cx="212" cy="374" r="6" fill="white"/>
-<circle cx="212" cy="392" r="6" fill="white"/>
-<circle cx="211" cy="375" r="3.5" fill="#111"/>
-<circle cx="211" cy="393" r="3.5" fill="#111"/>
-<circle cx="210" cy="374" r="1.8" fill="white"/>
-<circle cx="210" cy="392" r="1.8" fill="white"/>
+<!-- S1 GOLD TARGET: path (0,4)(1,4)(2,4)(2,3)(2,2)(2,1)(2,0)(1,0)(0,0)(0,1)(0,2)(0,3) head→right -->
+<!-- Glow layer -->
+<polyline points="142.5,124.5 142.5,149.5 142.5,174.5 117.5,174.5 92.5,174.5 67.5,174.5 42.5,174.5 42.5,149.5 42.5,124.5 67.5,124.5 92.5,124.5 117.5,124.5" fill="none" stroke="#FFD700" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/>
+<!-- Body -->
+<polyline points="142.5,124.5 142.5,149.5 142.5,174.5 117.5,174.5 92.5,174.5 67.5,174.5 42.5,174.5 42.5,149.5 42.5,124.5 67.5,124.5 92.5,124.5 117.5,124.5" fill="none" stroke="#FFD700" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- Head circle -->
+<circle cx="117.5" cy="124.5" r="11.5" fill="#FFD700" filter="url(#glow)"/>
+<circle cx="117.5" cy="124.5" r="11.5" fill="#FFEE55"/>
+<!-- Crown on top of head (target indicator) -->
+<polygon points="109,113 112.5,107 117.5,111 122.5,107 126,113" fill="#FFD700" stroke="#FF9900" stroke-width="1"/>
+<!-- Eyes (facing right) -->
+<circle cx="121" cy="120" r="3" fill="white"/>
+<circle cx="121" cy="129" r="3" fill="white"/>
+<circle cx="122" cy="120" r="1.6" fill="#111"/>
+<circle cx="122" cy="129" r="1.6" fill="#111"/>
+<circle cx="120.5" cy="119" r="0.9" fill="white" opacity="0.8"/>
+<circle cx="120.5" cy="128" r="0.9" fill="white" opacity="0.8"/>
 
-<!-- TAP hint -->
-<circle cx="87" cy="275" r="22" fill="white" opacity="0.06"/>
-<text x="87" y="280" text-anchor="middle" font-family="Arial" font-size="12" fill="white" opacity="0.45">tap</text>
+<!-- S2 RED: (0,5)(0,6)(0,7)(0,8)(1,8)(2,8)(2,7)(2,6)(2,5)(1,5)(1,6)(1,7) head→right at (1,7) -->
+<polyline points="167.5,124.5 192.5,124.5 217.5,124.5 242.5,124.5 242.5,149.5 242.5,174.5 217.5,174.5 192.5,174.5 167.5,174.5 167.5,149.5 192.5,149.5 217.5,149.5" fill="none" stroke="#FF4444" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="217.5" cy="149.5" r="11" fill="#FF4444"/>
+<circle cx="221" cy="145" r="2.8" fill="white"/><circle cx="221" cy="154" r="2.8" fill="white"/>
+<circle cx="222" cy="145" r="1.5" fill="#111"/><circle cx="222" cy="154" r="1.5" fill="#111"/>
 
-<!-- CONTROLS -->
-<rect x="0" y="476" width="390" height="1" fill="#1A3050"/>
-<rect x="16" y="488" width="120" height="46" rx="14" fill="#111827" stroke="#2244AA" stroke-width="1.5"/>
-<text x="76" y="516" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#5588FF">⟵ Undo</text>
-<text x="268" y="506" text-anchor="middle" font-family="Arial" font-size="12" fill="#445566">Нажми —</text>
-<text x="268" y="522" text-anchor="middle" font-family="Arial" font-size="12" fill="#445566">змейка уползёт</text>
+<!-- S3 CYAN: (0,9)(0,10)(0,11)(1,11)(2,11)(2,10)(2,9)(1,9)(1,10) head→right at (1,10) -->
+<polyline points="267.5,124.5 292.5,124.5 317.5,124.5 317.5,149.5 317.5,174.5 292.5,174.5 267.5,174.5 267.5,149.5 292.5,149.5" fill="none" stroke="#00BBFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="292.5" cy="149.5" r="11" fill="#00BBFF"/>
+<circle cx="296" cy="145" r="2.8" fill="white"/><circle cx="296" cy="154" r="2.8" fill="white"/>
+<circle cx="297" cy="145" r="1.5" fill="#111"/><circle cx="297" cy="154" r="1.5" fill="#111"/>
 
-<!-- DIFFICULTY -->
-<rect x="16"  y="550" width="72"  height="28" rx="14" fill="#1A3A1A"/>
-<text x="52"  y="568" text-anchor="middle" font-family="Arial" font-size="11" fill="#44FF88">🟢 Лёгкий</text>
-<rect x="97"  y="550" width="82"  height="28" rx="14" fill="#3A3010"/>
-<text x="138" y="568" text-anchor="middle" font-family="Arial" font-size="11" fill="#FFCC44">🟡 Средний</text>
-<rect x="188" y="550" width="82"  height="28" rx="14" fill="#3A1A10"/>
-<text x="229" y="568" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF8844">🟠 Сложный</text>
-<rect x="279" y="550" width="80"  height="28" rx="14" fill="#2A0A10"/>
-<text x="319" y="568" text-anchor="middle" font-family="Arial" font-size="11" fill="#FF4455">🔴 Эксперт</text>
+<!-- S4 GREEN: (3,0)(4,0)(5,0)(5,1)(5,2)(4,2)(3,2)(3,1)(4,1) head→down at (4,1) -->
+<polyline points="42.5,199.5 42.5,224.5 42.5,249.5 67.5,249.5 92.5,249.5 92.5,224.5 92.5,199.5 67.5,199.5 67.5,224.5" fill="none" stroke="#33CC55" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="67.5" cy="224.5" r="11" fill="#33CC55"/>
+<circle cx="63" cy="228" r="2.8" fill="white"/><circle cx="72" cy="228" r="2.8" fill="white"/>
+<circle cx="63" cy="229" r="1.5" fill="#111"/><circle cx="72" cy="229" r="1.5" fill="#111"/>
 
-<!-- SHARE BANNER -->
-<rect x="16" y="596" width="358" height="76" rx="16" fill="#111827" stroke="#2244AA" stroke-width="1"/>
-<text x="195" y="622" text-anchor="middle" font-family="Arial Black,Arial" font-size="13" font-weight="900" fill="#FFFFFF">🐍 Решил Level 7 за 3 хода!</text>
-<text x="195" y="643" text-anchor="middle" font-family="Arial" font-size="12" fill="#4488FF">⭐⭐★  Слабо повторить? #SnakeSlide</text>
-<rect x="254" y="654" width="112" height="28" rx="10" fill="#2244AA"/>
-<text x="310" y="672" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="white">📤 Поделиться</text>
+<!-- S5 ORANGE: (3,3)(3,4)(3,5)(4,5)(5,5)(5,4)(5,3)(4,3)(4,4) head→right at (4,4) -->
+<polyline points="117.5,199.5 142.5,199.5 167.5,199.5 167.5,224.5 167.5,249.5 142.5,249.5 117.5,249.5 117.5,224.5 142.5,224.5" fill="none" stroke="#FF8822" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="142.5" cy="224.5" r="11" fill="#FF8822"/>
+<circle cx="146" cy="220" r="2.8" fill="white"/><circle cx="146" cy="229" r="2.8" fill="white"/>
+<circle cx="147" cy="220" r="1.5" fill="#111"/><circle cx="147" cy="229" r="1.5" fill="#111"/>
 
-<!-- TITLE -->
-<text x="195" y="748" text-anchor="middle" font-family="Arial Black,Arial" font-size="26" font-weight="900" fill="#FFFFFF" letter-spacing="4">SNAKE SLIDE</text>
-<text x="195" y="768" text-anchor="middle" font-family="Arial" font-size="12" fill="#4488AA" letter-spacing="2">TAP · SLIDE · ESCAPE</text>
+<!-- S6 PURPLE: (3,6)(3,7)(3,8)(4,8)(5,8)(5,7)(5,6)(4,6)(4,7) head→right at (4,7) -->
+<polyline points="192.5,199.5 217.5,199.5 242.5,199.5 242.5,224.5 242.5,249.5 217.5,249.5 192.5,249.5 192.5,224.5 217.5,224.5" fill="none" stroke="#9933EE" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="217.5" cy="224.5" r="11" fill="#9933EE"/>
+<circle cx="221" cy="220" r="2.8" fill="white"/><circle cx="221" cy="229" r="2.8" fill="white"/>
+<circle cx="222" cy="220" r="1.5" fill="#111"/><circle cx="222" cy="229" r="1.5" fill="#111"/>
+
+<!-- S7 PINK: (3,9)(3,10)(3,11)(4,11)(5,11)(5,10)(5,9)(4,9)(4,10) head→right at (4,10) -->
+<polyline points="267.5,199.5 292.5,199.5 317.5,199.5 317.5,224.5 317.5,249.5 292.5,249.5 267.5,249.5 267.5,224.5 292.5,224.5" fill="none" stroke="#FF44AA" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="292.5" cy="224.5" r="11" fill="#FF44AA"/>
+<circle cx="296" cy="220" r="2.8" fill="white"/><circle cx="296" cy="229" r="2.8" fill="white"/>
+<circle cx="297" cy="220" r="1.5" fill="#111"/><circle cx="297" cy="229" r="1.5" fill="#111"/>
+
+<!-- S8 LIME: (6,0)(7,0)(8,0)(8,1)(8,2)(7,2)(6,2)(6,1)(7,1) head→down at (7,1) -->
+<polyline points="42.5,274.5 42.5,299.5 42.5,324.5 67.5,324.5 92.5,324.5 92.5,299.5 92.5,274.5 67.5,274.5 67.5,299.5" fill="none" stroke="#77DD22" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="67.5" cy="299.5" r="11" fill="#77DD22"/>
+<circle cx="63" cy="303" r="2.8" fill="white"/><circle cx="72" cy="303" r="2.8" fill="white"/>
+<circle cx="63" cy="304" r="1.5" fill="#111"/><circle cx="72" cy="304" r="1.5" fill="#111"/>
+
+<!-- S9 TEAL: (6,3)(6,4)(6,5)(7,5)(8,5)(8,4)(8,3)(7,3)(7,4) head→right at (7,4) -->
+<polyline points="117.5,274.5 142.5,274.5 167.5,274.5 167.5,299.5 167.5,324.5 142.5,324.5 117.5,324.5 117.5,299.5 142.5,299.5" fill="none" stroke="#00CCAA" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="142.5" cy="299.5" r="11" fill="#00CCAA"/>
+<circle cx="146" cy="295" r="2.8" fill="white"/><circle cx="146" cy="304" r="2.8" fill="white"/>
+<circle cx="147" cy="295" r="1.5" fill="#111"/><circle cx="147" cy="304" r="1.5" fill="#111"/>
+
+<!-- S10 ROYALBLUE: (6,6)(6,7)(6,8)(7,8)(8,8)(8,7)(8,6)(7,6)(7,7) head→right at (7,7) -->
+<polyline points="192.5,274.5 217.5,274.5 242.5,274.5 242.5,299.5 242.5,324.5 217.5,324.5 192.5,324.5 192.5,299.5 217.5,299.5" fill="none" stroke="#3366FF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="217.5" cy="299.5" r="11" fill="#3366FF"/>
+<circle cx="221" cy="295" r="2.8" fill="white"/><circle cx="221" cy="304" r="2.8" fill="white"/>
+<circle cx="222" cy="295" r="1.5" fill="#111"/><circle cx="222" cy="304" r="1.5" fill="#111"/>
+
+<!-- S11 MAGENTA: (6,9)(6,10)(6,11)(7,11)(8,11)(8,10)(8,9)(7,9)(7,10) head→right at (7,10) -->
+<polyline points="267.5,274.5 292.5,274.5 317.5,274.5 317.5,299.5 317.5,324.5 292.5,324.5 267.5,324.5 267.5,299.5 292.5,299.5" fill="none" stroke="#EE22BB" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="292.5" cy="299.5" r="11" fill="#EE22BB"/>
+<circle cx="296" cy="295" r="2.8" fill="white"/><circle cx="296" cy="304" r="2.8" fill="white"/>
+<circle cx="297" cy="295" r="1.5" fill="#111"/><circle cx="297" cy="304" r="1.5" fill="#111"/>
+
+<!-- S12 CORAL: (9,0)(10,0)(11,0)(11,1)(11,2)(10,2)(9,2)(9,1)(10,1) head→down at (10,1) -->
+<polyline points="42.5,349.5 42.5,374.5 42.5,399.5 67.5,399.5 92.5,399.5 92.5,374.5 92.5,349.5 67.5,349.5 67.5,374.5" fill="none" stroke="#FF6655" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="67.5" cy="374.5" r="11" fill="#FF6655"/>
+<circle cx="63" cy="378" r="2.8" fill="white"/><circle cx="72" cy="378" r="2.8" fill="white"/>
+<circle cx="63" cy="379" r="1.5" fill="#111"/><circle cx="72" cy="379" r="1.5" fill="#111"/>
+
+<!-- S13 SKYBLUE: (9,3)(9,4)(9,5)(10,5)(11,5)(11,4)(11,3)(10,3)(10,4) head→right at (10,4) -->
+<polyline points="117.5,349.5 142.5,349.5 167.5,349.5 167.5,374.5 167.5,399.5 142.5,399.5 117.5,399.5 117.5,374.5 142.5,374.5" fill="none" stroke="#44AAFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="142.5" cy="374.5" r="11" fill="#44AAFF"/>
+<circle cx="146" cy="370" r="2.8" fill="white"/><circle cx="146" cy="379" r="2.8" fill="white"/>
+<circle cx="147" cy="370" r="1.5" fill="#111"/><circle cx="147" cy="379" r="1.5" fill="#111"/>
+
+<!-- S14 OLIVE: (9,6)(9,7)(9,8)(10,8)(11,8)(11,7)(11,6)(10,6)(10,7) head→right at (10,7) -->
+<polyline points="192.5,349.5 217.5,349.5 242.5,349.5 242.5,374.5 242.5,399.5 217.5,399.5 192.5,399.5 192.5,374.5 217.5,374.5" fill="none" stroke="#AACC33" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="217.5" cy="374.5" r="11" fill="#AACC33"/>
+<circle cx="221" cy="370" r="2.8" fill="white"/><circle cx="221" cy="379" r="2.8" fill="white"/>
+<circle cx="222" cy="370" r="1.5" fill="#111"/><circle cx="222" cy="379" r="1.5" fill="#111"/>
+
+<!-- S15 VIOLET: (9,9)(9,10)(9,11)(10,11)(11,11)(11,10)(11,9)(10,9)(10,10) head→right at (10,10) -->
+<polyline points="267.5,349.5 292.5,349.5 317.5,349.5 317.5,374.5 317.5,399.5 292.5,399.5 267.5,399.5 267.5,374.5 292.5,374.5" fill="none" stroke="#AA66FF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="292.5" cy="374.5" r="11" fill="#AA66FF"/>
+<circle cx="296" cy="370" r="2.8" fill="white"/><circle cx="296" cy="379" r="2.8" fill="white"/>
+<circle cx="297" cy="370" r="1.5" fill="#111"/><circle cx="297" cy="379" r="1.5" fill="#111"/>
+
+<!-- Board border (on top) -->
+<rect x="30" y="112" width="300" height="300" rx="4" fill="none" stroke="#2A4A70" stroke-width="2"/>
+
+<!-- Controls footer (412-480) -->
+<rect y="412" width="360" height="68" fill="#0C1826"/>
+<line x1="0" y1="412" x2="360" y2="412" stroke="#1A3050" stroke-width="1"/>
+<!-- Undo button -->
+<rect x="14" y="426" width="90" height="38" rx="8" fill="#132030" stroke="#3366AA" stroke-width="1"/>
+<text x="59" y="450" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#5599CC">⟵ Undo</text>
+<!-- Hint -->
+<text x="330" y="447" text-anchor="end" font-family="sans-serif" font-size="11" fill="#445566">Tap — snake slides</text>
+
 </svg>
