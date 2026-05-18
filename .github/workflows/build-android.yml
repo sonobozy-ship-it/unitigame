@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       app:
-        description: 'App to build (koru)'
+        description: 'App to build (koru or waddle)'
         required: true
         default: 'koru'
 
@@ -29,7 +29,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
           cache-dependency-path: apps/koru/package-lock.json
 
@@ -41,6 +41,39 @@ jobs:
         with:
           eas-version: latest
           token: ${{ secrets.KORU_PUZZLE }}
+
+      - name: Build APK
+        run: eas build --platform android --profile preview --non-interactive
+
+  build-waddle:
+    name: Build WADDLE APK
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/movo
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: apps/movo/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Setup Expo + EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.KORU_PUZZLE }}
+
+      - name: Register project with EAS (if not yet linked)
+        run: eas init --non-interactive || true
 
       - name: Build APK
         run: eas build --platform android --profile preview --non-interactive

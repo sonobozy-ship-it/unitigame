@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 480" width="360" height="480">
+<defs>
+  <pattern id="cells" x="30" y="112" width="50" height="50" patternUnits="userSpaceOnUse">
+    <rect width="25" height="25" fill="#0C1927"/>
+    <rect x="25" width="25" height="25" fill="#0E1D2C"/>
+    <rect y="25" width="25" height="25" fill="#0E1D2C"/>
+    <rect x="25" y="25" width="25" height="25" fill="#0C1927"/>
+  </pattern>
+  <radialGradient id="hG1" cx="40%" cy="35%"><stop offset="0%" stop-color="#FFEE88"/><stop offset="100%" stop-color="#CC8800"/></radialGradient>
+  <radialGradient id="hG2" cx="40%" cy="35%"><stop offset="0%" stop-color="#FF9999"/><stop offset="100%" stop-color="#AA1111"/></radialGradient>
+  <radialGradient id="hG3" cx="40%" cy="35%"><stop offset="0%" stop-color="#88EEFF"/><stop offset="100%" stop-color="#0077BB"/></radialGradient>
+  <radialGradient id="hG4" cx="40%" cy="35%"><stop offset="0%" stop-color="#88FF99"/><stop offset="100%" stop-color="#116622"/></radialGradient>
+  <radialGradient id="hG5" cx="40%" cy="35%"><stop offset="0%" stop-color="#FFCC77"/><stop offset="100%" stop-color="#AA4400"/></radialGradient>
+  <radialGradient id="hG6" cx="40%" cy="35%"><stop offset="0%" stop-color="#DD99FF"/><stop offset="100%" stop-color="#550099"/></radialGradient>
+  <radialGradient id="hG7" cx="40%" cy="35%"><stop offset="0%" stop-color="#FFAADD"/><stop offset="100%" stop-color="#991166"/></radialGradient>
+  <radialGradient id="hG8" cx="40%" cy="35%"><stop offset="0%" stop-color="#CCFF77"/><stop offset="100%" stop-color="#336600"/></radialGradient>
+  <radialGradient id="hG9" cx="40%" cy="35%"><stop offset="0%" stop-color="#99FFEE"/><stop offset="100%" stop-color="#005566"/></radialGradient>
+  <radialGradient id="hG10" cx="40%" cy="35%"><stop offset="0%" stop-color="#99BBFF"/><stop offset="100%" stop-color="#112299"/></radialGradient>
+  <radialGradient id="hG11" cx="40%" cy="35%"><stop offset="0%" stop-color="#FF99EE"/><stop offset="100%" stop-color="#880066"/></radialGradient>
+  <radialGradient id="hG12" cx="40%" cy="35%"><stop offset="0%" stop-color="#FFBBAA"/><stop offset="100%" stop-color="#992211"/></radialGradient>
+  <radialGradient id="hG13" cx="40%" cy="35%"><stop offset="0%" stop-color="#AADDFF"/><stop offset="100%" stop-color="#115599"/></radialGradient>
+  <radialGradient id="hG14" cx="40%" cy="35%"><stop offset="0%" stop-color="#DDFF99"/><stop offset="100%" stop-color="#446600"/></radialGradient>
+  <radialGradient id="hG15" cx="40%" cy="35%"><stop offset="0%" stop-color="#DDBBFF"/><stop offset="100%" stop-color="#440088"/></radialGradient>
+</defs>
+
+<!-- Full background -->
+<rect width="360" height="480" fill="#071018"/>
+
+<!-- Header -->
+<rect width="360" height="72" fill="#0C1826"/>
+<line x1="0" y1="72" x2="360" y2="72" stroke="#1A3050" stroke-width="1"/>
+<rect x="10" y="14" width="44" height="44" rx="10" fill="#132030"/>
+<text x="32" y="42" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#6699AA">←</text>
+<text x="180" y="32" text-anchor="middle" font-family="monospace" font-size="12" font-weight="bold" fill="#99BBCC" letter-spacing="3">LEVEL 7</text>
+<text x="157" y="58" font-family="sans-serif" font-size="21" fill="#FFD700">★</text>
+<text x="178" y="58" font-family="sans-serif" font-size="21" fill="#FFD700">★</text>
+<text x="199" y="58" font-family="sans-serif" font-size="21" fill="#3A5060">★</text>
+<rect x="306" y="14" width="44" height="44" rx="10" fill="#132030"/>
+<text x="328" y="42" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#6699AA">↺</text>
+
+<!-- Moves row -->
+<rect y="72" width="360" height="40" fill="#0A1520"/>
+<line x1="0" y1="112" x2="360" y2="112" stroke="#152030" stroke-width="1"/>
+<text x="130" y="96" text-anchor="middle" font-family="monospace" font-size="25" font-weight="bold" fill="#00DDAA">5</text>
+<text x="130" y="108" text-anchor="middle" font-family="monospace" font-size="8" fill="#3A5566" letter-spacing="2">MOVES</text>
+<text x="230" y="96" text-anchor="middle" font-family="monospace" font-size="25" font-weight="bold" fill="#3A5566">12</text>
+<text x="230" y="108" text-anchor="middle" font-family="monospace" font-size="8" fill="#3A5566" letter-spacing="2">PAR</text>
+
+<!-- Board -->
+<rect x="30" y="112" width="300" height="300" fill="url(#cells)"/>
+<g stroke="#152540" stroke-width="0.5" opacity="0.8">
+  <line x1="55" y1="112" x2="55" y2="412"/><line x1="80" y1="112" x2="80" y2="412"/>
+  <line x1="105" y1="112" x2="105" y2="412"/><line x1="130" y1="112" x2="130" y2="412"/>
+  <line x1="155" y1="112" x2="155" y2="412"/><line x1="180" y1="112" x2="180" y2="412"/>
+  <line x1="205" y1="112" x2="205" y2="412"/><line x1="230" y1="112" x2="230" y2="412"/>
+  <line x1="255" y1="112" x2="255" y2="412"/><line x1="280" y1="112" x2="280" y2="412"/>
+  <line x1="305" y1="112" x2="305" y2="412"/>
+  <line x1="30" y1="137" x2="330" y2="137"/><line x1="30" y1="162" x2="330" y2="162"/>
+  <line x1="30" y1="187" x2="330" y2="187"/><line x1="30" y1="212" x2="330" y2="212"/>
+  <line x1="30" y1="237" x2="330" y2="237"/><line x1="30" y1="262" x2="330" y2="262"/>
+  <line x1="30" y1="287" x2="330" y2="287"/><line x1="30" y1="312" x2="330" y2="312"/>
+  <line x1="30" y1="337" x2="330" y2="337"/><line x1="30" y1="362" x2="330" y2="362"/>
+  <line x1="30" y1="387" x2="330" y2="387"/>
+</g>
+
+<!-- EXIT right side row 0 -->
+<rect x="329" y="115" width="3" height="21" fill="#071018"/>
+<rect x="332" y="116" width="6" height="19" rx="3" fill="#00FF88" opacity="0.9"/>
+<polygon points="340,119 347,124.5 340,130" fill="#00FF88"/>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<!-- SNAKES: shadow(sw=22,op=0.35) → body(sw=13) → shine(sw=4,op=0.45)    -->
+<!--         head circle(r=11, radialGrad) → highlight blob → tongue → eyes -->
+<!-- cell center: x=42.5+c*25, y=124.5+r*25                                -->
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+
+<!-- S1 GOLD TARGET  cells:(0,4)(1,4)(2,4)(2,3)(2,2)(2,1)(2,0)(1,0)(0,0)(0,1)(0,2)(0,3) head=right -->
+<polyline points="142.5,124.5 142.5,149.5 142.5,174.5 117.5,174.5 92.5,174.5 67.5,174.5 42.5,174.5 42.5,149.5 42.5,124.5 67.5,124.5 92.5,124.5 117.5,124.5" fill="none" stroke="#3A2600" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<polyline points="142.5,124.5 142.5,149.5 142.5,174.5 117.5,174.5 92.5,174.5 67.5,174.5 42.5,174.5 42.5,149.5 42.5,124.5 67.5,124.5 92.5,124.5 117.5,124.5" fill="none" stroke="#CC8800" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="142.5,124.5 142.5,149.5 142.5,174.5 117.5,174.5 92.5,174.5 67.5,174.5 42.5,174.5 42.5,149.5 42.5,124.5 67.5,124.5 92.5,124.5 117.5,124.5" fill="none" stroke="#FFE566" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+<circle cx="117.5" cy="124.5" r="16" fill="#FFD700" opacity="0.15"/>
+<circle cx="117.5" cy="124.5" r="11" fill="url(#hG1)"/>
+<circle cx="114" cy="121" r="5.5" fill="white" opacity="0.22"/>
+<polygon points="110,112.5 113,107 117.5,111 122,107 125,112.5" fill="#FFD700" stroke="#AA6600" stroke-width="0.8"/>
+<line x1="129" y1="124.5" x2="135" y2="124.5" stroke="#FF2244" stroke-width="2" stroke-linecap="round"/>
+<line x1="135" y1="124.5" x2="140" y2="120" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="135" y1="124.5" x2="140" y2="129" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="121" cy="119.5" r="3.2" fill="white"/><circle cx="121" cy="119.5" r="2" fill="#CC8800"/><circle cx="121" cy="119.5" r="1.2" fill="#111"/><circle cx="120" cy="118.5" r="0.7" fill="white"/>
+<circle cx="121" cy="129.5" r="3.2" fill="white"/><circle cx="121" cy="129.5" r="2" fill="#CC8800"/><circle cx="121" cy="129.5" r="1.2" fill="#111"/><circle cx="120" cy="128.5" r="0.7" fill="white"/>
+
+<!-- S2 RED  cells:(0,5)(0,6)(0,7)(0,8)(1,8)(2,8)(2,7)(2,6)(2,5)(1,5)(1,6)(1,7) head=right (1,7) -->
+<polyline points="167.5,124.5 192.5,124.5 217.5,124.5 242.5,124.5 242.5,149.5 242.5,174.5 217.5,174.5 192.5,174.5 167.5,174.5 167.5,149.5 192.5,149.5 217.5,149.5" fill="none" stroke="#220000" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<polyline points="167.5,124.5 192.5,124.5 217.5,124.5 242.5,124.5 242.5,149.5 242.5,174.5 217.5,174.5 192.5,174.5 167.5,174.5 167.5,149.5 192.5,149.5 217.5,149.5" fill="none" stroke="#CC1111" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="167.5,124.5 192.5,124.5 217.5,124.5 242.5,124.5 242.5,149.5 242.5,174.5 217.5,174.5 192.5,174.5 167.5,174.5 167.5,149.5 192.5,149.5 217.5,149.5" fill="none" stroke="#FF9999" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+<circle cx="217.5" cy="149.5" r="11" fill="url(#hG2)"/>
+<circle cx="214" cy="146" r="5.5" fill="white" opacity="0.2"/>
+<line x1="229" y1="149.5" x2="235" y2="149.5" stroke="#FF2244" stroke-width="2" stroke-linecap="round"/>
+<line x1="235" y1="149.5" x2="240" y2="145" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="235" y1="149.5" x2="240" y2="154" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="221" cy="144" r="3.2" fill="white"/><circle cx="221" cy="144" r="2" fill="#CC1111"/><circle cx="221" cy="144" r="1.2" fill="#111"/><circle cx="220" cy="143" r="0.7" fill="white"/>
+<circle cx="221" cy="155" r="3.2" fill="white"/><circle cx="221" cy="155" r="2" fill="#CC1111"/><circle cx="221" cy="155" r="1.2" fill="#111"/><circle cx="220" cy="154" r="0.7" fill="white"/>
+
+<!-- S3 CYAN  cells:(0,9)(0,10)(0,11)(1,11)(2,11)(2,10)(2,9)(1,9)(1,10) head=right (1,10) -->
+<polyline points="267.5,124.5 292.5,124.5 317.5,124.5 317.5,149.5 317.5,174.5 292.5,174.5 267.5,174.5 267.5,149.5 292.5,149.5" fill="none" stroke="#001C2A" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<polyline points="267.5,124.5 292.5,124.5 317.5,124.5 317.5,149.5 317.5,174.5 292.5,174.5 267.5,174.5 267.5,149.5 292.5,149.5" fill="none" stroke="#0099CC" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="267.5,124.5 292.5,124.5 317.5,124.5 317.5,149.5 317.5,174.5 292.5,174.5 267.5,174.5 267.5,149.5 292.5,149.5" fill="none" stroke="#88EEFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+<circle cx="292.5" cy="149.5" r="11" fill="url(#hG3)"/>
+<circle cx="289" cy="146" r="5.5" fill="white" opacity="0.2"/>
+<line x1="304" y1="149.5" x2="310" y2="149.5" stroke="#FF2244" stroke-width="2" stroke-linecap="round"/>
+<line x1="310" y1="149.5" x2="315" y2="145" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="310" y1="149.5" x2="315" y2="154" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="296" cy="144" r="3.2" fill="white"/><circle cx="296" cy="144" r="2" fill="#0077BB"/><circle cx="296" cy="144" r="1.2" fill="#111"/><circle cx="295" cy="143" r="0.7" fill="white"/>
+<circle cx="296" cy="155" r="3.2" fill="white"/><circle cx="296" cy="155" r="2" fill="#0077BB"/><circle cx="296" cy="155" r="1.2" fill="#111"/><circle cx="295" cy="154" r="0.7" fill="white"/>
+
+<!-- S4 GREEN  cells:(3,0)(4,0)(5,0)(5,1)(5,2)(4,2)(3,2)(3,1)(4,1) head=down (4,1) -->
+<polyline points="42.5,199.5 42.5,224.5 42.5,249.5 67.5,249.5 92.5,249.5 92.5,224.5 92.5,199.5 67.5,199.5 67.5,224.5" fill="none" stroke="#001200" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<polyline points="42.5,199.5 42.5,224.5 42.5,249.5 67.5,249.5 92.5,249.5 92.5,224.5 92.5,199.5 67.5,199.5 67.5,224.5" fill="none" stroke="#228833" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="42.5,199.5 42.5,224.5 42.5,249.5 67.5,249.5 92.5,249.5 92.5,224.5 92.5,199.5 67.5,199.5 67.5,224.5" fill="none" stroke="#99FF99" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+<circle cx="67.5" cy="224.5" r="11" fill="url(#hG4)"/>
+<circle cx="64" cy="221" r="5.5" fill="white" opacity="0.2"/>
+<line x1="67.5" y1="236" x2="67.5" y2="242" stroke="#FF2244" stroke-width="2" stroke-linecap="round"/>
+<line x1="67.5" y1="242" x2="63" y2="247" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="67.5" y1="242" x2="72" y2="247" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="62" cy="228" r="3.2" fill="white"/><circle cx="62" cy="228" r="2" fill="#116622"/><circle cx="62" cy="228" r="1.2" fill="#111"/><circle cx="61" cy="227" r="0.7" fill="white"/>
+<circle cx="73" cy="228" r="3.2" fill="white"/><circle cx="73" cy="228" r="2" fill="#116622"/><circle cx="73" cy="228" r="1.2" fill="#111"/><circle cx="72" cy="227" r="0.7" fill="white"/>
+
+<!-- S5 ORANGE  cells:(3,3)(3,4)(3,5)(4,5)(5,5)(5,4)(5,3)(4,3)(4,4) head=right (4,4) -->
+<polyline points="117.5,199.5 142.5,199.5 167.5,199.5 167.5,224.5 167.5,249.5 142.5,249.5 117.5,249.5 117.5,224.5 142.5,224.5" fill="none" stroke="#1A0800" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<polyline points="117.5,199.5 142.5,199.5 167.5,199.5 167.5,224.5 167.5,249.5 142.5,249.5 117.5,249.5 117.5,224.5 142.5,224.5" fill="none" stroke="#DD6600" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="117.5,199.5 142.5,199.5 167.5,199.5 167.5,224.5 167.5,249.5 142.5,249.5 117.5,249.5 117.5,224.5 142.5,224.5" fill="none" stroke="#FFCC88" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+<circle cx="142.5" cy="224.5" r="11" fill="url(#hG5)"/>
+<circle cx="139" cy="221" r="5.5" fill="white" opacity="0.2"/>
+<line x1="154" y1="224.5" x2="160" y2="224.5" stroke="#FF2244" stroke-width="2" stroke-linecap="round"/>
+<line x1="160" y1="224.5" x2="165" y2="220" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="160" y1="224.5" x2="165" y2="229" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="146" cy="219" r="3.2" fill="white"/><circle cx="146" cy="219" r="2" fill="#AA4400"/><circle cx="146" cy="219" r="1.2" fill="#111"/><circle cx="145" cy="218" r="0.7" fill="white"/>
+<circle cx="146" cy="230" r="3.2" fill="white"/><circle cx="146" cy="230" r="2" fill="#AA4400"/><circle cx="146" cy="230" r="1.2" fill="#111"/><circle cx="145" cy="229" r="0.7" fill="white"/>
+
+<!-- S6 PURPLE  cells:(3,6)(3,7)(3,8)(4,8)(5,8)(5,7)(5,6)(4,6)(4,7) head=right (4,7) -->
+<polyline points="192.5,199.5 217.5,199.5 242.5,199.5 242.5,224.5 242.5,249.5 217.5,249.5 192.5,249.5 192.5,224.5 217.5,224.5" fill="none" stroke="#0D001A" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<polyline points="192.5,199.5 217.5,199.5 242.5,199.5 242.5,224.5 242.5,249.5 217.5,249.5 192.5,249.5 192.5,224.5 217.5,224.5" fill="none" stroke="#7711CC" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="192.5,199.5 217.5,199.5 242.5,199.5 242.5,224.5 242.5,249.5 217.5,249.5 192.5,249.5 192.5,224.5 217.5,224.5" fill="none" stroke="#DD99FF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+<circle cx="217.5" cy="224.5" r="11" fill="url(#hG6)"/>
+<circle cx="214" cy="221" r="5.5" fill="white" opacity="0.2"/>
+<line x1="229" y1="224.5" x2="235" y2="224.5" stroke="#FF2244" stroke-width="2" stroke-linecap="round"/>
+<line x1="235" y1="224.5" x2="240" y2="220" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="235" y1="224.5" x2="240" y2="229" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="221" cy="219" r="3.2" fill="white"/><circle cx="221" cy="219" r="2" fill="#550099"/><circle cx="221" cy="219" r="1.2" fill="#111"/><circle cx="220" cy="218" r="0.7" fill="white"/>
+<circle cx="221" cy="230" r="3.2" fill="white"/><circle cx="221" cy="230" r="2" fill="#550099"/><circle cx="221" cy="230" r="1.2" fill="#111"/><circle cx="220" cy="229" r="0.7" fill="white"/>
+
+<!-- S7 PINK  cells:(3,9)(3,10)(3,11)(4,11)(5,11)(5,10)(5,9)(4,9)(4,10) head=right (4,10) -->
+<polyline points="267.5,199.5 292.5,199.5 317.5,199.5 317.5,224.5 317.5,249.5 292.5,249.5 267.5,249.5 267.5,224.5 292.5,224.5" fill="none" stroke="#1A0011" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<polyline points="267.5,199.5 292.5,199.5 317.5,199.5 317.5,224.5 317.5,249.5 292.5,249.5 267.5,249.5 267.5,224.5 292.5,224.5" fill="none" stroke="#CC1177" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="267.5,199.5 292.5,199.5 317.5,199.5 317.5,224.5 317.5,249.5 292.5,249.5 267.5,249.5 267.5,224.5 292.5,224.5" fill="none" stroke="#FFAADD" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+<circle cx="292.5" cy="224.5" r="11" fill="url(#hG7)"/>
+<circle cx="289" cy="221" r="5.5" fill="white" opacity="0.2"/>
+<line x1="304" y1="224.5" x2="310" y2="224.5" stroke="#FF2244" stroke-width="2" stroke-linecap="round"/>
+<line x1="310" y1="224.5" x2="315" y2="220" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="310" y1="224.5" x2="315" y2="229" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="296" cy="219" r="3.2" fill="white"/><circle cx="296" cy="219" r="2" fill="#991166"/><circle cx="296" cy="219" r="1.2" fill="#111"/><circle cx="295" cy="218" r="0.7" fill="white"/>
+<circle cx="296" cy="230" r="3.2" fill="white"/><circle cx="296" cy="230" r="2" fill="#991166"/><circle cx="296" cy="230" r="1.2" fill="#111"/><circle cx="295" cy="229" r="0.7" fill="white"/>
+
+<!-- S8 LIME  cells:(6,0)(7,0)(8,0)(8,1)(8,2)(7,2)(6,2)(6,1)(7,1) head=down (7,1) -->
+<polyline points="42.5,274.5 42.5,299.5 42.5,324.5 67.5,324.5 92.5,324.5 92.5,299.5 92.5,274.5 67.5,274.5 67.5,299.5" fill="none" stroke="#081400" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<polyline points="42.5,274.5 42.5,299.5 42.5,324.5 67.5,324.5 92.5,324.5 92.5,299.5 92.5,274.5 67.5,274.5 67.5,299.5" fill="none" stroke="#558800" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="42.5,274.5 42.5,299.5 42.5,324.5 67.5,324.5 92.5,324.5 92.5,299.5 92.5,274.5 67.5,274.5 67.5,299.5" fill="none" stroke="#CCFF66" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+<circle cx="67.5" cy="299.5" r="11" fill="url(#hG8)"/>
+<circle cx="64" cy="296" r="5.5" fill="white" opacity="0.2"/>
+<line x1="67.5" y1="311" x2="67.5" y2="317" stroke="#FF2244" stroke-width="2" stroke-linecap="round"/>
+<line x1="67.5" y1="317" x2="63" y2="322" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="67.5" y1="317" x2="72" y2="322" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="62" cy="303" r="3.2" fill="white"/><circle cx="62" cy="303" r="2" fill="#336600"/><circle cx="62" cy="303" r="1.2" fill="#111"/><circle cx="61" cy="302" r="0.7" fill="white"/>
+<circle cx="73" cy="303" r="3.2" fill="white"/><circle cx="73" cy="303" r="2" fill="#336600"/><circle cx="73" cy="303" r="1.2" fill="#111"/><circle cx="72" cy="302" r="0.7" fill="white"/>
+
+<!-- S9 TEAL  cells:(6,3)(6,4)(6,5)(7,5)(8,5)(8,4)(8,3)(7,3)(7,4) head=right (7,4) -->
+<polyline points="117.5,274.5 142.5,274.5 167.5,274.5 167.5,299.5 167.5,324.5 142.5,324.5 117.5,324.5 117.5,299.5 142.5,299.5" fill="none" stroke="#001510" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<polyline points="117.5,274.5 142.5,274.5 167.5,274.5 167.5,299.5 167.5,324.5 142.5,324.5 117.5,324.5 117.5,299.5 142.5,299.5" fill="none" stroke="#007755" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="117.5,274.5 142.5,274.5 167.5,274.5 167.5,299.5 167.5,324.5 142.5,324.5 117.5,324.5 117.5,299.5 142.5,299.5" fill="none" stroke="#66FFDD" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+<circle cx="142.5" cy="299.5" r="11" fill="url(#hG9)"/>
+<circle cx="139" cy="296" r="5.5" fill="white" opacity="0.2"/>
+<line x1="154" y1="299.5" x2="160" y2="299.5" stroke="#FF2244" stroke-width="2" stroke-linecap="round"/>
+<line x1="160" y1="299.5" x2="165" y2="295" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="160" y1="299.5" x2="165" y2="304" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="146" cy="294" r="3.2" fill="white"/><circle cx="146" cy="294" r="2" fill="#005544"/><circle cx="146" cy="294" r="1.2" fill="#111"/><circle cx="145" cy="293" r="0.7" fill="white"/>
+<circle cx="146" cy="305" r="3.2" fill="white"/><circle cx="146" cy="305" r="2" fill="#005544"/><circle cx="146" cy="305" r="1.2" fill="#111"/><circle cx="145" cy="304" r="0.7" fill="white"/>
+
+<!-- S10 BLUE  cells:(6,6)(6,7)(6,8)(7,8)(8,8)(8,7)(8,6)(7,6)(7,7) head=right (7,7) -->
+<polyline points="192.5,274.5 217.5,274.5 242.5,274.5 242.5,299.5 242.5,324.5 217.5,324.5 192.5,324.5 192.5,299.5 217.5,299.5" fill="none" stroke="#000D22" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<polyline points="192.5,274.5 217.5,274.5 242.5,274.5 242.5,299.5 242.5,324.5 217.5,324.5 192.5,324.5 192.5,299.5 217.5,299.5" fill="none" stroke="#2244BB" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="192.5,274.5 217.5,274.5 242.5,274.5 242.5,299.5 242.5,324.5 217.5,324.5 192.5,324.5 192.5,299.5 217.5,299.5" fill="none" stroke="#99BBFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+<circle cx="217.5" cy="299.5" r="11" fill="url(#hG10)"/>
+<circle cx="214" cy="296" r="5.5" fill="white" opacity="0.2"/>
+<line x1="229" y1="299.5" x2="235" y2="299.5" stroke="#FF2244" stroke-width="2" stroke-linecap="round"/>
+<line x1="235" y1="299.5" x2="240" y2="295" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="235" y1="299.5" x2="240" y2="304" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="221" cy="294" r="3.2" fill="white"/><circle cx="221" cy="294" r="2" fill="#112299"/><circle cx="221" cy="294" r="1.2" fill="#111"/><circle cx="220" cy="293" r="0.7" fill="white"/>
+<circle cx="221" cy="305" r="3.2" fill="white"/><circle cx="221" cy="305" r="2" fill="#112299"/><circle cx="221" cy="305" r="1.2" fill="#111"/><circle cx="220" cy="304" r="0.7" fill="white"/>
+
+<!-- S11 MAGENTA  cells:(6,9)(6,10)(6,11)(7,11)(8,11)(8,10)(8,9)(7,9)(7,10) head=right (7,10) -->
+<polyline points="267.5,274.5 292.5,274.5 317.5,274.5 317.5,299.5 317.5,324.5 292.5,324.5 267.5,324.5 267.5,299.5 292.5,299.5" fill="none" stroke="#1A0015" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<polyline points="267.5,274.5 292.5,274.5 317.5,274.5 317.5,299.5 317.5,324.5 292.5,324.5 267.5,324.5 267.5,299.5 292.5,299.5" fill="none" stroke="#BB0088" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="267.5,274.5 292.5,274.5 317.5,274.5 317.5,299.5 317.5,324.5 292.5,324.5 267.5,324.5 267.5,299.5 292.5,299.5" fill="none" stroke="#FF88EE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+<circle cx="292.5" cy="299.5" r="11" fill="url(#hG11)"/>
+<circle cx="289" cy="296" r="5.5" fill="white" opacity="0.2"/>
+<line x1="304" y1="299.5" x2="310" y2="299.5" stroke="#FF2244" stroke-width="2" stroke-linecap="round"/>
+<line x1="310" y1="299.5" x2="315" y2="295" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="310" y1="299.5" x2="315" y2="304" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="296" cy="294" r="3.2" fill="white"/><circle cx="296" cy="294" r="2" fill="#880066"/><circle cx="296" cy="294" r="1.2" fill="#111"/><circle cx="295" cy="293" r="0.7" fill="white"/>
+<circle cx="296" cy="305" r="3.2" fill="white"/><circle cx="296" cy="305" r="2" fill="#880066"/><circle cx="296" cy="305" r="1.2" fill="#111"/><circle cx="295" cy="304" r="0.7" fill="white"/>
+
+<!-- S12 CORAL  cells:(9,0)(10,0)(11,0)(11,1)(11,2)(10,2)(9,2)(9,1)(10,1) head=down (10,1) -->
+<polyline points="42.5,349.5 42.5,374.5 42.5,399.5 67.5,399.5 92.5,399.5 92.5,374.5 92.5,349.5 67.5,349.5 67.5,374.5" fill="none" stroke="#1A0800" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<polyline points="42.5,349.5 42.5,374.5 42.5,399.5 67.5,399.5 92.5,399.5 92.5,374.5 92.5,349.5 67.5,349.5 67.5,374.5" fill="none" stroke="#CC3322" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="42.5,349.5 42.5,374.5 42.5,399.5 67.5,399.5 92.5,399.5 92.5,374.5 92.5,349.5 67.5,349.5 67.5,374.5" fill="none" stroke="#FFBBAA" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+<circle cx="67.5" cy="374.5" r="11" fill="url(#hG12)"/>
+<circle cx="64" cy="371" r="5.5" fill="white" opacity="0.2"/>
+<line x1="67.5" y1="386" x2="67.5" y2="392" stroke="#FF2244" stroke-width="2" stroke-linecap="round"/>
+<line x1="67.5" y1="392" x2="63" y2="397" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="67.5" y1="392" x2="72" y2="397" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="62" cy="378" r="3.2" fill="white"/><circle cx="62" cy="378" r="2" fill="#992211"/><circle cx="62" cy="378" r="1.2" fill="#111"/><circle cx="61" cy="377" r="0.7" fill="white"/>
+<circle cx="73" cy="378" r="3.2" fill="white"/><circle cx="73" cy="378" r="2" fill="#992211"/><circle cx="73" cy="378" r="1.2" fill="#111"/><circle cx="72" cy="377" r="0.7" fill="white"/>
+
+<!-- S13 SKY  cells:(9,3)(9,4)(9,5)(10,5)(11,5)(11,4)(11,3)(10,3)(10,4) head=right (10,4) -->
+<polyline points="117.5,349.5 142.5,349.5 167.5,349.5 167.5,374.5 167.5,399.5 142.5,399.5 117.5,399.5 117.5,374.5 142.5,374.5" fill="none" stroke="#001020" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<polyline points="117.5,349.5 142.5,349.5 167.5,349.5 167.5,374.5 167.5,399.5 142.5,399.5 117.5,399.5 117.5,374.5 142.5,374.5" fill="none" stroke="#2266BB" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="117.5,349.5 142.5,349.5 167.5,349.5 167.5,374.5 167.5,399.5 142.5,399.5 117.5,399.5 117.5,374.5 142.5,374.5" fill="none" stroke="#AADDFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+<circle cx="142.5" cy="374.5" r="11" fill="url(#hG13)"/>
+<circle cx="139" cy="371" r="5.5" fill="white" opacity="0.2"/>
+<line x1="154" y1="374.5" x2="160" y2="374.5" stroke="#FF2244" stroke-width="2" stroke-linecap="round"/>
+<line x1="160" y1="374.5" x2="165" y2="370" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="160" y1="374.5" x2="165" y2="379" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="146" cy="369" r="3.2" fill="white"/><circle cx="146" cy="369" r="2" fill="#115599"/><circle cx="146" cy="369" r="1.2" fill="#111"/><circle cx="145" cy="368" r="0.7" fill="white"/>
+<circle cx="146" cy="380" r="3.2" fill="white"/><circle cx="146" cy="380" r="2" fill="#115599"/><circle cx="146" cy="380" r="1.2" fill="#111"/><circle cx="145" cy="379" r="0.7" fill="white"/>
+
+<!-- S14 OLIVE  cells:(9,6)(9,7)(9,8)(10,8)(11,8)(11,7)(11,6)(10,6)(10,7) head=right (10,7) -->
+<polyline points="192.5,349.5 217.5,349.5 242.5,349.5 242.5,374.5 242.5,399.5 217.5,399.5 192.5,399.5 192.5,374.5 217.5,374.5" fill="none" stroke="#0C1100" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<polyline points="192.5,349.5 217.5,349.5 242.5,349.5 242.5,374.5 242.5,399.5 217.5,399.5 192.5,399.5 192.5,374.5 217.5,374.5" fill="none" stroke="#778800" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="192.5,349.5 217.5,349.5 242.5,349.5 242.5,374.5 242.5,399.5 217.5,399.5 192.5,399.5 192.5,374.5 217.5,374.5" fill="none" stroke="#DDFF88" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+<circle cx="217.5" cy="374.5" r="11" fill="url(#hG14)"/>
+<circle cx="214" cy="371" r="5.5" fill="white" opacity="0.2"/>
+<line x1="229" y1="374.5" x2="235" y2="374.5" stroke="#FF2244" stroke-width="2" stroke-linecap="round"/>
+<line x1="235" y1="374.5" x2="240" y2="370" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="235" y1="374.5" x2="240" y2="379" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="221" cy="369" r="3.2" fill="white"/><circle cx="221" cy="369" r="2" fill="#446600"/><circle cx="221" cy="369" r="1.2" fill="#111"/><circle cx="220" cy="368" r="0.7" fill="white"/>
+<circle cx="221" cy="380" r="3.2" fill="white"/><circle cx="221" cy="380" r="2" fill="#446600"/><circle cx="221" cy="380" r="1.2" fill="#111"/><circle cx="220" cy="379" r="0.7" fill="white"/>
+
+<!-- S15 VIOLET  cells:(9,9)(9,10)(9,11)(10,11)(11,11)(11,10)(11,9)(10,9)(10,10) head=right (10,10) -->
+<polyline points="267.5,349.5 292.5,349.5 317.5,349.5 317.5,374.5 317.5,399.5 292.5,399.5 267.5,399.5 267.5,374.5 292.5,374.5" fill="none" stroke="#0D0018" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<polyline points="267.5,349.5 292.5,349.5 317.5,349.5 317.5,374.5 317.5,399.5 292.5,399.5 267.5,399.5 267.5,374.5 292.5,374.5" fill="none" stroke="#7733BB" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="267.5,349.5 292.5,349.5 317.5,349.5 317.5,374.5 317.5,399.5 292.5,399.5 267.5,399.5 267.5,374.5 292.5,374.5" fill="none" stroke="#DDBBFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+<circle cx="292.5" cy="374.5" r="11" fill="url(#hG15)"/>
+<circle cx="289" cy="371" r="5.5" fill="white" opacity="0.2"/>
+<line x1="304" y1="374.5" x2="310" y2="374.5" stroke="#FF2244" stroke-width="2" stroke-linecap="round"/>
+<line x1="310" y1="374.5" x2="315" y2="370" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="310" y1="374.5" x2="315" y2="379" stroke="#FF2244" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="296" cy="369" r="3.2" fill="white"/><circle cx="296" cy="369" r="2" fill="#440088"/><circle cx="296" cy="369" r="1.2" fill="#111"/><circle cx="295" cy="368" r="0.7" fill="white"/>
+<circle cx="296" cy="380" r="3.2" fill="white"/><circle cx="296" cy="380" r="2" fill="#440088"/><circle cx="296" cy="380" r="1.2" fill="#111"/><circle cx="295" cy="379" r="0.7" fill="white"/>
+
+<!-- Board border on top -->
+<rect x="30" y="112" width="300" height="300" rx="4" fill="none" stroke="#2A4A70" stroke-width="2"/>
+
+<!-- Footer -->
+<rect y="412" width="360" height="68" fill="#0C1826"/>
+<line x1="0" y1="412" x2="360" y2="412" stroke="#1A3050" stroke-width="1"/>
+<rect x="14" y="426" width="92" height="38" rx="8" fill="#132030" stroke="#336699" stroke-width="1"/>
+<text x="60" y="450" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#5599CC">⟵ Undo</text>
+<text x="330" y="441" text-anchor="end" font-family="sans-serif" font-size="10" fill="#3A5566">Tap — snake slides</text>
+<text x="330" y="456" text-anchor="end" font-family="sans-serif" font-size="9" fill="#2A3F50">toward its head</text>
+
+</svg>

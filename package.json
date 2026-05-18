@@ -2,9 +2,6 @@
   "name": "sonobozy-apps",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*"
-  ],
   "scripts": {
     "koru": "cd apps/koru && expo start",
     "koru:android": "cd apps/koru && expo start --android",

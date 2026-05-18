@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "KORU",
-    "slug": "koru-puzzle",
+    "name": "WADDLE",
+    "slug": "waddle-puzzle",
     "owner": "sonobozy",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -10,34 +10,29 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#0A0A14"
+      "backgroundColor": "#0D1B2A"
     },
     "assetBundlePatterns": ["**/*"],
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#0A0A14"
+        "backgroundColor": "#0D1B2A"
       },
-      "package": "com.sonobozy.koru",
+      "package": "com.sonobozy.waddle",
       "versionCode": 1
     },
     "extra": {
-      "eas": {
-        "projectId": "3fc3ec45-f87e-4ecc-b9d5-9879317cbfe4"
-      }
+      "eas": {}
     },
     "plugins": [
-      [
-        "expo-build-properties",
-        {
-          "android": {
-            "compileSdkVersion": 34,
-            "targetSdkVersion": 34,
-            "minSdkVersion": 23,
-            "kotlinVersion": "1.9.24"
-          }
+      ["expo-build-properties", {
+        "android": {
+          "compileSdkVersion": 34,
+          "targetSdkVersion": 34,
+          "minSdkVersion": 23,
+          "kotlinVersion": "1.9.24"
         }
-      ]
+      }]
     ]
   }
 }

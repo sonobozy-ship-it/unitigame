@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0A0800"/>
+      <stop offset="50%" stop-color="#0C1208"/>
+      <stop offset="100%" stop-color="#0A1015"/>
+    </linearGradient>
+    <radialGradient id="winHalo" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#FFD700" stop-opacity="0.22"/>
+      <stop offset="60%" stop-color="#FF8C00" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#FF8C00" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pBody" cx="35%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#2E2E56"/>
+      <stop offset="100%" stop-color="#070718"/>
+    </radialGradient>
+    <radialGradient id="pHead" cx="35%" cy="25%" r="65%">
+      <stop offset="0%" stop-color="#32325C"/>
+      <stop offset="100%" stop-color="#070718"/>
+    </radialGradient>
+    <radialGradient id="pBelly" cx="38%" cy="22%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="70%" stop-color="#D8F0F8"/>
+      <stop offset="100%" stop-color="#A8CCDC"/>
+    </radialGradient>
+    <radialGradient id="starGrad" cx="30%" cy="20%" r="75%">
+      <stop offset="0%" stop-color="#FFEF88"/>
+      <stop offset="50%" stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#C87800"/>
+    </radialGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E2E18"/>
+      <stop offset="100%" stop-color="#0A1208"/>
+    </linearGradient>
+    <linearGradient id="shareBtn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2A7A5A"/>
+      <stop offset="100%" stop-color="#165A3A"/>
+    </linearGradient>
+    <linearGradient id="nextBtn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5A8EB0"/>
+      <stop offset="100%" stop-color="#2A5070"/>
+    </linearGradient>
+    <filter id="starGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="16" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="confetti" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+    <filter id="pgGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="cardGlow" x="-5%" y="-5%" width="110%" height="115%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="24" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#sky)"/>
+  <rect width="1080" height="1920" fill="url(#winHalo)"/>
+
+  <!-- Confetti storm -->
+  <g filter="url(#confetti)">
+    <rect x="120" y="60"   width="22" height="22" rx="5"  fill="#FFD700" transform="rotate(25,131,71)"  opacity="0.9"/>
+    <rect x="840" y="40"   width="18" height="18" rx="4"  fill="#4ECDC4" transform="rotate(-18,849,49)" opacity="0.9"/>
+    <rect x="280" y="140"  width="16" height="16" rx="4"  fill="#FF8C00" transform="rotate(42,288,148)" opacity="0.85"/>
+    <rect x="720" y="100"  width="20" height="20" rx="5"  fill="#96CEB4" transform="rotate(-30,730,110)" opacity="0.9"/>
+    <rect x="60"  y="280"  width="14" height="14" rx="3"  fill="#A8DADC" transform="rotate(20,67,287)"   opacity="0.8"/>
+    <rect x="980" y="200"  width="18" height="18" rx="4"  fill="#FFD700" transform="rotate(-48,989,209)" opacity="0.9"/>
+    <rect x="450" y="60"   width="16" height="16" rx="4"  fill="#FF6B9D" transform="rotate(35,458,68)"   opacity="0.85"/>
+    <rect x="180" y="380"  width="12" height="12" rx="3"  fill="#DDA0DD" transform="rotate(-22,186,386)" opacity="0.8"/>
+    <rect x="900" y="340"  width="20" height="20" rx="5"  fill="#FFD700" transform="rotate(55,910,350)"  opacity="0.9"/>
+    <rect x="600" y="160"  width="14" height="14" rx="3"  fill="#F7DC6F" transform="rotate(-15,607,167)" opacity="0.85"/>
+    <rect x="50"  y="460"  width="18" height="18" rx="4"  fill="#FF8C00" transform="rotate(30,59,469)"   opacity="0.8"/>
+    <rect x="1020" y="430" width="14" height="14" rx="3"  fill="#4ECDC4" transform="rotate(-40,1027,437)" opacity="0.85"/>
+    <circle cx="380" cy="100" r="10" fill="#FF6B9D" opacity="0.8"/>
+    <circle cx="700" cy="200" r="8"  fill="#FFD700" opacity="0.85"/>
+    <circle cx="160" cy="220" r="7"  fill="#4ECDC4" opacity="0.8"/>
+    <circle cx="920" cy="140" r="9"  fill="#96CEB4" opacity="0.75"/>
+    <circle cx="540" cy="40"  r="11" fill="#FFD700" opacity="0.9"/>
+    <circle cx="260" cy="320" r="6"  fill="#FF8C00" opacity="0.8"/>
+    <circle cx="820" cy="300" r="8"  fill="#DDA0DD" opacity="0.75"/>
+  </g>
+
+  <!-- ── PENGUIN CELEBRATING ── -->
+  <g filter="url(#pgGlow)">
+  <g transform="translate(540,620)">
+    <!-- Halo ring -->
+    <ellipse cx="0" cy="-20" rx="160" ry="155" fill="#FFD700" opacity="0.07"/>
+
+    <!-- Shadow -->
+    <ellipse cx="0" cy="255" rx="115" ry="30" fill="#000" opacity="0.4"/>
+
+    <!-- Wings RAISED (celebrating!) -->
+    <ellipse cx="-130" cy="-20" rx="30" ry="90" fill="url(#pBody)" transform="rotate(-55,-130,-20)"/>
+    <ellipse cx="130"  cy="-20" rx="30" ry="90" fill="url(#pBody)" transform="rotate(55,130,-20)"/>
+    <!-- Wing highlights -->
+    <ellipse cx="-108" cy="-50" rx="12" ry="36" fill="#32326A" opacity="0.4" transform="rotate(-55,-108,-50)"/>
+    <ellipse cx="108"  cy="-50" rx="12" ry="36" fill="#32326A" opacity="0.4" transform="rotate(55,108,-50)"/>
+
+    <!-- Body -->
+    <ellipse cx="0" cy="78" rx="98" ry="125" fill="url(#pBody)"/>
+    <ellipse cx="-62" cy="40" rx="22" ry="64" fill="#2E2E58" opacity="0.4"/>
+
+    <!-- Belly -->
+    <ellipse cx="0" cy="90" rx="62" ry="88" fill="url(#pBelly)"/>
+    <ellipse cx="-14" cy="60" rx="30" ry="44" fill="white" opacity="0.2"/>
+
+    <!-- Feet -->
+    <ellipse cx="-36" cy="240" rx="40" ry="19" fill="#FF8C00" transform="rotate(-14,-36,240)"/>
+    <ellipse cx="36"  cy="240" rx="40" ry="19" fill="#FF8C00" transform="rotate(14,36,240)"/>
+    <ellipse cx="-36" cy="250" rx="34" ry="11" fill="#C05000" opacity="0.4" transform="rotate(-14,-36,250)"/>
+    <ellipse cx="36"  cy="250" rx="34" ry="11" fill="#C05000" opacity="0.4" transform="rotate(14,36,250)"/>
+
+    <!-- Golden scarf (wider, prominent) -->
+    <rect x="-82" y="-8" width="164" height="38" rx="19" fill="#FFD700"/>
+    <rect x="-70" y="-4" width="140" height="16" rx="8"  fill="#FFEF80" opacity="0.55"/>
+    <rect x="-82" y="14" width="164" height="10" rx="5"  fill="#C08000" opacity="0.3"/>
+
+    <!-- Head -->
+    <circle cx="0" cy="-115" r="94" fill="url(#pHead)"/>
+    <ellipse cx="-38" cy="-155" rx="36" ry="30" fill="#34346A" opacity="0.35"/>
+
+    <!-- Eyes HAPPY (curved shape → upward arc pupils) -->
+    <circle cx="-32" cy="-122" r="28" fill="white"/>
+    <circle cx="32"  cy="-122" r="28" fill="white"/>
+    <!-- Happy eyes: upward curved pupils -->
+    <path d="M-50,-136 Q-32,-120 -14,-136" fill="#0A0A20"/>
+    <path d="M14,-136 Q32,-120 50,-136" fill="#0A0A20"/>
+    <!-- Eye shine -->
+    <circle cx="-22" cy="-130" r="7" fill="white"/>
+    <circle cx="42"  cy="-130" r="7" fill="white"/>
+    <circle cx="-18" cy="-122" r="3.5" fill="white" opacity="0.6"/>
+    <circle cx="46"  cy="-122" r="3.5" fill="white" opacity="0.6"/>
+
+    <!-- Cheek blush (happy) -->
+    <ellipse cx="-64" cy="-105" rx="24" ry="16" fill="#FF9AC0" opacity="0.35"/>
+    <ellipse cx="64"  cy="-105" rx="24" ry="16" fill="#FF9AC0" opacity="0.35"/>
+
+    <!-- Beak (open happy) -->
+    <ellipse cx="0" cy="-96" rx="19" ry="14" fill="#FF8C00"/>
+    <ellipse cx="0" cy="-92" rx="16" ry="8"  fill="#FF6000" opacity="0.5"/>
+    <!-- Smile line -->
+    <path d="M-18,-94 Q0,-82 18,-94" stroke="#C05000" stroke-width="2.5" fill="none" opacity="0.5"/>
+
+    <!-- Orbiting mini stars -->
+    <text x="-185" y="-95" font-size="38" fill="#FFD700" filter="url(#starGlow)" opacity="0.9">✦</text>
+    <text x="150"  y="-105" font-size="32" fill="#FFD700" filter="url(#starGlow)" opacity="0.9">✦</text>
+    <text x="-175" y="80"   font-size="24" fill="#FFD700" opacity="0.7">✦</text>
+    <text x="155"  y="60"   font-size="28" fill="#FFD700" opacity="0.8">✦</text>
+    <text x="-80"  y="-230" font-size="28" fill="#FFD700" opacity="0.7">✦</text>
+    <text x="60"   y="-238" font-size="22" fill="#FFD700" opacity="0.8">✦</text>
+  </g>
+  </g>
+
+  <!-- ── RESULT CARD ── -->
+  <!-- Card glow -->
+  <rect x="55" y="1015" width="970" height="680" rx="44" fill="#FFD700" opacity="0.08" filter="url(#cardGlow)"/>
+  <!-- Card body -->
+  <rect x="55" y="1015" width="970" height="680" rx="44" fill="url(#card)"/>
+  <rect x="55" y="1015" width="970" height="680" rx="44" fill="none" stroke="#FFD700" stroke-width="2.5" opacity="0.6"/>
+  <!-- Card top highlight -->
+  <rect x="80" y="1020" width="920" height="40" rx="30" fill="white" opacity="0.04"/>
+
+  <!-- "Level Complete!" -->
+  <text x="540" y="1090" text-anchor="middle"
+        font-family="Arial Black,Impact,sans-serif"
+        font-size="60" fill="#F0FFF0" letter-spacing="2">Level Complete!</text>
+  <text x="540" y="1136" text-anchor="middle"
+        font-family="Arial,sans-serif" font-size="28"
+        fill="#5A9860" letter-spacing="8">LEVEL  17</text>
+
+  <!-- ── 3 BIG STARS ── -->
+  <text x="215" y="1278" text-anchor="middle" font-family="serif" font-size="120"
+        fill="url(#starGrad)" filter="url(#starGlow)">★</text>
+  <text x="540" y="1298" text-anchor="middle" font-family="serif" font-size="142"
+        fill="url(#starGrad)" filter="url(#starGlow)">★</text>
+  <text x="865" y="1278" text-anchor="middle" font-family="serif" font-size="120"
+        fill="url(#starGrad)" filter="url(#starGlow)">★</text>
+
+  <!-- Stats row -->
+  <rect x="120" y="1330" width="840" height="130" rx="22" fill="#080E06" opacity="0.7"/>
+  <text x="310" y="1398" text-anchor="middle" font-family="Arial Black,sans-serif"
+        font-size="64" fill="#F0FFF0" font-weight="900">8</text>
+  <text x="310" y="1440" text-anchor="middle" font-family="Arial,sans-serif"
+        font-size="24" fill="#3A6840" letter-spacing="5">MOVES</text>
+  <line x1="490" y1="1350" x2="490" y2="1450" stroke="#1A2E18" stroke-width="2"/>
+  <text x="540" y="1398" text-anchor="middle" font-family="Arial Black,sans-serif"
+        font-size="64" fill="#F0FFF0" font-weight="900">11</text>
+  <text x="540" y="1440" text-anchor="middle" font-family="Arial,sans-serif"
+        font-size="24" fill="#3A6840" letter-spacing="5">PAR</text>
+  <line x1="590" y1="1350" x2="590" y2="1450" stroke="#1A2E18" stroke-width="2"/>
+  <text x="770" y="1398" text-anchor="middle" font-family="Arial Black,sans-serif"
+        font-size="64" fill="#FFD700" font-weight="900">8</text>
+  <text x="770" y="1440" text-anchor="middle" font-family="Arial,sans-serif"
+        font-size="24" fill="#3A6840" letter-spacing="5">ЛУЧШИЙ</text>
+
+  <!-- Perfect label -->
+  <text x="540" y="1518" text-anchor="middle"
+        font-family="Arial Black,sans-serif" font-size="40"
+        fill="#FFD700">🏆 Идеальное скольжение!</text>
+
+  <!-- Share button -->
+  <rect x="120" y="1558" width="840" height="96" rx="48" fill="url(#shareBtn)"/>
+  <rect x="120" y="1558" width="840" height="96" rx="48" fill="none" stroke="#4AAA7A" stroke-width="1.5" opacity="0.6"/>
+  <rect x="140" y="1562" width="800" height="40" rx="40" fill="white" opacity="0.05"/>
+  <text x="540" y="1619" text-anchor="middle"
+        font-family="Arial Black,sans-serif" font-size="36"
+        fill="white" letter-spacing="1">Поделиться результатом 🐧</text>
+
+  <!-- Nav buttons -->
+  <rect x="120" y="1674" width="240" height="88" rx="22" fill="#0A1808" stroke="#1A3018" stroke-width="1.5"/>
+  <text x="240" y="1727" text-anchor="middle" font-family="Arial Black,sans-serif"
+        font-size="28" fill="#6A9A70">Уровни</text>
+
+  <rect x="380" y="1674" width="240" height="88" rx="22" fill="#0A1808" stroke="#1A3018" stroke-width="1.5"/>
+  <text x="500" y="1727" text-anchor="middle" font-family="Arial Black,sans-serif"
+        font-size="28" fill="#6A9A70">↺ Заново</text>
+
+  <rect x="640" y="1674" width="320" height="88" rx="22" fill="url(#nextBtn)"/>
+  <rect x="640" y="1674" width="320" height="88" rx="22" fill="none" stroke="#4A80AA" stroke-width="1.5" opacity="0.6"/>
+  <text x="800" y="1727" text-anchor="middle" font-family="Arial Black,sans-serif"
+        font-size="30" fill="white">Следующий →</text>
+
+  <text x="540" y="1890" text-anchor="middle" font-family="Arial,sans-serif"
+        font-size="22" fill="#1A2018" opacity="0.7">© 2025 SonoBzy</text>
+</svg>
